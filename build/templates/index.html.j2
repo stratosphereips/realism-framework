@@ -16,7 +16,8 @@ a given evaluation objective needs. Realism is decomposed into <strong>11 dimens
   <dl>
   {% for d in grp.dims %}
     <dt>{{ dim_names[d] }}</dt>
-    <dd>{{ dim_short[d] }}</dd>
+    <dd>{{ dim_short[d] }}
+    {% if dim_notes.get(d) %}<p class="note">{{ dim_notes[d] }}</p>{% endif %}</dd>
   {% endfor %}
   </dl>
 </section>

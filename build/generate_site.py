@@ -104,7 +104,8 @@ def build(root):
 
     caption = f"Realism coverage of {len(envs)} environments across 11 dimensions."
     write("index.html", "index.html.j2", "", groups=dims_meta["groups"],
-          dim_short=dims_meta["short"], n_uc=len(ucs), n_env=len(envs))
+          dim_short=dims_meta["short"], dim_notes=dims_meta.get("notes", {}),
+          n_uc=len(ucs), n_env=len(envs))
     write("use-cases/index.html", "use_cases_index.html.j2", "../", ucs=ucs)
     for uc_id, uc in ucs.items():
         es = _element_summary(uc["requirements"]) if uc.get("requirements") else None

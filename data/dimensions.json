@@ -23,5 +23,8 @@
     "D9": "The agent's actions: realistic commands, APIs, tools, parameters, privileges, failures, costs, and consequences.",
     "D10": "How the agent perceives the environment: partial, noisy, delayed, privilege-dependent views rather than ground truth.",
     "D11": "Resources outside the lab network: OSINT, DNS, certificate transparency, public repositories, attacker infrastructure, cloud, and third-party dependencies."
+  },
+  "notes": {
+    "D11": "In the current IT-enterprise scope, external ecosystem is required as critical by only one objective (targeted data exfiltration), as useful by two others, and is absent across all evaluated environments. This is a deliberate boundary of the present evaluation rather than an omission: these environments are not expected to model external infrastructure in full, and the objectives that depend most on it, such as supply-chain compromise and internet-scale initial access, are held out of the current scope."
   }
 }
