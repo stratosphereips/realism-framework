@@ -46,6 +46,8 @@ caption { text-align: left; color: var(--muted); font-size: .85rem; padding-bott
 .wip-badge { display: inline-block; background: var(--cell-p); color: var(--cell-p-fg);
   border-radius: 4px; padding: 0 .4rem; font-size: .7rem; font-weight: 700; vertical-align: middle; }
 .findings { border-left: 3px solid var(--border); padding: .2rem 0 .2rem 1rem; margin: 1rem 0; }
+.note { background: var(--cell-u); border-left: 3px solid var(--muted); border-radius: 4px;
+  padding: .5rem .8rem; margin: .8rem 0; font-size: .92rem; }
 .v-suitable { color: #14803a; font-weight: 600; }
 .v-partial { color: #7a5b00; font-weight: 600; }
 .v-not_suitable { color: #b3261e; font-weight: 600; }

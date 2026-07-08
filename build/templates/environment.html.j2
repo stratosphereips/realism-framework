@@ -8,6 +8,8 @@
 <p><strong>Best suited for:</strong>
 {% if best_suited %}{{ best_suited|join(", ") }}.{% else %}none of the current objectives — see the fit table below.{% endif %}</p>
 
+{% if env.note %}<p class="note">{{ env.note }}</p>{% endif %}
+
 <h2>Dimension coverage</h2>
 <table class="profile">
 <thead><tr><th scope="col">Dimension</th><th scope="col">Coverage</th></tr></thead>

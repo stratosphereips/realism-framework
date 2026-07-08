@@ -206,7 +206,8 @@
           "url": "https://github.com/mitre/caldera"
         }
       ],
-      "family": "Real-software emulator"
+      "family": "Real-software emulator",
+      "note": "CALDERA's Observation dimension is scored Absent not because it lacks observation, but because it provides a single, complete report of all facts and outcomes \u2014 oracle-like visibility \u2014 rather than the partial, noisy, privilege-dependent perception this framework calls observation realism. That is why a tool with the catalogue's highest action realism still meets no objective's observation requirement."
     },
     "goad": {
       "name": "GOAD",

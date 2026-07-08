@@ -48,7 +48,7 @@ def _reason(rec, dim_names):
         gaps = rec.get("hardGaps", [])
         if gaps:
             noun = "a dimension" if len(gaps) == 1 else "dimensions"
-            return ("abstracts " + ", ".join(dim_names[d] for d in gaps)
+            return ("does not provide " + ", ".join(dim_names[d] for d in gaps)
                     + " — " + noun + " this objective treats as critical")
         return "misses a dimension this objective treats as critical"
     unk = rec.get("unresolved", [])

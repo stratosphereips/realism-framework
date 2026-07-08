@@ -189,7 +189,7 @@ if (location.protocol !== "file:") {
     let reason;
     if (v === "suitable") reason = name + " covers the dimensions " + obj + " requires.";
     else if (v === "partial") reason = name + " covers the required dimensions but falls below the fit threshold for " + obj + ".";
-    else if (v === "not_suitable") reason = name + " abstracts " + names(gp.hardGaps) + " — " + (gp.hardGaps.length === 1 ? "a dimension" : "dimensions") + " " + obj + " treats as critical.";
+    else if (v === "not_suitable") reason = name + " does not provide " + names(gp.hardGaps) + " — " + (gp.hardGaps.length === 1 ? "a dimension" : "dimensions") + " " + obj + " treats as critical.";
     else reason = "Coverage of " + (gp.unresolved.length ? names(gp.unresolved) : "the required dimensions") + " is unknown, so the verdict is incomplete.";
     $("#a-gaps").textContent = reason;
     const req = DIMS.map((dm) => LVAL[uc.profile[dm]]);

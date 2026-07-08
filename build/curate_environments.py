@@ -38,6 +38,11 @@ FAMILY = {
     "scorpion": "Cyber range / other",
 }
 
+# Per-environment caveats rendered as a note on the environment page.
+NOTES = {
+    "caldera": "CALDERA's Observation dimension is scored Absent not because it lacks observation, but because it provides a single, complete report of all facts and outcomes — oracle-like visibility — rather than the partial, noisy, privilege-dependent perception this framework calls observation realism. That is why a tool with the catalogue's highest action realism still meets no objective's observation requirement.",
+}
+
 SOURCES = {
     "cyberbattlesim": [{"label": "GitHub", "url": "https://github.com/microsoft/CyberBattleSim"}],
     "nasim": [{"label": "GitHub", "url": "https://github.com/Jjschwartz/NetworkAttackSimulator"}],
@@ -63,6 +68,8 @@ def main(path):
             env["sources"] = SOURCES[slug]
         if slug in FAMILY:
             env["family"] = FAMILY[slug]
+        if slug in NOTES:
+            env["note"] = NOTES[slug]
     json.dump(data, open(path, "w"), indent=2)
     missing = [s for s in envs if not envs[s]["summary"]]
     print(f"curated {len(envs)} envs; summaries set for {len(envs) - len(missing)}; "
