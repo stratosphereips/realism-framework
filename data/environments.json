@@ -128,7 +128,8 @@
           "url": "https://github.com/jaromiru/NASimEmu"
         }
       ],
-      "family": "Real-software emulator"
+      "family": "Real-software emulator",
+      "note": "NASimEmu is both a simulator and an emulator over the same scenarios. The scores here reflect its emulation mode, in which actions run against real services; this is what lifts its OS, action, and observation fidelity above the pure NASim simulator. Run in its simulation mode, it would score like the abstract-simulator family."
     },
     "cyberwheel": {
       "name": "Cyberwheel",

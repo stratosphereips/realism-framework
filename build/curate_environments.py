@@ -41,6 +41,7 @@ FAMILY = {
 # Per-environment caveats rendered as a note on the environment page.
 NOTES = {
     "caldera": "CALDERA's Observation dimension is scored Absent not because it lacks observation, but because it provides a single, complete report of all facts and outcomes — oracle-like visibility — rather than the partial, noisy, privilege-dependent perception this framework calls observation realism. That is why a tool with the catalogue's highest action realism still meets no objective's observation requirement.",
+    "nasimemu": "NASimEmu is both a simulator and an emulator over the same scenarios. The scores here reflect its emulation mode, in which actions run against real services; this is what lifts its OS, action, and observation fidelity above the pure NASim simulator. Run in its simulation mode, it would score like the abstract-simulator family.",
 }
 
 SOURCES = {
