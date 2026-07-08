@@ -1,0 +1,290 @@
+{
+  "environments": {
+    "cyberbattlesim": {
+      "name": "CyberBattleSim",
+      "category": "A",
+      "scores": {
+        "D1": "P",
+        "D2": "A",
+        "D3": "A",
+        "D4": "P",
+        "D5": "A",
+        "D6": "P",
+        "D7": "A",
+        "D8": "A",
+        "D9": "A",
+        "D10": "P",
+        "D11": "A"
+      },
+      "summary": "Microsoft's abstract network-graph simulator for autonomous red-agent RL; models topology and the action/observation interface but abstracts services, OS, identity, and the defensive/telemetry context.",
+      "justification": {},
+      "sources": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/microsoft/CyberBattleSim"
+        }
+      ],
+      "family": "Abstract simulator"
+    },
+    "nasim": {
+      "name": "NASim",
+      "category": "A",
+      "scores": {
+        "D1": "P",
+        "D2": "A",
+        "D3": "A",
+        "D4": "A",
+        "D5": "A",
+        "D6": "P",
+        "D7": "A",
+        "D8": "A",
+        "D9": "A",
+        "D10": "P",
+        "D11": "A"
+      },
+      "summary": "A lightweight abstract network attack simulator for RL pentesting; scenario-driven topology and actions with abstracted services and little defender context.",
+      "justification": {},
+      "sources": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/Jjschwartz/NetworkAttackSimulator"
+        }
+      ],
+      "family": "Abstract simulator"
+    },
+    "cage-2": {
+      "name": "CAGE-2",
+      "category": "A",
+      "scores": {
+        "D1": "P",
+        "D2": "P",
+        "D3": "A",
+        "D4": "A",
+        "D5": "A",
+        "D6": "P",
+        "D7": "P",
+        "D8": "P",
+        "D9": "P",
+        "D10": "P",
+        "D11": "A"
+      },
+      "summary": "The CAGE-2 autonomous-defence scenario (built on CybORG); an abstract host/service model with a single discovery-only 'green' agent providing minimal benign activity.",
+      "justification": {},
+      "sources": [
+        {
+          "label": "CAGE Challenge 2",
+          "url": "https://github.com/cage-challenge/cage-challenge-2"
+        }
+      ],
+      "family": "Abstract simulator"
+    },
+    "netsecgame": {
+      "name": "NetSecGame",
+      "category": "A",
+      "scores": {
+        "D1": "P",
+        "D2": "A",
+        "D3": "A",
+        "D4": "A",
+        "D5": "A",
+        "D6": "P",
+        "D7": "A",
+        "D8": "A",
+        "D9": "A",
+        "D10": "P",
+        "D11": "A"
+      },
+      "summary": "A configurable network-security game for attacker RL with a built-in stochastic defender; abstract topology and actions.",
+      "justification": {},
+      "sources": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/stratosphereips/NetSecGame"
+        }
+      ],
+      "family": "Abstract simulator"
+    },
+    "nasimemu": {
+      "name": "NASimEmu",
+      "category": "B",
+      "scores": {
+        "D1": "P",
+        "D2": "P",
+        "D3": "P",
+        "D4": "A",
+        "D5": "A",
+        "D6": "P",
+        "D7": "A",
+        "D8": "A",
+        "D9": "P",
+        "D10": "P",
+        "D11": "A"
+      },
+      "summary": "NASim's emulator counterpart \u2014 the same scenarios backed by real services, raising service and OS fidelity above the pure simulator.",
+      "justification": {},
+      "sources": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/jaromiru/NASimEmu"
+        }
+      ],
+      "family": "Real-software emulator"
+    },
+    "cyberwheel": {
+      "name": "Cyberwheel",
+      "category": "B",
+      "scores": {
+        "D1": "P",
+        "D2": "P",
+        "D3": "A",
+        "D4": "P",
+        "D5": "A",
+        "D6": "P",
+        "D7": "P",
+        "D8": "P",
+        "D9": "P",
+        "D10": "P",
+        "D11": "A"
+      },
+      "summary": "A defender-training simulation with decoys and deception and a modelled benign/telemetry layer; broad partial coverage.",
+      "justification": {},
+      "sources": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/ORNL/cyberwheel"
+        }
+      ],
+      "family": "Abstract simulator"
+    },
+    "pengym": {
+      "name": "PenGym",
+      "category": "B",
+      "scores": {
+        "D1": "P",
+        "D2": "F",
+        "D3": "F",
+        "D4": "P",
+        "D5": "P",
+        "D6": "A",
+        "D7": "A",
+        "D8": "P",
+        "D9": "F",
+        "D10": "F",
+        "D11": "A"
+      },
+      "summary": "A Gym environment backed by real vulnerable services behind a NASim-compatible interface; strong service, OS, action, and observation fidelity.",
+      "justification": {},
+      "sources": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/cyb3rlab/PenGym"
+        }
+      ],
+      "family": "Real-software emulator"
+    },
+    "caldera": {
+      "name": "CALDERA",
+      "category": "C",
+      "scores": {
+        "D1": "P",
+        "D2": "P",
+        "D3": "F",
+        "D4": "F",
+        "D5": "A",
+        "D6": "P",
+        "D7": "A",
+        "D8": "P",
+        "D9": "F",
+        "D10": "A",
+        "D11": "A"
+      },
+      "summary": "MITRE CALDERA \u2014 an adversary-emulation platform executing real ATT&CK techniques on real hosts; strong real-software fidelity with partial context.",
+      "justification": {},
+      "sources": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/mitre/caldera"
+        }
+      ],
+      "family": "Real-software emulator"
+    },
+    "goad": {
+      "name": "GOAD",
+      "category": "C",
+      "scores": {
+        "D1": "P",
+        "D2": "F",
+        "D3": "F",
+        "D4": "F",
+        "D5": "A",
+        "D6": "A",
+        "D7": "A",
+        "D8": "A",
+        "D9": "F",
+        "D10": "F",
+        "D11": "A"
+      },
+      "summary": "Game of Active Directory \u2014 an emulated multi-domain AD lab on real Windows Server VMs; strong service, OS, identity, action, and observation fidelity, but absent temporal, defensive, benign, telemetry, and external context.",
+      "justification": {},
+      "sources": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/Orange-Cyberdefense/GOAD"
+        }
+      ],
+      "family": "Real-software emulator"
+    },
+    "htb": {
+      "name": "HTB",
+      "category": "C",
+      "scores": {
+        "D1": "A",
+        "D2": "F",
+        "D3": "F",
+        "D4": "P",
+        "D5": "A",
+        "D6": "A",
+        "D7": "A",
+        "D8": "A",
+        "D9": "F",
+        "D10": "F",
+        "D11": "A"
+      },
+      "summary": "Hack The Box-style vulnerable-machine challenges on real hosts; strong real-software fidelity with little organizational or defender context.",
+      "justification": {},
+      "sources": [
+        {
+          "label": "Hack The Box",
+          "url": "https://www.hackthebox.com/"
+        }
+      ],
+      "family": "Real-software emulator"
+    },
+    "cage-4": {
+      "name": "CAGE-4",
+      "category": "A",
+      "scores": {
+        "D1": "P",
+        "D2": "P",
+        "D3": "A",
+        "D4": "A",
+        "D5": "P",
+        "D6": "P",
+        "D7": "P",
+        "D8": "P",
+        "D9": "P",
+        "D10": "P",
+        "D11": "A"
+      },
+      "summary": "The CybORG CAGE-4 scenario \u2014 a larger multi-subnet enterprise with decentralised blue agents, richer green (benign) agents, mission phases, and variable action durations; among the most context-complete abstract simulators.",
+      "justification": {},
+      "sources": [
+        {
+          "label": "CAGE Challenge 4",
+          "url": "https://github.com/cage-challenge/cage-challenge-4"
+        }
+      ],
+      "family": "Abstract simulator"
+    }
+  }
+}

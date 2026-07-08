@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UC-D2 Incident response — Realism Framework</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){try{var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);window.toggleTheme=function(){var c=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',c);localStorage.setItem('theme',c);};}catch(e){}})();</script>
+</head>
+<body>
+<nav>
+  <button type="button" class="theme-btn" onclick="toggleTheme()" title="Toggle light/dark" aria-label="Toggle light/dark theme">&#9680;</button>
+  <a href="../index.html">Home</a> ·
+  <a href="../use-cases/index.html">Use cases</a> ·
+  <a href="../environments/index.html">Environments</a> ·
+  <a href="../scorecard.html">Scorecard</a>
+</nav>
+<div class="wip-banner" role="note"><strong>Work in progress.</strong> Preliminary artifacts under review — the environment evaluation and the requirement profiles are a work in progress and may change.</div>
+<main>
+
+<h1>UC-D2 · Incident response</h1>
+<p>A defender detects an active compromise and must contain it while preserving forensic evidence and business continuity. It is the counterpart to the time-critical ransomware and evidence-sensitive espionage patterns: the realistic goal is to confine the attacker to a bounded set of hosts, keep the artifacts needed for investigation, and minimize disruption, often coordinating across teams. This exercises defensive controls, telemetry, and a response action space with real propagation delays and side effects, rather than an instantaneous “contain” button.</p>
+<img class="radar" src="../figures/uc_uc-d2.png" alt="Incident response requirement radar">
+
+<h2>Dimension requirement profile</h2>
+<table class="profile">
+<thead><tr><th scope="col">Dimension</th><th scope="col">Requirement</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">Topological realism</th><td>Critical</td></tr>
+
+<tr><th scope="row">Service fidelity</th><td>Useful</td></tr>
+
+<tr><th scope="row">OS fidelity</th><td>Useful</td></tr>
+
+<tr><th scope="row">Identity realism</th><td>Critical</td></tr>
+
+<tr><th scope="row">Temporal dynamics</th><td>Critical</td></tr>
+
+<tr><th scope="row">Defensive realism</th><td>Critical</td></tr>
+
+<tr><th scope="row">Benign activity realism</th><td>Critical</td></tr>
+
+<tr><th scope="row">Telemetry fidelity</th><td>Critical</td></tr>
+
+<tr><th scope="row">Action realism</th><td>Not needed</td></tr>
+
+<tr><th scope="row">Observation realism</th><td>Critical</td></tr>
+
+<tr><th scope="row">External information ecosystem</th><td>Not needed</td></tr>
+
+</tbody>
+</table>
+
+
+
+</main>
+<footer>
+  Companion artifacts to &ldquo;Realistic Enough for What?&rdquo; ·
+  Stratosphere Laboratory, CTU Prague · code MIT / data CC BY 4.0
+</footer>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Realism Framework — Artifacts</title>
+<link rel="stylesheet" href="assets/style.css">
+<script>(function(){try{var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);window.toggleTheme=function(){var c=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',c);localStorage.setItem('theme',c);};}catch(e){}})();</script>
+</head>
+<body>
+<nav>
+  <button type="button" class="theme-btn" onclick="toggleTheme()" title="Toggle light/dark" aria-label="Toggle light/dark theme">&#9680;</button>
+  <a href="index.html">Home</a> ·
+  <a href="use-cases/index.html">Use cases</a> ·
+  <a href="environments/index.html">Environments</a> ·
+  <a href="scorecard.html">Scorecard</a>
+</nav>
+<div class="wip-banner" role="note"><strong>Work in progress.</strong> Preliminary artifacts under review — the environment evaluation and the requirement profiles are a work in progress and may change.</div>
+<main>
+
+<h1>Realistic Enough for What?</h1>
+<p>Companion artifacts to the paper <em>&ldquo;Realistic Enough for What? A
+Multidimensional Framework for Evaluating Cyber Environments.&rdquo;</em> The framework
+asks not whether an environment is realistic in general, but whether it has the realism
+a given evaluation objective needs. Realism is decomposed into <strong>11 dimensions</strong>
+(115 sub-dimensions), grouped by the part of an evaluation they affect.</p>
+
+<h2>The 11 realism dimensions</h2>
+
+<section class="dim-group">
+  <h3>Infrastructure</h3>
+  <p class="question">Do the network, services, and hosts resemble those of a real technical system?</p>
+  <dl>
+  
+    <dt>Topological realism</dt>
+    <dd>Network structure: segmentation, reachability, routing, and position-dependent visibility.</dd>
+  
+    <dt>Service fidelity</dt>
+    <dd>Application-layer services that behave like real ones: protocols, versions, vulnerabilities, access controls, and served data.</dd>
+  
+    <dt>OS fidelity</dt>
+    <dd>Realistic host operating-system behavior: processes, filesystems, persistence, privilege boundaries, and credential storage.</dd>
+  
+  </dl>
+</section>
+
+<section class="dim-group">
+  <h3>Organizational behavior</h3>
+  <p class="question">Does the environment contain realistic users, credentials, routine activity, and time-dependent behavior?</p>
+  <dl>
+  
+    <dt>Identity realism</dt>
+    <dd>Users, credentials, groups, sessions, authentication protocols, MFA, federation, and authorization relationships.</dd>
+  
+    <dt>Temporal dynamics</dt>
+    <dd>How time affects the environment: schedules, delays, session and token lifetimes, human rhythms, and long-horizon state.</dd>
+  
+    <dt>Benign activity realism</dt>
+    <dd>Legitimate users, administrators, services, and background processes generating realistic routine activity, data, and noise.</dd>
+  
+  </dl>
+</section>
+
+<section class="dim-group">
+  <h3>Security layer</h3>
+  <p class="question">Does the environment model defensive controls and the security evidence they produce?</p>
+  <dl>
+  
+    <dt>Defensive realism</dt>
+    <dd>Preventive, detective, hardening, deception, and response controls with realistic scope, latency, and side effects.</dd>
+  
+    <dt>Telemetry fidelity</dt>
+    <dd>Security-relevant logs, alerts, flows, and artifacts with realistic schemas, noise, coverage gaps, and retention.</dd>
+  
+  </dl>
+</section>
+
+<section class="dim-group">
+  <h3>Agent interface</h3>
+  <p class="question">Does the agent act and observe through realistic capabilities and partial views?</p>
+  <dl>
+  
+    <dt>Action realism</dt>
+    <dd>The agent&#39;s actions: realistic commands, APIs, tools, parameters, privileges, failures, costs, and consequences.</dd>
+  
+    <dt>Observation realism</dt>
+    <dd>How the agent perceives the environment: partial, noisy, delayed, privilege-dependent views rather than ground truth.</dd>
+  
+  </dl>
+</section>
+
+<section class="dim-group">
+  <h3>External context</h3>
+  <p class="question">Does the environment model resources and dependencies outside the lab network?</p>
+  <dl>
+  
+    <dt>External information ecosystem</dt>
+    <dd>Resources outside the lab network: OSINT, DNS, certificate transparency, public repositories, attacker infrastructure, cloud, and third-party dependencies.</dd>
+  
+  </dl>
+</section>
+
+
+<h2>Explore</h2>
+<ul>
+  <li><a href="use-cases/index.html">Use cases</a> — realism-requirement profiles for 10 evaluation objectives.</li>
+  <li><a href="environments/index.html">Environments</a> — the 11-environment coverage matrix and per-environment detail.</li>
+  <li><a href="scorecard.html">Scorecard</a> — our verdicts, and a tool to score an environment yourself.</li>
+</ul>
+
+</main>
+<footer>
+  Companion artifacts to &ldquo;Realistic Enough for What?&rdquo; ·
+  Stratosphere Laboratory, CTU Prague · code MIT / data CC BY 4.0
+</footer>
+</body>
+</html>

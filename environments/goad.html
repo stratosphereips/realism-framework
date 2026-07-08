@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GOAD — Realism Framework</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){try{var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);window.toggleTheme=function(){var c=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',c);localStorage.setItem('theme',c);};}catch(e){}})();</script>
+</head>
+<body>
+<nav>
+  <button type="button" class="theme-btn" onclick="toggleTheme()" title="Toggle light/dark" aria-label="Toggle light/dark theme">&#9680;</button>
+  <a href="../index.html">Home</a> ·
+  <a href="../use-cases/index.html">Use cases</a> ·
+  <a href="../environments/index.html">Environments</a> ·
+  <a href="../scorecard.html">Scorecard</a>
+</nav>
+<div class="wip-banner" role="note"><strong>Work in progress.</strong> Preliminary artifacts under review — the environment evaluation and the requirement profiles are a work in progress and may change.</div>
+<main>
+
+<h1>GOAD</h1>
+<p><strong>Family:</strong> Real-software emulator &nbsp;·&nbsp; <strong>Category:</strong> C</p>
+<img class="radar" src="../figures/env_goad.png" alt="GOAD coverage radar">
+<p>Game of Active Directory — an emulated multi-domain AD lab on real Windows Server VMs; strong service, OS, identity, action, and observation fidelity, but absent temporal, defensive, benign, telemetry, and external context.</p>
+<p><strong>Best suited for:</strong>
+Ransomware deployment, Credential-based privilege escalation, Security architecture evaluation.</p>
+
+<h2>Dimension coverage</h2>
+<table class="profile">
+<thead><tr><th scope="col">Dimension</th><th scope="col">Coverage</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">Topological realism</th><td class="cell-P">Partial</td></tr>
+
+<tr><th scope="row">Service fidelity</th><td class="cell-F">Full</td></tr>
+
+<tr><th scope="row">OS fidelity</th><td class="cell-F">Full</td></tr>
+
+<tr><th scope="row">Identity realism</th><td class="cell-F">Full</td></tr>
+
+<tr><th scope="row">Temporal dynamics</th><td class="cell-A">Absent</td></tr>
+
+<tr><th scope="row">Defensive realism</th><td class="cell-A">Absent</td></tr>
+
+<tr><th scope="row">Benign activity realism</th><td class="cell-A">Absent</td></tr>
+
+<tr><th scope="row">Telemetry fidelity</th><td class="cell-A">Absent</td></tr>
+
+<tr><th scope="row">Action realism</th><td class="cell-F">Full</td></tr>
+
+<tr><th scope="row">Observation realism</th><td class="cell-F">Full</td></tr>
+
+<tr><th scope="row">External information ecosystem</th><td class="cell-A">Absent</td></tr>
+
+</tbody>
+</table>
+
+<h2>Fit by objective</h2>
+<p class="question">Suitability is a property of the (environment, objective) pair; a
+&ldquo;not suitable&rdquo; verdict names the dimension the objective needs that this
+environment abstracts.</p>
+<table class="profile">
+<thead><tr><th scope="col">Objective</th><th scope="col">Verdict</th><th scope="col">Why</th></tr></thead>
+<tbody>
+
+<tr>
+  <th scope="row"><a href="../use-cases/UC-A1.html">Targeted data exfiltration</a></th>
+  <td class="v-not_suitable">Not suitable</td>
+  <td>abstracts Temporal dynamics, Defensive realism, Benign activity realism, Telemetry fidelity, External information ecosystem — dimensions this objective treats as critical</td>
+</tr>
+
+<tr>
+  <th scope="row"><a href="../use-cases/UC-A2.html">Ransomware deployment</a></th>
+  <td class="v-suitable">Suitable</td>
+  <td>covers the dimensions this objective requires</td>
+</tr>
+
+<tr>
+  <th scope="row"><a href="../use-cases/UC-A3.html">Worm / self-propagation</a></th>
+  <td class="v-not_suitable">Not suitable</td>
+  <td>abstracts Temporal dynamics — a dimension this objective treats as critical</td>
+</tr>
+
+<tr>
+  <th scope="row"><a href="../use-cases/UC-A5.html">Credential-based privilege escalation</a></th>
+  <td class="v-suitable">Suitable</td>
+  <td>covers the dimensions this objective requires</td>
+</tr>
+
+<tr>
+  <th scope="row"><a href="../use-cases/UC-A6.html">Evasive red-team operation</a></th>
+  <td class="v-not_suitable">Not suitable</td>
+  <td>abstracts Temporal dynamics, Defensive realism, Benign activity realism — dimensions this objective treats as critical</td>
+</tr>
+
+<tr>
+  <th scope="row"><a href="../use-cases/UC-D1.html">Alert triage</a></th>
+  <td class="v-not_suitable">Not suitable</td>
+  <td>abstracts Temporal dynamics, Defensive realism, Benign activity realism, Telemetry fidelity — dimensions this objective treats as critical</td>
+</tr>
+
+<tr>
+  <th scope="row"><a href="../use-cases/UC-D2.html">Incident response</a></th>
+  <td class="v-not_suitable">Not suitable</td>
+  <td>abstracts Temporal dynamics, Defensive realism, Benign activity realism, Telemetry fidelity — dimensions this objective treats as critical</td>
+</tr>
+
+<tr>
+  <th scope="row"><a href="../use-cases/UC-D3.html">Threat hunting</a></th>
+  <td class="v-not_suitable">Not suitable</td>
+  <td>abstracts Temporal dynamics, Defensive realism, Benign activity realism, Telemetry fidelity — dimensions this objective treats as critical</td>
+</tr>
+
+<tr>
+  <th scope="row"><a href="../use-cases/UC-S1.html">Attacker-defender simulation</a></th>
+  <td class="v-not_suitable">Not suitable</td>
+  <td>abstracts Temporal dynamics, Defensive realism, Benign activity realism, Telemetry fidelity — dimensions this objective treats as critical</td>
+</tr>
+
+<tr>
+  <th scope="row"><a href="../use-cases/UC-S2.html">Security architecture evaluation</a></th>
+  <td class="v-partial">Partial fit</td>
+  <td>covers the required dimensions, but below the fit threshold</td>
+</tr>
+
+</tbody>
+</table>
+
+
+
+
+<h2>Sources</h2>
+<ul><li><a href="https://github.com/Orange-Cyberdefense/GOAD">GitHub</a></li></ul>
+
+
+</main>
+<footer>
+  Companion artifacts to &ldquo;Realistic Enough for What?&rdquo; ·
+  Stratosphere Laboratory, CTU Prague · code MIT / data CC BY 4.0
+</footer>
+</body>
+</html>

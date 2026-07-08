@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scorecard — Realism Framework</title>
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .panel { border: 1px solid var(--border); border-radius: 6px; padding: 1rem 1.2rem; margin: 1.2rem 0; }
+  .panel h2 { margin-top: .2rem; }
+  .controls { display: flex; flex-wrap: wrap; gap: 1rem; align-items: end; margin: .6rem 0; }
+  .controls label { display: block; font-size: .8rem; color: var(--muted); }
+  select, input { font: inherit; }
+  .verdict { font-size: 1.15rem; font-weight: 700; margin: .5rem 0 .2rem; }
+  .v-suitable { color: #14803a; } .v-partial { color: #7a5b00; }
+  .v-not_suitable { color: #b3261e; } .v-incomplete { color: var(--muted); }
+  .metrics { font-size: .88rem; color: var(--muted); margin: .15rem 0; }
+  .layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 340px); gap: 1.5rem; align-items: start; }
+  @media (max-width: 640px) { .layout { grid-template-columns: 1fr; } }
+  .radar-box svg { width: 100%; max-width: 340px; display: block; }
+  fieldset { border: 1px solid var(--border); border-radius: 6px; margin: .8rem 0; }
+  fieldset legend { font-weight: 600; padding: 0 .4rem; }
+  .row { display: grid; grid-template-columns: 2rem 1fr 8.5rem; gap: .5rem; align-items: center;
+         padding: .2rem 0; border-top: 1px solid var(--border); }
+  .req-C { color: #b3261e; font-weight: 700; text-align: center; }
+  .req-U { color: #7a5b00; font-weight: 700; text-align: center; }
+  .req-nn { color: var(--muted); text-align: center; }
+  .hide-nn .row-nn { display: none; }
+  .swatch { display: inline-block; width: 2.2rem; height: 0; border-top-width: 3px; vertical-align: middle; }
+</style>
+<script>(function(){try{var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);window.toggleTheme=function(){var c=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',c);localStorage.setItem('theme',c);};}catch(e){}})();</script>
+<script>
+  // Runs before the module. fetch() is blocked on file://, so fail loudly and clearly.
+  if (location.protocol === "file:") {
+    document.documentElement.innerHTML =
+      "<body style='font-family:sans-serif;max-width:40em;margin:4em auto;padding:0 1em'>" +
+      "<h1>Serve this over HTTP</h1><p>The scorecard loads its data with " +
+      "<code>fetch()</code>, which browsers block on <code>file://</code>. Run " +
+      "<code>python -m http.server</code> in this folder and open the printed URL, " +
+      "or use the hosted site.</p></body>";
+  }
+</script>
+</head>
+<body>
+<nav>
+  <button type="button" class="theme-btn" onclick="toggleTheme()" title="Toggle light/dark" aria-label="Toggle light/dark theme">&#9680;</button>
+  <a href="index.html">Home</a> ·
+  <a href="use-cases/index.html">Use cases</a> ·
+  <a href="environments/index.html">Environments</a> ·
+  <a href="scorecard.html">Scorecard</a>
+</nav>
+<main>
+<h1>Realism scorecard</h1>
+<p>Two things live here: <strong>our published evaluation</strong> of an environment
+against a use case, and a tool to <strong>score one yourself</strong>. The threshold
+below sets the weighted fit at which coverage counts as <em>suitable</em>.</p>
+<p class="controls"><span><label for="thr">Fit threshold</label>
+<input type="range" id="thr" min="0.5" max="1" step="0.05" value="0.75">
+<span id="thrval">0.75</span></span></p>
+
+<section class="panel" id="ours">
+  <h2>Our evaluation</h2>
+  <p class="metrics">The verdict and radar below come from our published data — you are
+  not scoring anything here.</p>
+  <div class="controls">
+    <span><label for="a-env">Environment</label><select id="a-env"></select></span>
+    <span><label for="a-uc">Use case</label><select id="a-uc"></select></span>
+  </div>
+  <div class="layout">
+    <div>
+      <p class="verdict" id="a-verdict"></p>
+      <p class="metrics" id="a-metrics"></p>
+      <p class="metrics" id="a-gaps"></p>
+    </div>
+    <div class="radar-box">
+      <div id="a-radar"></div>
+      <p class="metrics">
+        <span class="swatch" style="border-top:3px dashed #d7301f"></span> requirement &nbsp;
+        <span class="swatch" style="border-top:3px solid #084594"></span> coverage
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="panel" id="self">
+  <h2>Score it yourself</h2>
+  <p class="metrics">Pick an environment and a use case, then grade the coverage from
+  scratch. Changing either selection clears your grades.</p>
+  <div class="controls">
+    <span><label for="s-env">Environment</label><select id="s-env"></select></span>
+    <span id="s-custom-wrap" hidden><label for="s-custom">Custom name</label><input type="text" id="s-custom" placeholder="my environment"></span>
+    <span><label for="s-uc">Use case</label><select id="s-uc"></select></span>
+    <span><label><input type="checkbox" id="hide-nn"> Hide not-needed</label></span>
+  </div>
+  <p class="metrics" id="s-note"></p>
+  <p class="verdict" id="s-verdict"></p>
+  <p class="metrics" id="s-metrics"></p>
+  <div id="scorer"></div>
+</section>
+</main>
+
+<script type="module">
+if (location.protocol !== "file:") {
+  const { ucVerdict, ucFit, requiredCompleteness, ucGaps } =
+    await import("./assets/scorecard_scoring.js");
+
+  const $ = (s) => document.querySelector(s);
+  const [elements, useCases, environments, site] = await Promise.all([
+    fetch("data/dimension_elements.json").then((r) => r.json()),
+    fetch("data/use_cases.json").then((r) => r.json()),
+    fetch("data/environments.json").then((r) => r.json()),
+    fetch("data/site.json").then((r) => r.json()),
+  ]);
+  const UCS = useCases.use_cases, ENVS = environments.environments;
+  const DIM_NAME = Object.fromEntries(elements.dimensions.map((d) => [d.id, d.name]));
+  const DIMS = elements.dimensions.map((d) => d.id);
+  const ABBR = ["Topo", "Svc", "OS", "Id", "Tmp", "Def", "Ben", "Tel", "Act", "Obs", "Ext"];
+  const LVAL = { C: 100, U: 50, "-": 0 };
+  const CVAL = { F: 100, P: 50, A: 0 };
+  const V_LABEL = { suitable: "Suitable", partial: "Partial fit",
+                    not_suitable: "Not suitable", incomplete: "Incomplete data" };
+  const threshold = () => parseFloat($("#thr").value);
+  const names = (keys) => keys.map((k) => DIM_NAME[k] || k).join(", ");
+
+  if (site.wip) {
+    const b = document.createElement("div");
+    b.className = "wip-banner"; b.setAttribute("role", "note");
+    const strong = document.createElement("strong"); strong.textContent = "Work in progress. ";
+    b.append(strong, document.createTextNode(site.wip_note || ""));
+    document.querySelector("main").prepend(b);
+  }
+
+  function opt(value, label) {
+    const o = document.createElement("option");
+    o.value = value; o.textContent = label; return o;
+  }
+  function paintVerdict(el, verdict) {
+    el.textContent = V_LABEL[verdict] || verdict;
+    el.className = "verdict v-" + verdict;
+  }
+  function fillEnvUc(envSel, ucSel) {
+    for (const [slug, e] of Object.entries(ENVS)) envSel.append(opt(slug, e.name));
+    for (const [id, u] of Object.entries(UCS)) ucSel.append(opt(id, id + " · " + u.name));
+  }
+
+  // ---------- client-side SVG radar overlay ----------
+  function radarSVG(series) {
+    const S = 340, C = S / 2, R = 128, N = DIMS.length;
+    const ang = (i) => (i * (360 / N) - 90) * Math.PI / 180;
+    const pt = (i, v) => [C + (R * v / 100) * Math.cos(ang(i)), C + (R * v / 100) * Math.sin(ang(i))];
+    let g = "";
+    for (const f of [0.25, 0.5, 0.75, 1]) {
+      g += "<circle cx='" + C + "' cy='" + C + "' r='" + (R * f) + "' fill='none' stroke='#bbb' stroke-width='0.5'/>";
+    }
+    for (let i = 0; i < N; i++) {
+      const e = pt(i, 100);
+      g += "<line x1='" + C + "' y1='" + C + "' x2='" + e[0] + "' y2='" + e[1] + "' stroke='#bbb' stroke-width='0.5'/>";
+      const l = pt(i, 116);
+      g += "<text x='" + l[0] + "' y='" + l[1] + "' font-size='8' text-anchor='middle' dominant-baseline='middle' fill='currentColor'>" + ABBR[i] + "</text>";
+    }
+    for (const s of series) {
+      let d = "", started = false, allFinite = true, dots = "";
+      for (let i = 0; i < N; i++) {
+        const v = s.values[i];
+        if (v !== v) { allFinite = false; started = false; continue; } // NaN = gap
+        const p = pt(i, v);
+        d += (started ? "L" : "M") + p[0].toFixed(1) + " " + p[1].toFixed(1) + " ";
+        started = true;
+        dots += "<circle cx='" + p[0].toFixed(1) + "' cy='" + p[1].toFixed(1) + "' r='2.2' fill='" + s.color + "'/>";
+      }
+      if (allFinite) d += "Z";
+      const dash = s.dashed ? " stroke-dasharray='5 3'" : "";
+      const fill = allFinite ? s.color : "none";
+      g += "<path d='" + d + "' fill='" + fill + "' fill-opacity='0.12' stroke='" + s.color + "' stroke-width='1.8'" + dash + "/>" + dots;
+    }
+    return "<svg viewBox='0 0 " + S + " " + S + "' role='img' aria-label='requirement versus coverage radar'>" + g + "</svg>";
+  }
+
+  // ---------- Section A: our evaluation ----------
+  function runOurEval() {
+    const env = ENVS[$("#a-env").value], uc = UCS[$("#a-uc").value], t = threshold();
+    const v = ucVerdict(uc.profile, env.scores, t);
+    paintVerdict($("#a-verdict"), v);
+    const fit = ucFit(uc.profile, env.scores);
+    const comp = requiredCompleteness(uc.profile, env.scores);
+    $("#a-metrics").textContent = "Weighted fit " + (fit == null ? "n/a" : fit.toFixed(2)) +
+      " · required completeness " + (comp == null ? "n/a" : comp.toFixed(2));
+    const gp = ucGaps(uc.profile, env.scores), name = env.name, obj = uc.name.toLowerCase();
+    let reason;
+    if (v === "suitable") reason = name + " covers the dimensions " + obj + " requires.";
+    else if (v === "partial") reason = name + " covers the required dimensions but falls below the fit threshold for " + obj + ".";
+    else if (v === "not_suitable") reason = name + " abstracts " + names(gp.hardGaps) + " — " + (gp.hardGaps.length === 1 ? "a dimension" : "dimensions") + " " + obj + " treats as critical.";
+    else reason = "Coverage of " + (gp.unresolved.length ? names(gp.unresolved) : "the required dimensions") + " is unknown, so the verdict is incomplete.";
+    $("#a-gaps").textContent = reason;
+    const req = DIMS.map((dm) => LVAL[uc.profile[dm]]);
+    const cov = DIMS.map((dm) => (dm in env.scores && env.scores[dm] in CVAL) ? CVAL[env.scores[dm]] : NaN);
+    $("#a-radar").innerHTML = radarSVG([
+      { values: req, color: "#d7301f", dashed: true },
+      { values: cov, color: "#084594", dashed: false },
+    ]);
+  }
+
+  // ---------- Section B: score it yourself ----------
+  let grades = {};
+
+  function selfContext() {
+    const uc = UCS[$("#s-uc").value];
+    if (uc.requirements) {  // sub-dimension level (only UC-A1 is specified this deep)
+      const groups = elements.dimensions.map((dim) => ({
+        name: dim.name,
+        items: dim.elements.map((e) => ({ id: dim.id + "." + e.n, label: e.label,
+                                          desc: e.desc, req: uc.requirements[dim.id + "." + e.n] })),
+      }));
+      return { reqMap: uc.requirements, groups, level: "element" };
+    }
+    const groups = [{ name: null, items: DIMS.map((dm) => ({ id: dm, label: DIM_NAME[dm],
+                                                             desc: "", req: uc.profile[dm] })) }];
+    return { reqMap: uc.profile, groups, level: "dimension" };
+  }
+
+  const REQ_MARK = { C: "C", U: "U", "-": "—" };
+  const REQ_CLASS = { C: "req-C", U: "req-U", "-": "req-nn" };
+
+  function coverageSelect(id) {
+    const sel = document.createElement("select");
+    sel.append(opt("", "— unscored —"), opt("F", "Full"), opt("P", "Partial"),
+               opt("A", "Absent"), opt("U", "Unknown"));
+    sel.addEventListener("change", () => {
+      if (sel.value) grades[id] = sel.value; else delete grades[id];
+      runSelfVerdict();
+    });
+    return sel;
+  }
+
+  function renderScorer() {
+    grades = {};                       // reset grades whenever selection changes
+    const box = $("#scorer");
+    box.textContent = "";
+    box.className = $("#hide-nn").checked ? "hide-nn" : "";
+    const { groups, level } = selfContext();
+    $("#s-note").textContent = level === "element"
+      ? "Scoring UC-A1 across all 115 sub-dimensions."
+      : "Scoring across the 11 dimensions (this use case is specified at the dimension level).";
+    for (const grp of groups) {
+      const container = grp.name ? document.createElement("fieldset") : box;
+      if (grp.name) {
+        const lg = document.createElement("legend");
+        lg.textContent = grp.name; container.append(lg);
+      }
+      for (const it of grp.items) {
+        const row = document.createElement("div");
+        row.className = "row" + (it.req === "-" ? " row-nn" : "");
+        const badge = document.createElement("span");
+        badge.className = REQ_CLASS[it.req]; badge.textContent = REQ_MARK[it.req];
+        badge.title = "Requirement: " + it.req;
+        const lbl = document.createElement("span");
+        lbl.textContent = it.label; if (it.desc) lbl.title = it.desc;
+        row.append(badge, lbl, coverageSelect(it.id));
+        container.append(row);
+      }
+      if (grp.name) box.append(container);
+    }
+    runSelfVerdict();
+  }
+
+  function runSelfVerdict() {
+    const { reqMap } = selfContext();
+    paintVerdict($("#s-verdict"), ucVerdict(reqMap, grades, threshold()));
+    const fit = ucFit(reqMap, grades), comp = requiredCompleteness(reqMap, grades);
+    $("#s-metrics").textContent = "Weighted fit " + (fit == null ? "n/a" : fit.toFixed(2)) +
+      " · required completeness " + (comp == null ? "n/a" : comp.toFixed(2)) +
+      " · graded " + Object.keys(grades).length;
+  }
+
+  // ---------- wire up ----------
+  fillEnvUc($("#a-env"), $("#a-uc"));
+  fillEnvUc($("#s-env"), $("#s-uc"));
+  $("#s-env").append(opt("__custom__", "Custom / other…"));   // score an environment not in our list
+
+  const hashUc = new URLSearchParams(location.hash.slice(1)).get("uc");
+  if (hashUc && UCS[hashUc]) { $("#a-uc").value = hashUc; $("#s-uc").value = hashUc; }
+
+  $("#thr").addEventListener("input", () => {
+    $("#thrval").textContent = threshold().toFixed(2);
+    runOurEval(); runSelfVerdict();
+  });
+  $("#a-env").addEventListener("change", runOurEval);
+  $("#a-uc").addEventListener("change", runOurEval);
+  $("#s-env").addEventListener("change", () => {
+    $("#s-custom-wrap").hidden = $("#s-env").value !== "__custom__";
+    renderScorer();                                       // reset on change
+  });
+  $("#s-uc").addEventListener("change", renderScorer);    // reset on change
+  $("#hide-nn").addEventListener("change", () => {
+    $("#scorer").className = $("#hide-nn").checked ? "hide-nn" : "";
+  });
+
+  runOurEval();
+  renderScorer();
+}
+</script>
+</body>
+</html>

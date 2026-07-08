@@ -1,0 +1,22 @@
+Creative Commons Attribution 4.0 International (CC BY 4.0)
+
+SPDX-License-Identifier: CC-BY-4.0
+
+The data files in `data/` and the generated HTML pages in this repository (the
+"Content") are licensed under the Creative Commons Attribution 4.0 International
+License.
+
+You are free to share (copy and redistribute in any medium or format) and adapt
+(remix, transform, and build upon) the Content for any purpose, even
+commercially, provided you give appropriate credit, provide a link to the
+license, and indicate if changes were made.
+
+Attribution:
+  "Realistic Enough for What? A Multidimensional Framework for Evaluating Cyber
+  Environments — Artifacts," Stratosphere Laboratory, Czech Technical University
+  in Prague. Licensed under CC BY 4.0.
+
+Full legal code: https://creativecommons.org/licenses/by/4.0/legalcode
+
+Note: the source code in this repository (scripts under build/, assets/, and
+tests/) is licensed separately under the MIT License; see LICENSE.

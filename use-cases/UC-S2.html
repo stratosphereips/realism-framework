@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UC-S2 Security architecture evaluation — Realism Framework</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){try{var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);window.toggleTheme=function(){var c=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',c);localStorage.setItem('theme',c);};}catch(e){}})();</script>
+</head>
+<body>
+<nav>
+  <button type="button" class="theme-btn" onclick="toggleTheme()" title="Toggle light/dark" aria-label="Toggle light/dark theme">&#9680;</button>
+  <a href="../index.html">Home</a> ·
+  <a href="../use-cases/index.html">Use cases</a> ·
+  <a href="../environments/index.html">Environments</a> ·
+  <a href="../scorecard.html">Scorecard</a>
+</nav>
+<div class="wip-banner" role="note"><strong>Work in progress.</strong> Preliminary artifacts under review — the environment evaluation and the requirement profiles are a work in progress and may change.</div>
+<main>
+
+<h1>UC-S2 · Security architecture evaluation</h1>
+<p>A system-level objective that asks whether a given network configuration is robust against automated attack, rather than how a particular agent performs. By running attacks across different topologies and policies and comparing the outcomes, one measures time-to-compromise under each configuration and identifies the weakest paths an attacker would take. Because the question is about the structure — segmentation, reachability, and policy — topology and observation are the dominant dimensions, and an abstract simulator with a faithful network model can produce valid comparisons here even without real-software fidelity. It is the system-level analogue of worm-spread analysis (UC-A3).</p>
+<img class="radar" src="../figures/uc_uc-s2.png" alt="Security architecture evaluation requirement radar">
+
+<h2>Dimension requirement profile</h2>
+<table class="profile">
+<thead><tr><th scope="col">Dimension</th><th scope="col">Requirement</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">Topological realism</th><td>Critical</td></tr>
+
+<tr><th scope="row">Service fidelity</th><td>Useful</td></tr>
+
+<tr><th scope="row">OS fidelity</th><td>Useful</td></tr>
+
+<tr><th scope="row">Identity realism</th><td>Useful</td></tr>
+
+<tr><th scope="row">Temporal dynamics</th><td>Useful</td></tr>
+
+<tr><th scope="row">Defensive realism</th><td>Useful</td></tr>
+
+<tr><th scope="row">Benign activity realism</th><td>Not needed</td></tr>
+
+<tr><th scope="row">Telemetry fidelity</th><td>Not needed</td></tr>
+
+<tr><th scope="row">Action realism</th><td>Useful</td></tr>
+
+<tr><th scope="row">Observation realism</th><td>Critical</td></tr>
+
+<tr><th scope="row">External information ecosystem</th><td>Not needed</td></tr>
+
+</tbody>
+</table>
+
+
+
+</main>
+<footer>
+  Companion artifacts to &ldquo;Realistic Enough for What?&rdquo; ·
+  Stratosphere Laboratory, CTU Prague · code MIT / data CC BY 4.0
+</footer>
+</body>
+</html>

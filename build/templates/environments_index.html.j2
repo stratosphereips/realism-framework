@@ -1,0 +1,24 @@
+{% extends "base.html.j2" %}
+{% block title %}Environments — Realism Framework{% endblock %}
+{% block content %}
+<h1>Environments</h1>
+<p>A preliminary evaluation of {{ envs|length }} cyber environments across the 11
+realism dimensions. Select an environment for its coverage radar, its fit by objective,
+and sources.</p>
+
+<section class="findings">
+<h2>What the evaluation shows</h2>
+<p>Realism is use-case-relative: an environment can be well suited to one objective and
+unsuitable for another. Two families emerge —
+<strong>{{ family_counts.get("Real-software emulator", 0) }} real-software emulators</strong>
+cover the technical, attacker-facing dimensions, while
+<strong>{{ family_counts.get("Abstract simulator", 0) }} abstract simulators</strong>
+cover topology and the agent interface but abstract the surrounding context.</p>
+<p>The dimensions most often <em>absent</em> across these environments are
+{{ least_covered|join(", ") }} — so objectives that depend on them are systematically
+under-served. In this catalog, <strong>no environment yet supports</strong>
+{{ unserved|join(", ") }}: the objectives that most need those context dimensions.</p>
+</section>
+
+{% include "_matrix.html.j2" %}
+{% endblock %}

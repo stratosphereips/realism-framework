@@ -1,0 +1,35 @@
+{% extends "base.html.j2" %}
+{% block title %}{{ uc_id }} {{ uc.name }} — Realism Framework{% endblock %}
+{% block content %}
+<h1>{{ uc_id }} · {{ uc.name }}</h1>
+<p>{{ uc.detail if uc.detail else uc.description }}</p>
+<img class="radar" src="{{ rel }}figures/uc_{{ uc_id|lower }}.png" alt="{{ uc.name }} requirement radar">
+
+<h2>Dimension requirement profile</h2>
+<table class="profile">
+<thead><tr><th scope="col">Dimension</th><th scope="col">Requirement</th></tr></thead>
+<tbody>
+{% for d in dims %}
+<tr><th scope="row">{{ dim_names[d] }}</th><td>{{ level_word[uc.profile[d]] }}</td></tr>
+{% endfor %}
+</tbody>
+</table>
+
+{% if element_summary %}
+<h2>Sub-dimension requirements (all 115 sub-dimensions)</h2>
+<p>This use case is specified at the sub-dimension level. Counts per dimension
+(critical / useful / not needed); explore the full checklist in the
+<a href="{{ rel }}scorecard.html#uc={{ uc_id }}">scorecard</a>.</p>
+<table class="profile">
+<thead><tr><th scope="col">Dimension</th><th scope="col">Critical</th><th scope="col">Useful</th><th scope="col">Not needed</th></tr></thead>
+<tbody>
+{% for d in dims %}
+<tr><th scope="row">{{ dim_names[d] }}</th>
+  <td>{{ element_summary[d]['C'] }}</td>
+  <td>{{ element_summary[d]['U'] }}</td>
+  <td>{{ element_summary[d]['-'] }}</td></tr>
+{% endfor %}
+</tbody>
+</table>
+{% endif %}
+{% endblock %}

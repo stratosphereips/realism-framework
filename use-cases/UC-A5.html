@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UC-A5 Credential-based privilege escalation — Realism Framework</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){try{var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);window.toggleTheme=function(){var c=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',c);localStorage.setItem('theme',c);};}catch(e){}})();</script>
+</head>
+<body>
+<nav>
+  <button type="button" class="theme-btn" onclick="toggleTheme()" title="Toggle light/dark" aria-label="Toggle light/dark theme">&#9680;</button>
+  <a href="../index.html">Home</a> ·
+  <a href="../use-cases/index.html">Use cases</a> ·
+  <a href="../environments/index.html">Environments</a> ·
+  <a href="../scorecard.html">Scorecard</a>
+</nav>
+<div class="wip-banner" role="note"><strong>Work in progress.</strong> Preliminary artifacts under review — the environment evaluation and the requirement profiles are a work in progress and may change.</div>
+<main>
+
+<h1>UC-A5 · Credential-based privilege escalation</h1>
+<p>Starting from an initial foothold, the attacker escalates to domain admin by stealing credentials and moving laterally through Active Directory trust relationships. This is the financial/ransomware-operator pattern: the realistic goal is to reach the target privilege level by the shortest and quietest path through the identity fabric — Kerberos and NTLM exchanges, session tokens, group memberships, and misconfigured ACLs. It is demanding on service, operating-system, identity, action, and observation fidelity, which is why real-software environments support it well while abstract simulators do not.</p>
+<img class="radar" src="../figures/uc_uc-a5.png" alt="Credential-based privilege escalation requirement radar">
+
+<h2>Dimension requirement profile</h2>
+<table class="profile">
+<thead><tr><th scope="col">Dimension</th><th scope="col">Requirement</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">Topological realism</th><td>Useful</td></tr>
+
+<tr><th scope="row">Service fidelity</th><td>Critical</td></tr>
+
+<tr><th scope="row">OS fidelity</th><td>Critical</td></tr>
+
+<tr><th scope="row">Identity realism</th><td>Critical</td></tr>
+
+<tr><th scope="row">Temporal dynamics</th><td>Useful</td></tr>
+
+<tr><th scope="row">Defensive realism</th><td>Not needed</td></tr>
+
+<tr><th scope="row">Benign activity realism</th><td>Not needed</td></tr>
+
+<tr><th scope="row">Telemetry fidelity</th><td>Not needed</td></tr>
+
+<tr><th scope="row">Action realism</th><td>Critical</td></tr>
+
+<tr><th scope="row">Observation realism</th><td>Critical</td></tr>
+
+<tr><th scope="row">External information ecosystem</th><td>Not needed</td></tr>
+
+</tbody>
+</table>
+
+
+
+</main>
+<footer>
+  Companion artifacts to &ldquo;Realistic Enough for What?&rdquo; ·
+  Stratosphere Laboratory, CTU Prague · code MIT / data CC BY 4.0
+</footer>
+</body>
+</html>

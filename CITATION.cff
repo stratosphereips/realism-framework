@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+title: "Realistic Enough for What? A Multidimensional Framework for Evaluating Cyber Environments — Artifacts"
+message: "If you use these artifacts, please cite them using this metadata."
+type: dataset
+authors:
+  - name: "Stratosphere Laboratory, Czech Technical University in Prague"
+repository-code: "https://github.com/stratosphereips/realism-framework"
+license: CC-BY-4.0
+version: "0.1.0"
+date-released: "2026-07-07"

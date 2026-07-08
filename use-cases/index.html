@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Use cases — Realism Framework</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){try{var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);window.toggleTheme=function(){var c=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',c);localStorage.setItem('theme',c);};}catch(e){}})();</script>
+</head>
+<body>
+<nav>
+  <button type="button" class="theme-btn" onclick="toggleTheme()" title="Toggle light/dark" aria-label="Toggle light/dark theme">&#9680;</button>
+  <a href="../index.html">Home</a> ·
+  <a href="../use-cases/index.html">Use cases</a> ·
+  <a href="../environments/index.html">Environments</a> ·
+  <a href="../scorecard.html">Scorecard</a>
+</nav>
+<div class="wip-banner" role="note"><strong>Work in progress.</strong> Preliminary artifacts under review — the environment evaluation and the requirement profiles are a work in progress and may change.</div>
+<main>
+
+<h1>Use cases</h1>
+<p>Each use case has a realism-requirement profile over the 11 dimensions
+(critical / useful / not needed).</p>
+<ul class="cards">
+
+<li>
+  <a href="../use-cases/UC-A1.html">
+    <img src="../figures/uc_uc-a1.png" alt="Targeted data exfiltration requirement radar" loading="lazy">
+    <strong>UC-A1 · Targeted data exfiltration</strong>
+  </a>
+  <p>Locate sensitive data and move it out of the network covertly, against monitoring and baselines.</p>
+</li>
+
+<li>
+  <a href="../use-cases/UC-A2.html">
+    <img src="../figures/uc_uc-a2.png" alt="Ransomware deployment requirement radar" loading="lazy">
+    <strong>UC-A2 · Ransomware deployment</strong>
+  </a>
+  <p>Deploy ransomware across hosts: propagation, encryption, and impact.</p>
+</li>
+
+<li>
+  <a href="../use-cases/UC-A3.html">
+    <img src="../figures/uc_uc-a3.png" alt="Worm / self-propagation requirement radar" loading="lazy">
+    <strong>UC-A3 · Worm / self-propagation</strong>
+  </a>
+  <p>Self-propagating spread across a network from an initial foothold.</p>
+</li>
+
+<li>
+  <a href="../use-cases/UC-A5.html">
+    <img src="../figures/uc_uc-a5.png" alt="Credential-based privilege escalation requirement radar" loading="lazy">
+    <strong>UC-A5 · Credential-based privilege escalation</strong>
+  </a>
+  <p>Escalate from a low-privilege account to higher privileges using credential and OS mechanics.</p>
+</li>
+
+<li>
+  <a href="../use-cases/UC-A6.html">
+    <img src="../figures/uc_uc-a6.png" alt="Evasive red-team operation requirement radar" loading="lazy">
+    <strong>UC-A6 · Evasive red-team operation</strong>
+  </a>
+  <p>Conduct a stealthy, operationally-secure campaign that blends into realistic activity.</p>
+</li>
+
+<li>
+  <a href="../use-cases/UC-D1.html">
+    <img src="../figures/uc_uc-d1.png" alt="Alert triage requirement radar" loading="lazy">
+    <strong>UC-D1 · Alert triage</strong>
+  </a>
+  <p>Triage security alerts, separating malicious activity from benign noise.</p>
+</li>
+
+<li>
+  <a href="../use-cases/UC-D2.html">
+    <img src="../figures/uc_uc-d2.png" alt="Incident response requirement radar" loading="lazy">
+    <strong>UC-D2 · Incident response</strong>
+  </a>
+  <p>Respond to and contain an active incident.</p>
+</li>
+
+<li>
+  <a href="../use-cases/UC-D3.html">
+    <img src="../figures/uc_uc-d3.png" alt="Threat hunting requirement radar" loading="lazy">
+    <strong>UC-D3 · Threat hunting</strong>
+  </a>
+  <p>Proactively hunt for threats across hosts and telemetry.</p>
+</li>
+
+<li>
+  <a href="../use-cases/UC-S1.html">
+    <img src="../figures/uc_uc-s1.png" alt="Attacker-defender simulation requirement radar" loading="lazy">
+    <strong>UC-S1 · Attacker-defender simulation</strong>
+  </a>
+  <p>Simulate interacting attacker and defender agents.</p>
+</li>
+
+<li>
+  <a href="../use-cases/UC-S2.html">
+    <img src="../figures/uc_uc-s2.png" alt="Security architecture evaluation requirement radar" loading="lazy">
+    <strong>UC-S2 · Security architecture evaluation</strong>
+  </a>
+  <p>Compare configurations and policies for time-to-compromise and weakest paths.</p>
+</li>
+
+</ul>
+
+</main>
+<footer>
+  Companion artifacts to &ldquo;Realistic Enough for What?&rdquo; ·
+  Stratosphere Laboratory, CTU Prague · code MIT / data CC BY 4.0
+</footer>
+</body>
+</html>

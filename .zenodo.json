@@ -1,0 +1,10 @@
+{
+  "title": "Realistic Enough for What? A Multidimensional Framework for Evaluating Cyber Environments — Artifacts",
+  "upload_type": "dataset",
+  "access_right": "open",
+  "license": "CC-BY-4.0",
+  "creators": [
+    {"name": "Stratosphere Laboratory, Czech Technical University in Prague"}
+  ],
+  "description": "Use-case realism-requirement profiles, a preliminary evaluation of 11 cyber environments across 11 realism dimensions, and an interactive scorecard application. Companion artifacts to the paper \"Realistic Enough for What? A Multidimensional Framework for Evaluating Cyber Environments.\""
+}

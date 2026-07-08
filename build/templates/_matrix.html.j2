@@ -1,0 +1,25 @@
+<div class="scroll-x">
+<table class="matrix">
+<caption>{{ caption }}</caption>
+<thead>
+<tr>
+  <th scope="col">Environment</th>
+  {% for d in dims %}<th scope="col" title="{{ dim_names[d] }}">{{ dim_abbr[d] }}</th>{% endfor %}
+</tr>
+</thead>
+<tbody>
+{% for slug, env in envs.items() %}
+<tr>
+  <th scope="row"><a href="{{ rel }}environments/{{ slug }}.html">{{ env.name }}</a></th>
+  {% for d in dims %}<td class="cell-{{ env.scores[d] }}" title="{{ dim_names[d] }}: {{ code_word[env.scores[d]] }}">{{ env.scores[d] }}</td>{% endfor %}
+</tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+<ul class="legend">
+  <li><span class="cell-F">F</span> full</li>
+  <li><span class="cell-P">P</span> partial</li>
+  <li><span class="cell-A">A</span> absent</li>
+  <li><span class="cell-U">U</span> unknown</li>
+</ul>

@@ -1,0 +1,31 @@
+{% extends "base.html.j2" %}
+{% block title %}Realism Framework — Artifacts{% endblock %}
+{% block content %}
+<h1>Realistic Enough for What?</h1>
+<p>Companion artifacts to the paper <em>&ldquo;Realistic Enough for What? A
+Multidimensional Framework for Evaluating Cyber Environments.&rdquo;</em> The framework
+asks not whether an environment is realistic in general, but whether it has the realism
+a given evaluation objective needs. Realism is decomposed into <strong>11 dimensions</strong>
+(115 sub-dimensions), grouped by the part of an evaluation they affect.</p>
+
+<h2>The 11 realism dimensions</h2>
+{% for grp in groups %}
+<section class="dim-group">
+  <h3>{{ grp.name }}</h3>
+  <p class="question">{{ grp.question }}</p>
+  <dl>
+  {% for d in grp.dims %}
+    <dt>{{ dim_names[d] }}</dt>
+    <dd>{{ dim_short[d] }}</dd>
+  {% endfor %}
+  </dl>
+</section>
+{% endfor %}
+
+<h2>Explore</h2>
+<ul>
+  <li><a href="{{ rel }}use-cases/index.html">Use cases</a> — realism-requirement profiles for {{ n_uc }} evaluation objectives.</li>
+  <li><a href="{{ rel }}environments/index.html">Environments</a> — the {{ n_env }}-environment coverage matrix and per-environment detail.</li>
+  <li><a href="{{ rel }}scorecard.html">Scorecard</a> — our verdicts, and a tool to score an environment yourself.</li>
+</ul>
+{% endblock %}

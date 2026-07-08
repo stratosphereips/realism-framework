@@ -1,0 +1,27 @@
+{
+  "groups": [
+    {"name": "Infrastructure", "dims": ["D1", "D2", "D3"],
+     "question": "Do the network, services, and hosts resemble those of a real technical system?"},
+    {"name": "Organizational behavior", "dims": ["D4", "D5", "D7"],
+     "question": "Does the environment contain realistic users, credentials, routine activity, and time-dependent behavior?"},
+    {"name": "Security layer", "dims": ["D6", "D8"],
+     "question": "Does the environment model defensive controls and the security evidence they produce?"},
+    {"name": "Agent interface", "dims": ["D9", "D10"],
+     "question": "Does the agent act and observe through realistic capabilities and partial views?"},
+    {"name": "External context", "dims": ["D11"],
+     "question": "Does the environment model resources and dependencies outside the lab network?"}
+  ],
+  "short": {
+    "D1": "Network structure: segmentation, reachability, routing, and position-dependent visibility.",
+    "D2": "Application-layer services that behave like real ones: protocols, versions, vulnerabilities, access controls, and served data.",
+    "D3": "Realistic host operating-system behavior: processes, filesystems, persistence, privilege boundaries, and credential storage.",
+    "D4": "Users, credentials, groups, sessions, authentication protocols, MFA, federation, and authorization relationships.",
+    "D5": "How time affects the environment: schedules, delays, session and token lifetimes, human rhythms, and long-horizon state.",
+    "D6": "Preventive, detective, hardening, deception, and response controls with realistic scope, latency, and side effects.",
+    "D7": "Legitimate users, administrators, services, and background processes generating realistic routine activity, data, and noise.",
+    "D8": "Security-relevant logs, alerts, flows, and artifacts with realistic schemas, noise, coverage gaps, and retention.",
+    "D9": "The agent's actions: realistic commands, APIs, tools, parameters, privileges, failures, costs, and consequences.",
+    "D10": "How the agent perceives the environment: partial, noisy, delayed, privilege-dependent views rather than ground truth.",
+    "D11": "Resources outside the lab network: OSINT, DNS, certificate transparency, public repositories, attacker infrastructure, cloud, and third-party dependencies."
+  }
+}

@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Environments — Realism Framework</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){try{var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);window.toggleTheme=function(){var c=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',c);localStorage.setItem('theme',c);};}catch(e){}})();</script>
+</head>
+<body>
+<nav>
+  <button type="button" class="theme-btn" onclick="toggleTheme()" title="Toggle light/dark" aria-label="Toggle light/dark theme">&#9680;</button>
+  <a href="../index.html">Home</a> ·
+  <a href="../use-cases/index.html">Use cases</a> ·
+  <a href="../environments/index.html">Environments</a> ·
+  <a href="../scorecard.html">Scorecard</a>
+</nav>
+<div class="wip-banner" role="note"><strong>Work in progress.</strong> Preliminary artifacts under review — the environment evaluation and the requirement profiles are a work in progress and may change.</div>
+<main>
+
+<h1>Environments</h1>
+<p>A preliminary evaluation of 11 cyber environments across the 11
+realism dimensions. Select an environment for its coverage radar, its fit by objective,
+and sources.</p>
+
+<section class="findings">
+<h2>What the evaluation shows</h2>
+<p>Realism is use-case-relative: an environment can be well suited to one objective and
+unsuitable for another. Two families emerge —
+<strong>5 real-software emulators</strong>
+cover the technical, attacker-facing dimensions, while
+<strong>6 abstract simulators</strong>
+cover topology and the agent interface but abstract the surrounding context.</p>
+<p>The dimensions most often <em>absent</em> across these environments are
+External information ecosystem, Temporal dynamics, Benign activity realism, OS fidelity, Telemetry fidelity — so objectives that depend on them are systematically
+under-served. In this catalog, <strong>no environment yet supports</strong>
+Targeted data exfiltration, Evasive red-team operation, Incident response, Threat hunting, Attacker-defender simulation: the objectives that most need those context dimensions.</p>
+</section>
+
+<div class="scroll-x">
+<table class="matrix">
+<caption>Realism coverage of 11 environments across 11 dimensions.</caption>
+<thead>
+<tr>
+  <th scope="col">Environment</th>
+  <th scope="col" title="Topological realism">Topo</th><th scope="col" title="Service fidelity">Svc</th><th scope="col" title="OS fidelity">OS</th><th scope="col" title="Identity realism">Id</th><th scope="col" title="Temporal dynamics">Tmp</th><th scope="col" title="Defensive realism">Def</th><th scope="col" title="Benign activity realism">Ben</th><th scope="col" title="Telemetry fidelity">Tel</th><th scope="col" title="Action realism">Act</th><th scope="col" title="Observation realism">Obs</th><th scope="col" title="External information ecosystem">Ext</th>
+</tr>
+</thead>
+<tbody>
+
+<tr>
+  <th scope="row"><a href="../environments/cyberbattlesim.html">CyberBattleSim</a></th>
+  <td class="cell-P" title="Topological realism: Partial">P</td><td class="cell-A" title="Service fidelity: Absent">A</td><td class="cell-A" title="OS fidelity: Absent">A</td><td class="cell-P" title="Identity realism: Partial">P</td><td class="cell-A" title="Temporal dynamics: Absent">A</td><td class="cell-P" title="Defensive realism: Partial">P</td><td class="cell-A" title="Benign activity realism: Absent">A</td><td class="cell-A" title="Telemetry fidelity: Absent">A</td><td class="cell-A" title="Action realism: Absent">A</td><td class="cell-P" title="Observation realism: Partial">P</td><td class="cell-A" title="External information ecosystem: Absent">A</td>
+</tr>
+
+<tr>
+  <th scope="row"><a href="../environments/nasim.html">NASim</a></th>
+  <td class="cell-P" title="Topological realism: Partial">P</td><td class="cell-A" title="Service fidelity: Absent">A</td><td class="cell-A" title="OS fidelity: Absent">A</td><td class="cell-A" title="Identity realism: Absent">A</td><td class="cell-A" title="Temporal dynamics: Absent">A</td><td class="cell-P" title="Defensive realism: Partial">P</td><td class="cell-A" title="Benign activity realism: Absent">A</td><td class="cell-A" title="Telemetry fidelity: Absent">A</td><td class="cell-A" title="Action realism: Absent">A</td><td class="cell-P" title="Observation realism: Partial">P</td><td class="cell-A" title="External information ecosystem: Absent">A</td>
+</tr>
+
+<tr>
+  <th scope="row"><a href="../environments/cage-2.html">CAGE-2</a></th>
+  <td class="cell-P" title="Topological realism: Partial">P</td><td class="cell-P" title="Service fidelity: Partial">P</td><td class="cell-A" title="OS fidelity: Absent">A</td><td class="cell-A" title="Identity realism: Absent">A</td><td class="cell-A" title="Temporal dynamics: Absent">A</td><td class="cell-P" title="Defensive realism: Partial">P</td><td class="cell-P" title="Benign activity realism: Partial">P</td><td class="cell-P" title="Telemetry fidelity: Partial">P</td><td class="cell-P" title="Action realism: Partial">P</td><td class="cell-P" title="Observation realism: Partial">P</td><td class="cell-A" title="External information ecosystem: Absent">A</td>
+</tr>
+
+<tr>
+  <th scope="row"><a href="../environments/netsecgame.html">NetSecGame</a></th>
+  <td class="cell-P" title="Topological realism: Partial">P</td><td class="cell-A" title="Service fidelity: Absent">A</td><td class="cell-A" title="OS fidelity: Absent">A</td><td class="cell-A" title="Identity realism: Absent">A</td><td class="cell-A" title="Temporal dynamics: Absent">A</td><td class="cell-P" title="Defensive realism: Partial">P</td><td class="cell-A" title="Benign activity realism: Absent">A</td><td class="cell-A" title="Telemetry fidelity: Absent">A</td><td class="cell-A" title="Action realism: Absent">A</td><td class="cell-P" title="Observation realism: Partial">P</td><td class="cell-A" title="External information ecosystem: Absent">A</td>
+</tr>
+
+<tr>
+  <th scope="row"><a href="../environments/nasimemu.html">NASimEmu</a></th>
+  <td class="cell-P" title="Topological realism: Partial">P</td><td class="cell-P" title="Service fidelity: Partial">P</td><td class="cell-P" title="OS fidelity: Partial">P</td><td class="cell-A" title="Identity realism: Absent">A</td><td class="cell-A" title="Temporal dynamics: Absent">A</td><td class="cell-P" title="Defensive realism: Partial">P</td><td class="cell-A" title="Benign activity realism: Absent">A</td><td class="cell-A" title="Telemetry fidelity: Absent">A</td><td class="cell-P" title="Action realism: Partial">P</td><td class="cell-P" title="Observation realism: Partial">P</td><td class="cell-A" title="External information ecosystem: Absent">A</td>
+</tr>
+
+<tr>
+  <th scope="row"><a href="../environments/cyberwheel.html">Cyberwheel</a></th>
+  <td class="cell-P" title="Topological realism: Partial">P</td><td class="cell-P" title="Service fidelity: Partial">P</td><td class="cell-A" title="OS fidelity: Absent">A</td><td class="cell-P" title="Identity realism: Partial">P</td><td class="cell-A" title="Temporal dynamics: Absent">A</td><td class="cell-P" title="Defensive realism: Partial">P</td><td class="cell-P" title="Benign activity realism: Partial">P</td><td class="cell-P" title="Telemetry fidelity: Partial">P</td><td class="cell-P" title="Action realism: Partial">P</td><td class="cell-P" title="Observation realism: Partial">P</td><td class="cell-A" title="External information ecosystem: Absent">A</td>
+</tr>
+
+<tr>
+  <th scope="row"><a href="../environments/pengym.html">PenGym</a></th>
+  <td class="cell-P" title="Topological realism: Partial">P</td><td class="cell-F" title="Service fidelity: Full">F</td><td class="cell-F" title="OS fidelity: Full">F</td><td class="cell-P" title="Identity realism: Partial">P</td><td class="cell-P" title="Temporal dynamics: Partial">P</td><td class="cell-A" title="Defensive realism: Absent">A</td><td class="cell-A" title="Benign activity realism: Absent">A</td><td class="cell-P" title="Telemetry fidelity: Partial">P</td><td class="cell-F" title="Action realism: Full">F</td><td class="cell-F" title="Observation realism: Full">F</td><td class="cell-A" title="External information ecosystem: Absent">A</td>
+</tr>
+
+<tr>
+  <th scope="row"><a href="../environments/caldera.html">CALDERA</a></th>
+  <td class="cell-P" title="Topological realism: Partial">P</td><td class="cell-P" title="Service fidelity: Partial">P</td><td class="cell-F" title="OS fidelity: Full">F</td><td class="cell-F" title="Identity realism: Full">F</td><td class="cell-A" title="Temporal dynamics: Absent">A</td><td class="cell-P" title="Defensive realism: Partial">P</td><td class="cell-A" title="Benign activity realism: Absent">A</td><td class="cell-P" title="Telemetry fidelity: Partial">P</td><td class="cell-F" title="Action realism: Full">F</td><td class="cell-A" title="Observation realism: Absent">A</td><td class="cell-A" title="External information ecosystem: Absent">A</td>
+</tr>
+
+<tr>
+  <th scope="row"><a href="../environments/goad.html">GOAD</a></th>
+  <td class="cell-P" title="Topological realism: Partial">P</td><td class="cell-F" title="Service fidelity: Full">F</td><td class="cell-F" title="OS fidelity: Full">F</td><td class="cell-F" title="Identity realism: Full">F</td><td class="cell-A" title="Temporal dynamics: Absent">A</td><td class="cell-A" title="Defensive realism: Absent">A</td><td class="cell-A" title="Benign activity realism: Absent">A</td><td class="cell-A" title="Telemetry fidelity: Absent">A</td><td class="cell-F" title="Action realism: Full">F</td><td class="cell-F" title="Observation realism: Full">F</td><td class="cell-A" title="External information ecosystem: Absent">A</td>
+</tr>
+
+<tr>
+  <th scope="row"><a href="../environments/htb.html">HTB</a></th>
+  <td class="cell-A" title="Topological realism: Absent">A</td><td class="cell-F" title="Service fidelity: Full">F</td><td class="cell-F" title="OS fidelity: Full">F</td><td class="cell-P" title="Identity realism: Partial">P</td><td class="cell-A" title="Temporal dynamics: Absent">A</td><td class="cell-A" title="Defensive realism: Absent">A</td><td class="cell-A" title="Benign activity realism: Absent">A</td><td class="cell-A" title="Telemetry fidelity: Absent">A</td><td class="cell-F" title="Action realism: Full">F</td><td class="cell-F" title="Observation realism: Full">F</td><td class="cell-A" title="External information ecosystem: Absent">A</td>
+</tr>
+
+<tr>
+  <th scope="row"><a href="../environments/cage-4.html">CAGE-4</a></th>
+  <td class="cell-P" title="Topological realism: Partial">P</td><td class="cell-P" title="Service fidelity: Partial">P</td><td class="cell-A" title="OS fidelity: Absent">A</td><td class="cell-A" title="Identity realism: Absent">A</td><td class="cell-P" title="Temporal dynamics: Partial">P</td><td class="cell-P" title="Defensive realism: Partial">P</td><td class="cell-P" title="Benign activity realism: Partial">P</td><td class="cell-P" title="Telemetry fidelity: Partial">P</td><td class="cell-P" title="Action realism: Partial">P</td><td class="cell-P" title="Observation realism: Partial">P</td><td class="cell-A" title="External information ecosystem: Absent">A</td>
+</tr>
+
+</tbody>
+</table>
+</div>
+<ul class="legend">
+  <li><span class="cell-F">F</span> full</li>
+  <li><span class="cell-P">P</span> partial</li>
+  <li><span class="cell-A">A</span> absent</li>
+  <li><span class="cell-U">U</span> unknown</li>
+</ul>
+
+</main>
+<footer>
+  Companion artifacts to &ldquo;Realistic Enough for What?&rdquo; ·
+  Stratosphere Laboratory, CTU Prague · code MIT / data CC BY 4.0
+</footer>
+</body>
+</html>

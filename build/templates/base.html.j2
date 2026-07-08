@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}Realism Framework{% endblock %}</title>
+<link rel="stylesheet" href="{{ rel }}assets/style.css">
+<script>(function(){try{var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);window.toggleTheme=function(){var c=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',c);localStorage.setItem('theme',c);};}catch(e){}})();</script>
+</head>
+<body>
+<nav>
+  <button type="button" class="theme-btn" onclick="toggleTheme()" title="Toggle light/dark" aria-label="Toggle light/dark theme">&#9680;</button>
+  <a href="{{ rel }}index.html">Home</a> ·
+  <a href="{{ rel }}use-cases/index.html">Use cases</a> ·
+  <a href="{{ rel }}environments/index.html">Environments</a> ·
+  <a href="{{ rel }}scorecard.html">Scorecard</a>
+</nav>
+{% if wip %}<div class="wip-banner" role="note"><strong>Work in progress.</strong> {{ wip_note }}</div>{% endif %}
+<main>
+{% block content %}{% endblock %}
+</main>
+<footer>
+  Companion artifacts to &ldquo;Realistic Enough for What?&rdquo; ·
+  Stratosphere Laboratory, CTU Prague · code MIT / data CC BY 4.0
+</footer>
+</body>
+</html>

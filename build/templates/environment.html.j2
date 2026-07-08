@@ -1,0 +1,49 @@
+{% extends "base.html.j2" %}
+{% block title %}{{ env.name }} — Realism Framework{% endblock %}
+{% block content %}
+<h1>{{ env.name }}{% if env.wip %} <span class="wip-badge">WIP</span>{% endif %}</h1>
+<p><strong>Family:</strong> {{ env.family }} &nbsp;·&nbsp; <strong>Category:</strong> {{ env.category }}</p>
+<img class="radar" src="{{ rel }}figures/env_{{ slug }}.png" alt="{{ env.name }} coverage radar">
+<p>{{ env.summary }}</p>
+<p><strong>Best suited for:</strong>
+{% if best_suited %}{{ best_suited|join(", ") }}.{% else %}none of the current objectives — see the fit table below.{% endif %}</p>
+
+<h2>Dimension coverage</h2>
+<table class="profile">
+<thead><tr><th scope="col">Dimension</th><th scope="col">Coverage</th></tr></thead>
+<tbody>
+{% for d in dims %}
+<tr><th scope="row">{{ dim_names[d] }}</th><td class="cell-{{ env.scores[d] }}">{{ code_word[env.scores[d]] }}</td></tr>
+{% endfor %}
+</tbody>
+</table>
+
+<h2>Fit by objective</h2>
+<p class="question">Suitability is a property of the (environment, objective) pair; a
+&ldquo;not suitable&rdquo; verdict names the dimension the objective needs that this
+environment abstracts.</p>
+<table class="profile">
+<thead><tr><th scope="col">Objective</th><th scope="col">Verdict</th><th scope="col">Why</th></tr></thead>
+<tbody>
+{% for f in objective_fits %}
+<tr>
+  <th scope="row"><a href="{{ rel }}use-cases/{{ f.id }}.html">{{ f.name }}</a></th>
+  <td class="v-{{ f.verdict }}">{{ f.word }}</td>
+  <td>{{ f.reason }}</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+
+{% if env.justification %}
+<h2>Justification</h2>
+{% for d, text in env.justification.items() %}
+<p><strong>{{ dim_names[d] }}.</strong> {{ text }}</p>
+{% endfor %}
+{% endif %}
+
+{% if env.sources %}
+<h2>Sources</h2>
+<ul>{% for s in env.sources %}<li><a href="{{ s.url }}">{{ s.label }}</a></li>{% endfor %}</ul>
+{% endif %}
+{% endblock %}

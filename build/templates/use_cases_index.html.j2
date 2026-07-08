@@ -1,0 +1,18 @@
+{% extends "base.html.j2" %}
+{% block title %}Use cases — Realism Framework{% endblock %}
+{% block content %}
+<h1>Use cases</h1>
+<p>Each use case has a realism-requirement profile over the 11 dimensions
+(critical / useful / not needed).</p>
+<ul class="cards">
+{% for uc_id, uc in ucs.items() %}
+<li>
+  <a href="{{ rel }}use-cases/{{ uc_id }}.html">
+    <img src="{{ rel }}figures/uc_{{ uc_id|lower }}.png" alt="{{ uc.name }} requirement radar" loading="lazy">
+    <strong>{{ uc_id }} · {{ uc.name }}</strong>
+  </a>
+  <p>{{ uc.description }}</p>
+</li>
+{% endfor %}
+</ul>
+{% endblock %}
