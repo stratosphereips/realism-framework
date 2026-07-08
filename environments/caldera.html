@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CALDERA — Realism Framework</title>
+<title>CALDERA · Realism Framework</title>
 <link rel="stylesheet" href="../assets/style.css">
 <script>(function(){try{var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);window.toggleTheme=function(){var c=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',c);localStorage.setItem('theme',c);};}catch(e){}})();</script>
 </head>
@@ -15,17 +15,17 @@
   <a href="../environments/index.html">Environments</a> ·
   <a href="../scorecard.html">Scorecard</a>
 </nav>
-<div class="wip-banner" role="note"><strong>Work in progress.</strong> Preliminary artifacts under review — the environment evaluation and the requirement profiles are a work in progress and may change.</div>
+<div class="wip-banner" role="note"><strong>Work in progress.</strong> Preliminary artifacts under review; the environment evaluation and the requirement profiles are a work in progress and may change.</div>
 <main>
 
 <h1>CALDERA</h1>
 <p><strong>Family:</strong> Real-software emulator &nbsp;·&nbsp; <strong>Category:</strong> C</p>
 <img class="radar" src="../figures/env_caldera.png" alt="CALDERA coverage radar">
-<p>MITRE CALDERA — an adversary-emulation platform executing real ATT&amp;CK techniques on real hosts; strong real-software fidelity with partial context.</p>
+<p>MITRE CALDERA, an adversary-emulation platform executing real ATT&amp;CK techniques on real hosts; strong real-software fidelity with partial context.</p>
 <p><strong>Best suited for:</strong>
-none of the current objectives — see the fit table below.</p>
+none of the current objectives (see the fit table below).</p>
 
-<p class="note">CALDERA&#39;s Observation dimension is scored Absent not because it lacks observation, but because it provides a single, complete report of all facts and outcomes — oracle-like visibility — rather than the partial, noisy, privilege-dependent perception this framework calls observation realism. That is why a tool with the catalogue&#39;s highest action realism still meets no objective&#39;s observation requirement.</p>
+<p class="note">CALDERA&#39;s Observation dimension is scored Absent not because it lacks observation, but because it provides a single, complete report of all facts and outcomes (oracle-like visibility) rather than the partial, noisy, privilege-dependent perception this framework calls observation realism. That is why a tool with the catalogue&#39;s highest action realism still meets no objective&#39;s observation requirement.</p>
 
 <h2>Dimension coverage</h2>
 <table class="profile">
@@ -68,61 +68,61 @@ environment abstracts.</p>
 <tr>
   <th scope="row"><a href="../use-cases/UC-A1.html">Targeted data exfiltration</a></th>
   <td class="v-not_suitable">Not suitable</td>
-  <td>does not provide Temporal dynamics, Benign activity realism, External information ecosystem — dimensions this objective treats as critical</td>
+  <td>does not provide Temporal dynamics, Benign activity realism, External information ecosystem, dimensions this objective treats as critical</td>
 </tr>
 
 <tr>
   <th scope="row"><a href="../use-cases/UC-A2.html">Ransomware deployment</a></th>
   <td class="v-not_suitable">Not suitable</td>
-  <td>does not provide Observation realism — a dimension this objective treats as critical</td>
+  <td>does not provide Observation realism, a dimension this objective treats as critical</td>
 </tr>
 
 <tr>
   <th scope="row"><a href="../use-cases/UC-A3.html">Worm / self-propagation</a></th>
   <td class="v-not_suitable">Not suitable</td>
-  <td>does not provide Temporal dynamics, Observation realism — dimensions this objective treats as critical</td>
+  <td>does not provide Temporal dynamics, Observation realism, dimensions this objective treats as critical</td>
 </tr>
 
 <tr>
   <th scope="row"><a href="../use-cases/UC-A5.html">Credential-based privilege escalation</a></th>
   <td class="v-not_suitable">Not suitable</td>
-  <td>does not provide Observation realism — a dimension this objective treats as critical</td>
+  <td>does not provide Observation realism, a dimension this objective treats as critical</td>
 </tr>
 
 <tr>
   <th scope="row"><a href="../use-cases/UC-A6.html">Evasive red-team operation</a></th>
   <td class="v-not_suitable">Not suitable</td>
-  <td>does not provide Temporal dynamics, Benign activity realism, Observation realism — dimensions this objective treats as critical</td>
+  <td>does not provide Temporal dynamics, Benign activity realism, Observation realism, dimensions this objective treats as critical</td>
 </tr>
 
 <tr>
   <th scope="row"><a href="../use-cases/UC-D1.html">Alert triage</a></th>
   <td class="v-not_suitable">Not suitable</td>
-  <td>does not provide Temporal dynamics, Benign activity realism, Observation realism — dimensions this objective treats as critical</td>
+  <td>does not provide Temporal dynamics, Benign activity realism, Observation realism, dimensions this objective treats as critical</td>
 </tr>
 
 <tr>
   <th scope="row"><a href="../use-cases/UC-D2.html">Incident response</a></th>
   <td class="v-not_suitable">Not suitable</td>
-  <td>does not provide Temporal dynamics, Benign activity realism, Observation realism — dimensions this objective treats as critical</td>
+  <td>does not provide Temporal dynamics, Benign activity realism, Observation realism, dimensions this objective treats as critical</td>
 </tr>
 
 <tr>
   <th scope="row"><a href="../use-cases/UC-D3.html">Threat hunting</a></th>
   <td class="v-not_suitable">Not suitable</td>
-  <td>does not provide Temporal dynamics, Benign activity realism, Observation realism — dimensions this objective treats as critical</td>
+  <td>does not provide Temporal dynamics, Benign activity realism, Observation realism, dimensions this objective treats as critical</td>
 </tr>
 
 <tr>
   <th scope="row"><a href="../use-cases/UC-S1.html">Attacker-defender simulation</a></th>
   <td class="v-not_suitable">Not suitable</td>
-  <td>does not provide Temporal dynamics, Benign activity realism, Observation realism — dimensions this objective treats as critical</td>
+  <td>does not provide Temporal dynamics, Benign activity realism, Observation realism, dimensions this objective treats as critical</td>
 </tr>
 
 <tr>
   <th scope="row"><a href="../use-cases/UC-S2.html">Security architecture evaluation</a></th>
   <td class="v-not_suitable">Not suitable</td>
-  <td>does not provide Observation realism — a dimension this objective treats as critical</td>
+  <td>does not provide Observation realism, a dimension this objective treats as critical</td>
 </tr>
 
 </tbody>

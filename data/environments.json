@@ -120,7 +120,7 @@
         "D10": "P",
         "D11": "A"
       },
-      "summary": "NASim's emulator counterpart \u2014 the same scenarios backed by real services, raising service and OS fidelity above the pure simulator.",
+      "summary": "NASim's emulator counterpart: the same scenarios backed by real services, raising service and OS fidelity above the pure simulator.",
       "justification": {},
       "sources": [
         {
@@ -199,7 +199,7 @@
         "D10": "A",
         "D11": "A"
       },
-      "summary": "MITRE CALDERA \u2014 an adversary-emulation platform executing real ATT&CK techniques on real hosts; strong real-software fidelity with partial context.",
+      "summary": "MITRE CALDERA, an adversary-emulation platform executing real ATT&CK techniques on real hosts; strong real-software fidelity with partial context.",
       "justification": {},
       "sources": [
         {
@@ -208,7 +208,7 @@
         }
       ],
       "family": "Real-software emulator",
-      "note": "CALDERA's Observation dimension is scored Absent not because it lacks observation, but because it provides a single, complete report of all facts and outcomes \u2014 oracle-like visibility \u2014 rather than the partial, noisy, privilege-dependent perception this framework calls observation realism. That is why a tool with the catalogue's highest action realism still meets no objective's observation requirement."
+      "note": "CALDERA's Observation dimension is scored Absent not because it lacks observation, but because it provides a single, complete report of all facts and outcomes (oracle-like visibility) rather than the partial, noisy, privilege-dependent perception this framework calls observation realism. That is why a tool with the catalogue's highest action realism still meets no objective's observation requirement."
     },
     "goad": {
       "name": "GOAD",
@@ -226,7 +226,7 @@
         "D10": "F",
         "D11": "A"
       },
-      "summary": "Game of Active Directory \u2014 an emulated multi-domain AD lab on real Windows Server VMs; strong service, OS, identity, action, and observation fidelity, but absent temporal, defensive, benign, telemetry, and external context.",
+      "summary": "Game of Active Directory, an emulated multi-domain AD lab on real Windows Server VMs; strong service, OS, identity, action, and observation fidelity, but absent temporal, defensive, benign, telemetry, and external context.",
       "justification": {},
       "sources": [
         {
@@ -278,7 +278,7 @@
         "D10": "P",
         "D11": "A"
       },
-      "summary": "The CybORG CAGE-4 scenario \u2014 a larger multi-subnet enterprise with decentralised blue agents, richer green (benign) agents, mission phases, and variable action durations; among the most context-complete abstract simulators.",
+      "summary": "The CybORG CAGE-4 scenario: a larger multi-subnet enterprise with decentralised blue agents, richer green (benign) agents, mission phases, and variable action durations; among the most context-complete abstract simulators.",
       "justification": {},
       "sources": [
         {

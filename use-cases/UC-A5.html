@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>UC-A5 Credential-based privilege escalation — Realism Framework</title>
+<title>UC-A5 Credential-based privilege escalation · Realism Framework</title>
 <link rel="stylesheet" href="../assets/style.css">
 <script>(function(){try{var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);window.toggleTheme=function(){var c=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',c);localStorage.setItem('theme',c);};}catch(e){}})();</script>
 </head>
@@ -15,11 +15,11 @@
   <a href="../environments/index.html">Environments</a> ·
   <a href="../scorecard.html">Scorecard</a>
 </nav>
-<div class="wip-banner" role="note"><strong>Work in progress.</strong> Preliminary artifacts under review — the environment evaluation and the requirement profiles are a work in progress and may change.</div>
+<div class="wip-banner" role="note"><strong>Work in progress.</strong> Preliminary artifacts under review; the environment evaluation and the requirement profiles are a work in progress and may change.</div>
 <main>
 
 <h1>UC-A5 · Credential-based privilege escalation</h1>
-<p>Starting from an initial foothold, the attacker escalates to domain admin by stealing credentials and moving laterally through Active Directory trust relationships. This is the financial/ransomware-operator pattern: the realistic goal is to reach the target privilege level by the shortest and quietest path through the identity fabric — Kerberos and NTLM exchanges, session tokens, group memberships, and misconfigured ACLs. It is demanding on service, operating-system, identity, action, and observation fidelity, which is why real-software environments support it well while abstract simulators do not.</p>
+<p>Starting from an initial foothold, the attacker escalates to domain admin by stealing credentials and moving laterally through Active Directory trust relationships. This is the financial/ransomware-operator pattern: the realistic goal is to reach the target privilege level by the shortest and quietest path through the identity fabric: Kerberos and NTLM exchanges, session tokens, group memberships, and misconfigured ACLs. It is demanding on service, operating-system, identity, action, and observation fidelity, which is why real-software environments support it well while abstract simulators do not.</p>
 <img class="radar" src="../figures/uc_uc-a5.png" alt="Credential-based privilege escalation requirement radar">
 
 <h2>Dimension requirement profile</h2>

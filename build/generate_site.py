@@ -27,7 +27,7 @@ def _validate(root):
     if errs:
         raise SystemExit("DATA VALIDATION FAILED:\n  " + "\n  ".join(errs))
     if not os.path.exists(os.path.join(root, "verdicts.json")):
-        raise SystemExit("verdicts.json missing — run build/compute_verdicts.mjs (or ./build.sh) first.")
+        raise SystemExit("verdicts.json missing; run build/compute_verdicts.mjs (or ./build.sh) first.")
 
 
 def _element_summary(requirements):
@@ -49,7 +49,7 @@ def _reason(rec, dim_names):
         if gaps:
             noun = "a dimension" if len(gaps) == 1 else "dimensions"
             return ("does not provide " + ", ".join(dim_names[d] for d in gaps)
-                    + " — " + noun + " this objective treats as critical")
+                    + ", " + noun + " this objective treats as critical")
         return "misses a dimension this objective treats as critical"
     unk = rec.get("unresolved", [])
     if unk:

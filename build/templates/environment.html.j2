@@ -1,12 +1,12 @@
 {% extends "base.html.j2" %}
-{% block title %}{{ env.name }} — Realism Framework{% endblock %}
+{% block title %}{{ env.name }} · Realism Framework{% endblock %}
 {% block content %}
 <h1>{{ env.name }}{% if env.wip %} <span class="wip-badge">WIP</span>{% endif %}</h1>
 <p><strong>Family:</strong> {{ env.family }} &nbsp;·&nbsp; <strong>Category:</strong> {{ env.category }}</p>
 <img class="radar" src="{{ rel }}figures/env_{{ slug }}.png" alt="{{ env.name }} coverage radar">
 <p>{{ env.summary }}</p>
 <p><strong>Best suited for:</strong>
-{% if best_suited %}{{ best_suited|join(", ") }}.{% else %}none of the current objectives — see the fit table below.{% endif %}</p>
+{% if best_suited %}{{ best_suited|join(", ") }}.{% else %}none of the current objectives (see the fit table below).{% endif %}</p>
 
 {% if env.note %}<p class="note">{{ env.note }}</p>{% endif %}
 

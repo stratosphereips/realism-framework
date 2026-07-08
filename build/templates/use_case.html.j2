@@ -1,5 +1,5 @@
 {% extends "base.html.j2" %}
-{% block title %}{{ uc_id }} {{ uc.name }} — Realism Framework{% endblock %}
+{% block title %}{{ uc_id }} {{ uc.name }} · Realism Framework{% endblock %}
 {% block content %}
 <h1>{{ uc_id }} · {{ uc.name }}</h1>
 <p>{{ uc.detail if uc.detail else uc.description }}</p>

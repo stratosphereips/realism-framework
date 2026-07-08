@@ -1,14 +1,14 @@
-# Realism Framework — Artifacts
+# Realism Framework Artifacts
 
 Companion artifacts to the paper *"Realistic Enough for What? A Multidimensional
 Framework for Evaluating Cyber Environments"* (Stratosphere Laboratory, CTU Prague).
 
 This repository publishes, as a static website:
 
-1. **Use cases** — realism-requirement profiles over 11 dimensions.
-2. **Environments** — a preliminary evaluation of 11 cyber environments across the
+1. **Use cases**: realism-requirement profiles over 11 dimensions.
+2. **Environments**: a preliminary evaluation of 11 cyber environments across the
    same 11 dimensions.
-3. **Scorecard** — an interactive application that reports whether an environment is
+3. **Scorecard**: an interactive application that reports whether an environment is
    suitable for a given use case.
 
 ## What maps to what
@@ -18,7 +18,7 @@ This repository publishes, as a static website:
 - Use-case requirement profiles (dimension level, plus sub-dimension level for UC-A1):
   `data/use_cases.json`.
 - The 11-environment evaluation: `data/environments.json` (five further environments are
-  documented in the source analysis but not evaluated here — no verifiable public link).
+  documented in the source analysis but not evaluated here, for lack of a verifiable public link).
 - The pages and radar charts are **generated** from those three files.
 
 ## Rebuild the site
@@ -42,8 +42,8 @@ python -m http.server 8000
 
 ## Licensing
 
-- **Code** (scripts under `build/`, `assets/`, `tests/`): MIT — see `LICENSE`.
-- **Data and generated pages**: CC BY 4.0 — see `LICENSE-data`.
+- **Code** (scripts under `build/`, `assets/`, `tests/`): MIT (see `LICENSE`).
+- **Data and generated pages**: CC BY 4.0 (see `LICENSE-data`).
 
 ## Publishing (maintainer steps)
 

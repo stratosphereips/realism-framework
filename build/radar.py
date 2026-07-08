@@ -62,7 +62,7 @@ def _save(fig, out_dir, name):
 def render_use_case(uc_id, uc, out_dir):
     fig, ax, ang = _polar_ax()
     req = [level_value(uc["profile"][d]) for d in DIMS]
-    _plot(ax, ang, req, "#d7301f", "Requirement (C=100, U=50, —=0)", dashed=True)
+    _plot(ax, ang, req, "#d7301f", "Requirement (Critical 100, Useful 50, Not needed 0)", dashed=True)
     ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.06), frameon=False, fontsize=9)
     _save(fig, out_dir, f"uc_{uc_id.lower()}.png")
 

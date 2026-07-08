@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Scorecard — Realism Framework</title>
+<title>Scorecard · Realism Framework</title>
 <link rel="stylesheet" href="assets/style.css">
 <style>
   .panel { border: 1px solid var(--border); border-radius: 6px; padding: 1rem 1.2rem; margin: 1.2rem 0; }
@@ -60,7 +60,7 @@ below sets the weighted fit at which coverage counts as <em>suitable</em>.</p>
 
 <section class="panel" id="ours">
   <h2>Our evaluation</h2>
-  <p class="metrics">The verdict and radar below come from our published data — you are
+  <p class="metrics">The verdict and radar below come from our published data; you are
   not scoring anything here.</p>
   <div class="controls">
     <span><label for="a-env">Environment</label><select id="a-env"></select></span>
@@ -189,7 +189,7 @@ if (location.protocol !== "file:") {
     let reason;
     if (v === "suitable") reason = name + " covers the dimensions " + obj + " requires.";
     else if (v === "partial") reason = name + " covers the required dimensions but falls below the fit threshold for " + obj + ".";
-    else if (v === "not_suitable") reason = name + " does not provide " + names(gp.hardGaps) + " — " + (gp.hardGaps.length === 1 ? "a dimension" : "dimensions") + " " + obj + " treats as critical.";
+    else if (v === "not_suitable") reason = name + " does not provide " + names(gp.hardGaps) + ", " + (gp.hardGaps.length === 1 ? "a dimension" : "dimensions") + " " + obj + " treats as critical.";
     else reason = "Coverage of " + (gp.unresolved.length ? names(gp.unresolved) : "the required dimensions") + " is unknown, so the verdict is incomplete.";
     $("#a-gaps").textContent = reason;
     const req = DIMS.map((dm) => LVAL[uc.profile[dm]]);
@@ -218,12 +218,12 @@ if (location.protocol !== "file:") {
     return { reqMap: uc.profile, groups, level: "dimension" };
   }
 
-  const REQ_MARK = { C: "C", U: "U", "-": "—" };
+  const REQ_MARK = { C: "C", U: "U", "-": "-" };
   const REQ_CLASS = { C: "req-C", U: "req-U", "-": "req-nn" };
 
   function coverageSelect(id) {
     const sel = document.createElement("select");
-    sel.append(opt("", "— unscored —"), opt("F", "Full"), opt("P", "Partial"),
+    sel.append(opt("", "(unscored)"), opt("F", "Full"), opt("P", "Partial"),
                opt("A", "Absent"), opt("U", "Unknown"));
     sel.addEventListener("change", () => {
       if (sel.value) grades[id] = sel.value; else delete grades[id];

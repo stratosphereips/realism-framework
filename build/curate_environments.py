@@ -14,18 +14,18 @@ SUMMARIES = {
     "netsecgame": "A configurable network-security game for attacker RL with a built-in stochastic defender; abstract topology and actions.",
     "cybershield": "A defence-oriented simulation; several dimensions are undocumented and scored Unknown from the available sources.",
     "cye": "Attack-path / exposure analysis over a modelled enterprise identity and topology; broad partial coverage, with a few dimensions Unknown.",
-    "nasimemu": "NASim's emulator counterpart — the same scenarios backed by real services, raising service and OS fidelity above the pure simulator.",
+    "nasimemu": "NASim's emulator counterpart: the same scenarios backed by real services, raising service and OS fidelity above the pure simulator.",
     "cygil": "A CyberGym-style RL environment; most dimensions are Unknown from the available documentation.",
     "cyberwheel": "A defender-training simulation with decoys and deception and a modelled benign/telemetry layer; broad partial coverage.",
     "pengym": "A Gym environment backed by real vulnerable services behind a NASim-compatible interface; strong service, OS, action, and observation fidelity.",
-    "caldera": "MITRE CALDERA — an adversary-emulation platform executing real ATT&CK techniques on real hosts; strong real-software fidelity with partial context.",
-    "goad": "Game of Active Directory — an emulated multi-domain AD lab on real Windows Server VMs; strong service, OS, identity, action, and observation fidelity, but absent temporal, defensive, benign, telemetry, and external context.",
+    "caldera": "MITRE CALDERA, an adversary-emulation platform executing real ATT&CK techniques on real hosts; strong real-software fidelity with partial context.",
+    "goad": "Game of Active Directory, an emulated multi-domain AD lab on real Windows Server VMs; strong service, OS, identity, action, and observation fidelity, but absent temporal, defensive, benign, telemetry, and external context.",
     "scorpion": "A cyber-exercise / range platform; most dimensions are Unknown from the available sources.",
     "htb": "Hack The Box-style vulnerable-machine challenges on real hosts; strong real-software fidelity with little organizational or defender context.",
-    "cage-4": "The CybORG CAGE-4 scenario — a larger multi-subnet enterprise with decentralised blue agents, richer green (benign) agents, mission phases, and variable action durations; among the most context-complete abstract simulators.",
+    "cage-4": "The CybORG CAGE-4 scenario: a larger multi-subnet enterprise with decentralised blue agents, richer green (benign) agents, mission phases, and variable action durations; among the most context-complete abstract simulators.",
 }
 
-# Proposed family classification — REVIEW THIS. Drives the "two families" framing.
+# Proposed family classification (REVIEW THIS). Drives the "two families" framing.
 FAMILY = {
     "goad": "Real-software emulator", "pengym": "Real-software emulator",
     "htb": "Real-software emulator", "caldera": "Real-software emulator",
@@ -40,7 +40,7 @@ FAMILY = {
 
 # Per-environment caveats rendered as a note on the environment page.
 NOTES = {
-    "caldera": "CALDERA's Observation dimension is scored Absent not because it lacks observation, but because it provides a single, complete report of all facts and outcomes — oracle-like visibility — rather than the partial, noisy, privilege-dependent perception this framework calls observation realism. That is why a tool with the catalogue's highest action realism still meets no objective's observation requirement.",
+    "caldera": "CALDERA's Observation dimension is scored Absent not because it lacks observation, but because it provides a single, complete report of all facts and outcomes (oracle-like visibility) rather than the partial, noisy, privilege-dependent perception this framework calls observation realism. That is why a tool with the catalogue's highest action realism still meets no objective's observation requirement.",
     "nasimemu": "NASimEmu is both a simulator and an emulator over the same scenarios. The scores here reflect its emulation mode, in which actions run against real services; this is what lifts its OS, action, and observation fidelity above the pure NASim simulator. Run in its simulation mode, it would score like the abstract-simulator family.",
 }
 
