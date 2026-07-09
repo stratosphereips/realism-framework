@@ -159,7 +159,7 @@
     "UC-A2": {
       "name": "Ransomware deployment",
       "description": "Deploy ransomware across hosts: propagation, encryption, and impact.",
-      "detail": "An attacker must escalate to domain-level control and deploy ransomware across business-critical systems within a short window, before incident response can react. This is the ransomware pattern (Wizard Spider, Scattered Spider): data is typically exfiltrated first for double extortion, then encryption is pushed as widely as possible across critical hosts over a hours-to-days campaign. The evaluation turns on encryption coverage and speed against the defender's containment, so it exercises privilege escalation, lateral movement, and destructive impact under time pressure.",
+      "detail": "An attacker must escalate to domain-level control and deploy ransomware across business-critical systems within a short window, before incident response can react. This is the ransomware pattern (Wizard Spider, Scattered Spider): data is typically exfiltrated first for double extortion, then encryption is pushed as widely as possible across critical hosts over a hours-to-days campaign. The evaluation measures how widely and how quickly critical hosts are encrypted before the defender can contain the incident, so it exercises privilege escalation, lateral movement, and destructive impact under time pressure.",
       "profile": {
         "D1": "C",
         "D2": "U",
@@ -195,7 +195,7 @@
     "UC-A5": {
       "name": "Credential-based privilege escalation",
       "description": "Escalate from a low-privilege account to higher privileges using credential and OS mechanics.",
-      "detail": "Starting from an initial foothold, the attacker escalates to domain admin by stealing credentials and moving laterally through Active Directory trust relationships. This is the financial/ransomware-operator pattern: the realistic goal is to reach the target privilege level by the shortest and quietest path through the identity fabric: Kerberos and NTLM exchanges, session tokens, group memberships, and misconfigured ACLs. It is demanding on service, operating-system, identity, action, and observation fidelity, which is why real-software environments support it well while abstract simulators do not.",
+      "detail": "Starting from an initial foothold, the attacker escalates to domain admin by stealing credentials and moving laterally through Active Directory trust relationships. This is the financial/ransomware-operator pattern: the realistic goal is to reach the target privilege level by the shortest and quietest path through the identity layer: Kerberos and NTLM exchanges, session tokens, group memberships, and misconfigured ACLs. It is demanding on service, operating-system, identity, action, and observation fidelity, which is why real-software environments support it well while abstract simulators do not.",
       "profile": {
         "D1": "U",
         "D2": "C",
@@ -213,7 +213,7 @@
     "UC-A6": {
       "name": "Evasive red-team operation",
       "description": "Conduct a stealthy, operationally-secure campaign that blends into realistic activity.",
-      "detail": "An attacker must accomplish an objective while actively evading a blue team, in the pre-positioning lineage (Volt Typhoon, KV Botnet). The defining constraint is operational security: the operator relies on living-off-the-land techniques, avoids deploying detectable malware, and blends with legitimate administrative activity. Because blending in is only meaningful when there is realistic activity to blend with and realistic detection to evade, this is the most demanding objective; it exercises nearly every realism dimension at once.",
+      "detail": "An attacker must accomplish an objective while actively evading a blue team. The archetype is pre-positioning (Volt Typhoon, KV Botnet), where an actor quietly establishes and holds long-term access ahead of a future operation rather than striking immediately. The defining constraint is operational security: the operator relies on living-off-the-land techniques, avoids deploying detectable malware, and blends with legitimate administrative activity. Because blending in is only meaningful when there is realistic activity to blend with and realistic detection to evade, this is the most demanding objective; it exercises nearly every realism dimension at once.",
       "profile": {
         "D1": "C",
         "D2": "C",
@@ -231,7 +231,7 @@
     "UC-D1": {
       "name": "Alert triage",
       "description": "Triage security alerts, separating malicious activity from benign noise.",
-      "detail": "A defender processes a stream of alerts and must separate true positives from false positives under realistic base rates. This is the counterpart to every attacker archetype, and it depends squarely on benign activity: the analyst's task only exists when malicious events are embedded in a noisy baseline of normal logins, administration, and traffic. Performance is measured by true-positive rate within a service-level window, mean time to detect, and the management of analyst fatigue and false-positive cost, none of which is testable against a clean, attack-only signal.",
+      "detail": "A defender processes a stream of alerts and must separate true positives from false positives under realistic base rates. This is the counterpart to every attacker archetype, and it depends squarely on benign activity: there is nothing to triage unless malicious events sit within a noisy baseline of normal logins, administration, and traffic. Performance is measured by true-positive rate within a service-level window, mean time to detect, and the management of analyst fatigue and false-positive cost, none of which is testable against a clean, attack-only signal.",
       "profile": {
         "D1": "U",
         "D2": "-",
