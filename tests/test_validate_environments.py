@@ -10,9 +10,9 @@ def test_real_environments_valid():
     assert validate_environments(ENV) == []
 
 
-def test_has_11_evaluated_environments():
-    # 16 in the main-repo docs minus 5 unlinked (paper-only) that are not evaluated here.
-    assert len(load_json(ENV)["environments"]) == 11
+def test_has_13_evaluated_environments():
+    # 18 in the main-repo docs minus 5 unlinked (paper-only) that are not evaluated here.
+    assert len(load_json(ENV)["environments"]) == 13
 
 
 def test_goad_present_with_scores():

@@ -7,6 +7,8 @@ import json
 import sys
 
 SUMMARIES = {
+    "yawning-titan": "DSTL's abstract graph-based autonomous-cyber-defence simulator: a scripted red agent spreads across a network graph while a learning blue agent isolates, restores, hardens, and places deceptive nodes under probabilistic detection. It abstracts services, OS, identity, benign activity, and telemetry.",
+    "primaite": "The higher-fidelity DSTL/ARCD successor to Yawning-Titan: it models topology with routing and ACLs, protocol-aware services, a simulated filesystem and user accounts, green pattern-of-life, and packet-capture telemetry. The broadest-coverage environment here, yet full on no dimension because every subsystem is simulated rather than real software.",
     "cyberbattlesim": "Microsoft's abstract network-graph simulator for autonomous red-agent RL; models topology and the action/observation interface but abstracts services, OS, identity, and the defensive/telemetry context.",
     "nasim": "A lightweight abstract network attack simulator for RL pentesting; scenario-driven topology and actions with abstracted services and little defender context.",
     "cage-2": "The CAGE-2 autonomous-defence scenario (built on CybORG); an abstract host/service model with a single discovery-only 'green' agent providing minimal benign activity.",
@@ -27,6 +29,7 @@ SUMMARIES = {
 
 # Proposed family classification (REVIEW THIS). Drives the "two families" framing.
 FAMILY = {
+    "yawning-titan": "Abstract simulator", "primaite": "Abstract simulator",
     "goad": "Real-software emulator", "pengym": "Real-software emulator",
     "htb": "Real-software emulator", "caldera": "Real-software emulator",
     "nasimemu": "Real-software emulator",
@@ -40,11 +43,15 @@ FAMILY = {
 
 # Per-environment caveats rendered as a note on the environment page.
 NOTES = {
+    "yawning-titan": "Yawning-Titan was archived read-only in March 2025 and superseded by the higher-fidelity PrimAITE under DSTL's Autonomous Resilient Cyber Defence programme. The scores reflect the released version.",
+    "primaite": "PrimAITE reaches partial on ten of the eleven dimensions but full on none: it models each subsystem in interface rather than as real software, illustrating breadth of coverage without the depth a real-software layer provides.",
     "caldera": "CALDERA's Observation dimension is scored Absent not because it lacks observation, but because it provides a single, complete report of all facts and outcomes (oracle-like visibility) rather than the partial, noisy, privilege-dependent perception this framework calls observation realism. That is why a tool with the catalogue's highest action realism still meets no objective's observation requirement.",
     "nasimemu": "NASimEmu is both a simulator and an emulator over the same scenarios. The scores here reflect its emulation mode, in which actions run against real services; this is what lifts its OS, action, and observation fidelity above the pure NASim simulator. Run in its simulation mode, it would score like the abstract-simulator family.",
 }
 
 SOURCES = {
+    "yawning-titan": [{"label": "GitHub (archived)", "url": "https://github.com/dstl/YAWNING-TITAN"}],
+    "primaite": [{"label": "GitHub", "url": "https://github.com/Autonomous-Resilient-Cyber-Defence/PrimAITE"}],
     "cyberbattlesim": [{"label": "GitHub", "url": "https://github.com/microsoft/CyberBattleSim"}],
     "nasim": [{"label": "GitHub", "url": "https://github.com/Jjschwartz/NetworkAttackSimulator"}],
     "cage-2": [{"label": "CAGE Challenge 2", "url": "https://github.com/cage-challenge/cage-challenge-2"}],

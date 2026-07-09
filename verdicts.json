@@ -1131,6 +1131,191 @@
         "hardGaps": [],
         "unresolved": []
       }
+    },
+    "yawning-titan": {
+      "UC-A1": {
+        "verdict": "not_suitable",
+        "fit": 0.16666666666666666,
+        "completeness": 1,
+        "hardGaps": [
+          "D2",
+          "D5",
+          "D7",
+          "D8",
+          "D11"
+        ],
+        "unresolved": []
+      },
+      "UC-A2": {
+        "verdict": "not_suitable",
+        "fit": 0.2916666666666667,
+        "completeness": 1,
+        "hardGaps": [
+          "D3"
+        ],
+        "unresolved": []
+      },
+      "UC-A3": {
+        "verdict": "not_suitable",
+        "fit": 0.3,
+        "completeness": 1,
+        "hardGaps": [
+          "D5"
+        ],
+        "unresolved": []
+      },
+      "UC-A5": {
+        "verdict": "not_suitable",
+        "fit": 0.20833333333333334,
+        "completeness": 1,
+        "hardGaps": [
+          "D2",
+          "D3",
+          "D4"
+        ],
+        "unresolved": []
+      },
+      "UC-A6": {
+        "verdict": "not_suitable",
+        "fit": 0.2,
+        "completeness": 1,
+        "hardGaps": [
+          "D2",
+          "D3",
+          "D4",
+          "D5",
+          "D7"
+        ],
+        "unresolved": []
+      },
+      "UC-D1": {
+        "verdict": "not_suitable",
+        "fit": 0.20833333333333334,
+        "completeness": 1,
+        "hardGaps": [
+          "D5",
+          "D7",
+          "D8"
+        ],
+        "unresolved": []
+      },
+      "UC-D2": {
+        "verdict": "not_suitable",
+        "fit": 0.1875,
+        "completeness": 1,
+        "hardGaps": [
+          "D4",
+          "D5",
+          "D7",
+          "D8"
+        ],
+        "unresolved": []
+      },
+      "UC-D3": {
+        "verdict": "not_suitable",
+        "fit": 0.15625,
+        "completeness": 1,
+        "hardGaps": [
+          "D4",
+          "D5",
+          "D7",
+          "D8"
+        ],
+        "unresolved": []
+      },
+      "UC-S1": {
+        "verdict": "not_suitable",
+        "fit": 0.20588235294117646,
+        "completeness": 1,
+        "hardGaps": [
+          "D4",
+          "D5",
+          "D7",
+          "D8"
+        ],
+        "unresolved": []
+      },
+      "UC-S2": {
+        "verdict": "partial",
+        "fit": 0.3,
+        "completeness": 1,
+        "hardGaps": [],
+        "unresolved": []
+      }
+    },
+    "primaite": {
+      "UC-A1": {
+        "verdict": "not_suitable",
+        "fit": 0.4444444444444444,
+        "completeness": 1,
+        "hardGaps": [
+          "D11"
+        ],
+        "unresolved": []
+      },
+      "UC-A2": {
+        "verdict": "partial",
+        "fit": 0.5,
+        "completeness": 1,
+        "hardGaps": [],
+        "unresolved": []
+      },
+      "UC-A3": {
+        "verdict": "partial",
+        "fit": 0.5,
+        "completeness": 1,
+        "hardGaps": [],
+        "unresolved": []
+      },
+      "UC-A5": {
+        "verdict": "partial",
+        "fit": 0.5,
+        "completeness": 1,
+        "hardGaps": [],
+        "unresolved": []
+      },
+      "UC-A6": {
+        "verdict": "partial",
+        "fit": 0.475,
+        "completeness": 1,
+        "hardGaps": [],
+        "unresolved": []
+      },
+      "UC-D1": {
+        "verdict": "partial",
+        "fit": 0.5,
+        "completeness": 1,
+        "hardGaps": [],
+        "unresolved": []
+      },
+      "UC-D2": {
+        "verdict": "partial",
+        "fit": 0.5,
+        "completeness": 1,
+        "hardGaps": [],
+        "unresolved": []
+      },
+      "UC-D3": {
+        "verdict": "partial",
+        "fit": 0.46875,
+        "completeness": 1,
+        "hardGaps": [],
+        "unresolved": []
+      },
+      "UC-S1": {
+        "verdict": "partial",
+        "fit": 0.5,
+        "completeness": 1,
+        "hardGaps": [],
+        "unresolved": []
+      },
+      "UC-S2": {
+        "verdict": "partial",
+        "fit": 0.5,
+        "completeness": 1,
+        "hardGaps": [],
+        "unresolved": []
+      }
     }
   }
 }
