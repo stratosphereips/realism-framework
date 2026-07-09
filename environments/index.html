@@ -37,6 +37,20 @@ under-served. In this catalog, <strong>no environment yet supports</strong>
 Targeted data exfiltration: the objectives that most need those context dimensions.</p>
 </section>
 
+<section class="categories">
+<h2>Environment categories</h2>
+<p>Beyond the two families, each environment carries an implementation tier, shown on its page:</p>
+<dl>
+  <dt>A (abstract simulator)</dt>
+  <dd>Models the network symbolically, with no real hosts (no VMs or containers) and no real-time clock, so every subsystem is simulated.</dd>
+  <dt>B (sim-to-real hybrid)</dt>
+  <dd>Primarily simulated, but with a documented mode that runs on real hosts, such as an emulation mode or a demonstrated sim-to-real transfer.</dd>
+  <dt>C (real-software emulator or range)</dt>
+  <dd>Runs on real hosts, services, and operating systems by construction.</dd>
+</dl>
+<p>In this catalog the abstract simulators are all category A, and the real-software family splits into the hybrids (B) and the full emulators and ranges (C).</p>
+</section>
+
 <div class="scroll-x">
 <table class="matrix">
 <caption>Realism coverage of 13 environments across 11 dimensions.</caption>
