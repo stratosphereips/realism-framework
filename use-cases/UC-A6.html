@@ -19,7 +19,7 @@
 <main>
 
 <h1>UC-A6 · Evasive red-team operation</h1>
-<p>An attacker must accomplish an objective while actively evading a blue team. The archetype is pre-positioning (Volt Typhoon, KV Botnet), where an actor quietly establishes and holds long-term access ahead of a future operation rather than striking immediately. The defining constraint is operational security: the operator relies on living-off-the-land techniques, avoids deploying detectable malware, and blends with legitimate administrative activity. Because blending in is only meaningful when there is realistic activity to blend with and realistic detection to evade, this is the most demanding objective; it exercises nearly every realism dimension at once.</p>
+<p>An attacker must accomplish an objective while actively evading a blue team. The archetype is pre-positioning (Volt Typhoon, KV Botnet), where an actor quietly establishes and holds long-term access ahead of a future operation rather than striking immediately. The defining constraint is operational security: the attacker relies on living-off-the-land techniques, avoids deploying detectable malware, and blends with legitimate administrative activity. Because blending in is only meaningful when there is realistic activity to blend with and realistic detection to evade, this is the most demanding objective; it exercises nearly every realism dimension at once.</p>
 <img class="radar" src="../figures/uc_uc-a6.png" alt="Evasive red-team operation requirement radar">
 
 <h2>Dimension requirement profile</h2>
@@ -41,7 +41,7 @@
 
 <tr><th scope="row">Benign activity realism</th><td>Critical</td></tr>
 
-<tr><th scope="row">Telemetry fidelity</th><td>Useful</td></tr>
+<tr><th scope="row">Telemetry fidelity</th><td>Critical</td></tr>
 
 <tr><th scope="row">Action realism</th><td>Critical</td></tr>
 
@@ -52,6 +52,72 @@
 </tbody>
 </table>
 
+
+<h2>Sub-dimension requirements (all 115 sub-dimensions)</h2>
+<p>This use case is specified at the sub-dimension level. Counts per dimension
+(critical / useful / not needed); explore the full checklist in the
+<a href="../scorecard.html#uc=UC-A6">scorecard</a>.</p>
+<table class="profile">
+<thead><tr><th scope="col">Dimension</th><th scope="col">Critical</th><th scope="col">Useful</th><th scope="col">Not needed</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">Topological realism</th>
+  <td>3</td>
+  <td>6</td>
+  <td>1</td></tr>
+
+<tr><th scope="row">Service fidelity</th>
+  <td>1</td>
+  <td>6</td>
+  <td>7</td></tr>
+
+<tr><th scope="row">OS fidelity</th>
+  <td>4</td>
+  <td>2</td>
+  <td>2</td></tr>
+
+<tr><th scope="row">Identity realism</th>
+  <td>2</td>
+  <td>6</td>
+  <td>5</td></tr>
+
+<tr><th scope="row">Temporal dynamics</th>
+  <td>4</td>
+  <td>5</td>
+  <td>1</td></tr>
+
+<tr><th scope="row">Defensive realism</th>
+  <td>2</td>
+  <td>6</td>
+  <td>2</td></tr>
+
+<tr><th scope="row">Benign activity realism</th>
+  <td>3</td>
+  <td>4</td>
+  <td>3</td></tr>
+
+<tr><th scope="row">Telemetry fidelity</th>
+  <td>3</td>
+  <td>6</td>
+  <td>2</td></tr>
+
+<tr><th scope="row">Action realism</th>
+  <td>2</td>
+  <td>6</td>
+  <td>2</td></tr>
+
+<tr><th scope="row">Observation realism</th>
+  <td>3</td>
+  <td>4</td>
+  <td>3</td></tr>
+
+<tr><th scope="row">External information ecosystem</th>
+  <td>0</td>
+  <td>4</td>
+  <td>5</td></tr>
+
+</tbody>
+</table>
 
 
 </main>

@@ -17,17 +17,20 @@
       },
       "UC-A2": {
         "verdict": "not_suitable",
-        "fit": 0.25,
+        "fit": 0.16666666666666666,
         "completeness": 1,
         "hardGaps": [
+          "D2",
           "D3",
+          "D5",
+          "D8",
           "D9"
         ],
         "unresolved": []
       },
       "UC-A3": {
         "verdict": "not_suitable",
-        "fit": 0.25,
+        "fit": 0.2727272727272727,
         "completeness": 1,
         "hardGaps": [
           "D5"
@@ -47,13 +50,14 @@
       },
       "UC-A6": {
         "verdict": "not_suitable",
-        "fit": 0.2,
+        "fit": 0.19047619047619047,
         "completeness": 1,
         "hardGaps": [
           "D2",
           "D3",
           "D5",
           "D7",
+          "D8",
           "D9"
         ],
         "unresolved": []
@@ -71,12 +75,13 @@
       },
       "UC-D2": {
         "verdict": "not_suitable",
-        "fit": 0.25,
+        "fit": 0.2222222222222222,
         "completeness": 1,
         "hardGaps": [
           "D5",
           "D7",
-          "D8"
+          "D8",
+          "D9"
         ],
         "unresolved": []
       },
@@ -126,17 +131,20 @@
       },
       "UC-A2": {
         "verdict": "not_suitable",
-        "fit": 0.20833333333333334,
+        "fit": 0.1388888888888889,
         "completeness": 1,
         "hardGaps": [
+          "D2",
           "D3",
+          "D5",
+          "D8",
           "D9"
         ],
         "unresolved": []
       },
       "UC-A3": {
         "verdict": "not_suitable",
-        "fit": 0.25,
+        "fit": 0.22727272727272727,
         "completeness": 1,
         "hardGaps": [
           "D5"
@@ -157,7 +165,7 @@
       },
       "UC-A6": {
         "verdict": "not_suitable",
-        "fit": 0.15,
+        "fit": 0.14285714285714285,
         "completeness": 1,
         "hardGaps": [
           "D2",
@@ -165,6 +173,7 @@
           "D4",
           "D5",
           "D7",
+          "D8",
           "D9"
         ],
         "unresolved": []
@@ -182,13 +191,14 @@
       },
       "UC-D2": {
         "verdict": "not_suitable",
-        "fit": 0.1875,
+        "fit": 0.16666666666666666,
         "completeness": 1,
         "hardGaps": [
           "D4",
           "D5",
           "D7",
-          "D8"
+          "D8",
+          "D9"
         ],
         "unresolved": []
       },
@@ -240,13 +250,14 @@
         "fit": 0.3333333333333333,
         "completeness": 1,
         "hardGaps": [
-          "D3"
+          "D3",
+          "D5"
         ],
         "unresolved": []
       },
       "UC-A3": {
         "verdict": "not_suitable",
-        "fit": 0.35,
+        "fit": 0.3181818181818182,
         "completeness": 1,
         "hardGaps": [
           "D5"
@@ -265,7 +276,7 @@
       },
       "UC-A6": {
         "verdict": "not_suitable",
-        "fit": 0.325,
+        "fit": 0.3333333333333333,
         "completeness": 1,
         "hardGaps": [
           "D3",
@@ -285,7 +296,7 @@
       },
       "UC-D2": {
         "verdict": "not_suitable",
-        "fit": 0.34375,
+        "fit": 0.3611111111111111,
         "completeness": 1,
         "hardGaps": [
           "D4",
@@ -337,17 +348,20 @@
       },
       "UC-A2": {
         "verdict": "not_suitable",
-        "fit": 0.20833333333333334,
+        "fit": 0.1388888888888889,
         "completeness": 1,
         "hardGaps": [
+          "D2",
           "D3",
+          "D5",
+          "D8",
           "D9"
         ],
         "unresolved": []
       },
       "UC-A3": {
         "verdict": "not_suitable",
-        "fit": 0.25,
+        "fit": 0.22727272727272727,
         "completeness": 1,
         "hardGaps": [
           "D5"
@@ -368,7 +382,7 @@
       },
       "UC-A6": {
         "verdict": "not_suitable",
-        "fit": 0.15,
+        "fit": 0.14285714285714285,
         "completeness": 1,
         "hardGaps": [
           "D2",
@@ -376,6 +390,7 @@
           "D4",
           "D5",
           "D7",
+          "D8",
           "D9"
         ],
         "unresolved": []
@@ -393,13 +408,14 @@
       },
       "UC-D2": {
         "verdict": "not_suitable",
-        "fit": 0.1875,
+        "fit": 0.16666666666666666,
         "completeness": 1,
         "hardGaps": [
           "D4",
           "D5",
           "D7",
-          "D8"
+          "D8",
+          "D9"
         ],
         "unresolved": []
       },
@@ -449,15 +465,18 @@
         "unresolved": []
       },
       "UC-A2": {
-        "verdict": "partial",
-        "fit": 0.4166666666666667,
+        "verdict": "not_suitable",
+        "fit": 0.3055555555555556,
         "completeness": 1,
-        "hardGaps": [],
+        "hardGaps": [
+          "D5",
+          "D8"
+        ],
         "unresolved": []
       },
       "UC-A3": {
         "verdict": "not_suitable",
-        "fit": 0.4,
+        "fit": 0.36363636363636365,
         "completeness": 1,
         "hardGaps": [
           "D5"
@@ -475,12 +494,13 @@
       },
       "UC-A6": {
         "verdict": "not_suitable",
-        "fit": 0.3,
+        "fit": 0.2857142857142857,
         "completeness": 1,
         "hardGaps": [
           "D4",
           "D5",
-          "D7"
+          "D7",
+          "D8"
         ],
         "unresolved": []
       },
@@ -497,7 +517,7 @@
       },
       "UC-D2": {
         "verdict": "not_suitable",
-        "fit": 0.25,
+        "fit": 0.2777777777777778,
         "completeness": 1,
         "hardGaps": [
           "D4",
@@ -552,16 +572,17 @@
       },
       "UC-A2": {
         "verdict": "not_suitable",
-        "fit": 0.375,
+        "fit": 0.3611111111111111,
         "completeness": 1,
         "hardGaps": [
-          "D3"
+          "D3",
+          "D5"
         ],
         "unresolved": []
       },
       "UC-A3": {
         "verdict": "not_suitable",
-        "fit": 0.35,
+        "fit": 0.36363636363636365,
         "completeness": 1,
         "hardGaps": [
           "D5"
@@ -579,7 +600,7 @@
       },
       "UC-A6": {
         "verdict": "not_suitable",
-        "fit": 0.375,
+        "fit": 0.38095238095238093,
         "completeness": 1,
         "hardGaps": [
           "D3",
@@ -598,7 +619,7 @@
       },
       "UC-D2": {
         "verdict": "not_suitable",
-        "fit": 0.40625,
+        "fit": 0.4166666666666667,
         "completeness": 1,
         "hardGaps": [
           "D5"
@@ -644,15 +665,17 @@
         "unresolved": []
       },
       "UC-A2": {
-        "verdict": "suitable",
-        "fit": 0.75,
+        "verdict": "not_suitable",
+        "fit": 0.5833333333333334,
         "completeness": 1,
-        "hardGaps": [],
+        "hardGaps": [
+          "D6"
+        ],
         "unresolved": []
       },
       "UC-A3": {
         "verdict": "partial",
-        "fit": 0.7,
+        "fit": 0.6818181818181818,
         "completeness": 1,
         "hardGaps": [],
         "unresolved": []
@@ -666,7 +689,7 @@
       },
       "UC-A6": {
         "verdict": "not_suitable",
-        "fit": 0.575,
+        "fit": 0.5714285714285714,
         "completeness": 1,
         "hardGaps": [
           "D6",
@@ -686,7 +709,7 @@
       },
       "UC-D2": {
         "verdict": "not_suitable",
-        "fit": 0.5,
+        "fit": 0.5555555555555556,
         "completeness": 1,
         "hardGaps": [
           "D6",
@@ -736,16 +759,16 @@
       },
       "UC-A2": {
         "verdict": "not_suitable",
-        "fit": 0.5833333333333334,
+        "fit": 0.5,
         "completeness": 1,
         "hardGaps": [
-          "D10"
+          "D5"
         ],
         "unresolved": []
       },
       "UC-A3": {
         "verdict": "not_suitable",
-        "fit": 0.4,
+        "fit": 0.45454545454545453,
         "completeness": 1,
         "hardGaps": [
           "D5",
@@ -764,7 +787,7 @@
       },
       "UC-A6": {
         "verdict": "not_suitable",
-        "fit": 0.475,
+        "fit": 0.47619047619047616,
         "completeness": 1,
         "hardGaps": [
           "D5",
@@ -786,7 +809,7 @@
       },
       "UC-D2": {
         "verdict": "not_suitable",
-        "fit": 0.40625,
+        "fit": 0.4722222222222222,
         "completeness": 1,
         "hardGaps": [
           "D5",
@@ -842,15 +865,19 @@
         "unresolved": []
       },
       "UC-A2": {
-        "verdict": "suitable",
-        "fit": 0.75,
+        "verdict": "not_suitable",
+        "fit": 0.5,
         "completeness": 1,
-        "hardGaps": [],
+        "hardGaps": [
+          "D5",
+          "D6",
+          "D8"
+        ],
         "unresolved": []
       },
       "UC-A3": {
         "verdict": "not_suitable",
-        "fit": 0.6,
+        "fit": 0.6363636363636364,
         "completeness": 1,
         "hardGaps": [
           "D5"
@@ -866,12 +893,13 @@
       },
       "UC-A6": {
         "verdict": "not_suitable",
-        "fit": 0.55,
+        "fit": 0.5238095238095238,
         "completeness": 1,
         "hardGaps": [
           "D5",
           "D6",
-          "D7"
+          "D7",
+          "D8"
         ],
         "unresolved": []
       },
@@ -889,7 +917,7 @@
       },
       "UC-D2": {
         "verdict": "not_suitable",
-        "fit": 0.4375,
+        "fit": 0.5,
         "completeness": 1,
         "hardGaps": [
           "D5",
@@ -948,10 +976,13 @@
       },
       "UC-A2": {
         "verdict": "not_suitable",
-        "fit": 0.625,
+        "fit": 0.4166666666666667,
         "completeness": 1,
         "hardGaps": [
-          "D1"
+          "D1",
+          "D5",
+          "D6",
+          "D8"
         ],
         "unresolved": []
       },
@@ -974,13 +1005,14 @@
       },
       "UC-A6": {
         "verdict": "not_suitable",
-        "fit": 0.45,
+        "fit": 0.42857142857142855,
         "completeness": 1,
         "hardGaps": [
           "D1",
           "D5",
           "D6",
-          "D7"
+          "D7",
+          "D8"
         ],
         "unresolved": []
       },
@@ -998,7 +1030,7 @@
       },
       "UC-D2": {
         "verdict": "not_suitable",
-        "fit": 0.3125,
+        "fit": 0.3888888888888889,
         "completeness": 1,
         "hardGaps": [
           "D1",
@@ -1056,7 +1088,7 @@
       },
       "UC-A2": {
         "verdict": "not_suitable",
-        "fit": 0.375,
+        "fit": 0.3888888888888889,
         "completeness": 1,
         "hardGaps": [
           "D3"
@@ -1065,7 +1097,7 @@
       },
       "UC-A3": {
         "verdict": "partial",
-        "fit": 0.45,
+        "fit": 0.4090909090909091,
         "completeness": 1,
         "hardGaps": [],
         "unresolved": []
@@ -1082,7 +1114,7 @@
       },
       "UC-A6": {
         "verdict": "not_suitable",
-        "fit": 0.375,
+        "fit": 0.38095238095238093,
         "completeness": 1,
         "hardGaps": [
           "D3",
@@ -1099,7 +1131,7 @@
       },
       "UC-D2": {
         "verdict": "not_suitable",
-        "fit": 0.40625,
+        "fit": 0.4166666666666667,
         "completeness": 1,
         "hardGaps": [
           "D4"
@@ -1148,16 +1180,19 @@
       },
       "UC-A2": {
         "verdict": "not_suitable",
-        "fit": 0.2916666666666667,
+        "fit": 0.19444444444444445,
         "completeness": 1,
         "hardGaps": [
-          "D3"
+          "D2",
+          "D3",
+          "D5",
+          "D8"
         ],
         "unresolved": []
       },
       "UC-A3": {
         "verdict": "not_suitable",
-        "fit": 0.3,
+        "fit": 0.2727272727272727,
         "completeness": 1,
         "hardGaps": [
           "D5"
@@ -1177,14 +1212,15 @@
       },
       "UC-A6": {
         "verdict": "not_suitable",
-        "fit": 0.2,
+        "fit": 0.19047619047619047,
         "completeness": 1,
         "hardGaps": [
           "D2",
           "D3",
           "D4",
           "D5",
-          "D7"
+          "D7",
+          "D8"
         ],
         "unresolved": []
       },
@@ -1201,7 +1237,7 @@
       },
       "UC-D2": {
         "verdict": "not_suitable",
-        "fit": 0.1875,
+        "fit": 0.2222222222222222,
         "completeness": 1,
         "hardGaps": [
           "D4",
@@ -1255,7 +1291,7 @@
       },
       "UC-A2": {
         "verdict": "partial",
-        "fit": 0.5,
+        "fit": 0.4722222222222222,
         "completeness": 1,
         "hardGaps": [],
         "unresolved": []
@@ -1276,7 +1312,7 @@
       },
       "UC-A6": {
         "verdict": "partial",
-        "fit": 0.475,
+        "fit": 0.47619047619047616,
         "completeness": 1,
         "hardGaps": [],
         "unresolved": []
