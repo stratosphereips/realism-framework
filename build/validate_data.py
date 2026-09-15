@@ -86,6 +86,34 @@ def validate_environments(path):
     return errs
 
 
+def validate_environment_elements(path, elements_path, environments_path):
+    """Element-level environment coverage.
+
+    Partial coverage is expected: only environments assessed at this level appear.
+    Each must name an environment that exists and cover the element catalog exactly.
+    """
+    errs = []
+    data = load_json(path)
+    valid = element_ids(load_json(elements_path))
+    known = set(load_json(environments_path).get("environments", {}))
+    for env_id, rec in data.get("environments", {}).items():
+        if env_id not in known:
+            errs.append(f"{env_id}: not an environment in environments.json")
+        sc = rec.get("scores", {})
+        if set(sc) != valid:
+            errs.append(f"{env_id}: scores must cover the element catalog exactly "
+                        f"({len(valid)} keys), got {len(sc)}")
+        for k, v in sc.items():
+            if v not in CODES:
+                errs.append(f"{env_id}: bad code {v!r} at {k}")
+        extra_notes = sorted(set(rec.get("notes", {})) - set(sc))
+        if extra_notes:
+            errs.append(f"{env_id}: notes for unknown elements {extra_notes[:3]}")
+        if not rec.get("source"):
+            errs.append(f"{env_id}: missing source")
+    return errs
+
+
 def validate_dimensions_meta(path):
     errs = []
     data = load_json(path)

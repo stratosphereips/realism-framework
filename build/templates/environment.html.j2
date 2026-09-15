@@ -37,6 +37,32 @@ environment abstracts.</p>
 </tbody>
 </table>
 
+{%- if element_coverage %}
+<h2>Sub-dimension coverage (all 115 sub-dimensions)</h2>
+<p>This environment has been assessed at the sub-dimension level, with a recorded
+reason for every grade. The fit table above is computed at the dimension level,
+because most environments have not yet been assessed this finely and the two
+levels are not directly comparable.</p>
+{% if element_source %}<p class="note">Evidence: {{ element_source }}</p>{% endif %}
+{% for d in element_coverage %}
+<details>
+<summary><strong>{{ d.name }}</strong>:
+  {{ d.counts['F'] }} full, {{ d.counts['P'] }} partial,
+  {{ d.counts['A'] }} absent{% if d.counts['U'] %}, {{ d.counts['U'] }} unknown{% endif %}</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+{% for r in d.rows %}
+<tr><th scope="row">{{ r.key }} {{ r.label }}</th>
+  <td>{{ r.word }}</td>
+  <td>{{ r.note }}</td></tr>
+{% endfor %}
+</tbody>
+</table>
+</details>
+{% endfor %}
+{%- endif %}
+
 {% if env.justification %}
 <h2>Justification</h2>
 {% for d, text in env.justification.items() %}

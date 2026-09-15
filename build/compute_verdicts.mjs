@@ -10,7 +10,12 @@ const uc = JSON.parse(readFileSync(join(ROOT, "data/use_cases.json"))).use_cases
 const env = JSON.parse(readFileSync(join(ROOT, "data/environments.json"))).environments;
 const THRESHOLD = 0.75;
 
-const out = { threshold: THRESHOLD, pairs: {} };
+// Verdicts are computed at the dimension level: 11 requirement levels against 11
+// coverage grades. The scoring functions are key-agnostic and would compute an
+// element-level verdict if given 115-key inputs, but environment coverage exists at
+// that granularity for only some environments, and the two levels are not directly
+// comparable. Recording the granularity keeps that explicit for anyone reading the file.
+const out = { threshold: THRESHOLD, granularity: "dimension", pairs: {} };
 for (const [es, e] of Object.entries(env)) {
   out.pairs[es] = {};
   for (const [us, u] of Object.entries(uc)) {

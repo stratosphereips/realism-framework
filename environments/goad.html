@@ -127,6 +127,605 @@ environment abstracts.</p>
 
 </tbody>
 </table>
+<h2>Sub-dimension coverage (all 115 sub-dimensions)</h2>
+<p>This environment has been assessed at the sub-dimension level, with a recorded
+reason for every grade. The fit table above is computed at the dimension level,
+because most environments have not yet been assessed this finely and the two
+levels are not directly comparable.</p>
+<p class="note">Evidence: notes/src/environments.md #13 (prior dimension-level analysis); element-level scores from the 2026-08-11 review, cross-checked with orange-cyberdefense.github.io/GOAD, github.com/Orange-Cyberdefense/GOAD, and community write-ups (Mayfly GOADv2 series) for ADCS/ESC coverage, the account-lockout policy, the eddard.stark/robb.stark scheduled bot scripts, and the castelblack IIS upload vulnerability; reviewed with an independent codex pass</p>
+
+<details>
+<summary><strong>Topological realism</strong>:
+  3 full, 1 partial,
+  5 absent, 1 unknown</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D1.1 Multi-segment graph with enforced path behavior</th>
+  <td>Partial</td>
+  <td>AD forest/domain trust boundaries exist, but no network-layer zones/ACLs; flat network</td></tr>
+
+<tr><th scope="row">D1.2 Perimeter and egress asymmetry</th>
+  <td>Absent</td>
+  <td>no perimeter/egress distinction; isolated lab</td></tr>
+
+<tr><th scope="row">D1.3 Network devices as manageable entities</th>
+  <td>Absent</td>
+  <td>no routers/switches/firewalls modeled; VM-only</td></tr>
+
+<tr><th scope="row">D1.4 Layer 2/3 protocol fidelity</th>
+  <td>Full</td>
+  <td>real Windows networking stack (ARP/DHCP/LLMNR/NBT-NS) enabled by default</td></tr>
+
+<tr><th scope="row">D1.5 Position-dependent traffic visibility</th>
+  <td>Unknown</td>
+  <td>no documented SPAN/mirroring; depends on the specific virtual-switch config</td></tr>
+
+<tr><th scope="row">D1.6 Lateral reachability and file transfer</th>
+  <td>Full</td>
+  <td>real SMB/WinRM/RDP lateral movement between real hosts</td></tr>
+
+<tr><th scope="row">D1.7 Discoverable (not given) topology</th>
+  <td>Full</td>
+  <td>topology is not handed to the agent; must be discovered via scans/AD enumeration</td></tr>
+
+<tr><th scope="row">D1.8 Staging and exfil-path asymmetry</th>
+  <td>Absent</td>
+  <td>no external-connectivity differentiation among hosts</td></tr>
+
+<tr><th scope="row">D1.9 Remote-access and cross-organizational boundaries</th>
+  <td>Absent</td>
+  <td>no VPN/jump-host/MSP access modeled</td></tr>
+
+<tr><th scope="row">D1.10 Believable decoy placement</th>
+  <td>Absent</td>
+  <td>no decoys</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>Service fidelity</strong>:
+  2 full, 5 partial,
+  7 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D2.1 Real, versioned, fingerprintable daemons</th>
+  <td>Full</td>
+  <td>real AD DS, DNS, IIS, MSSQL, SMB on real Windows Server</td></tr>
+
+<tr><th scope="row">D2.2 Exploitable vulnerable builds with heterogeneous patch state</th>
+  <td>Partial</td>
+  <td>heterogeneity via WS2016 vs WS2019, but vulns are AD-config-based, not seeded CVE builds</td></tr>
+
+<tr><th scope="row">D2.3 Web applications with real code paths and session stack</th>
+  <td>Partial</td>
+  <td>confirmed: castelblack IIS hosts a real vulnerable ASPX app (Default.aspx:8980) with an unrestricted-file-upload RCE (CWE-434) leading to webshell + SeImpersonatePrivilege escalation</td></tr>
+
+<tr><th scope="row">D2.4 Email infrastructure</th>
+  <td>Absent</td>
+  <td>no mail/Exchange in base lab (separate extension)</td></tr>
+
+<tr><th scope="row">D2.5 DNS infrastructure</th>
+  <td>Partial</td>
+  <td>real AD-integrated DNS on the DCs, but not built for external-facing DNS realism</td></tr>
+
+<tr><th scope="row">D2.6 File shares and enterprise repositories</th>
+  <td>Partial</td>
+  <td>real SMB shares with real ACLs; no Confluence/SharePoint/code-repo content</td></tr>
+
+<tr><th scope="row">D2.7 Authentication-service and PKI surfaces</th>
+  <td>Full</td>
+  <td>confirmed: ADCS is deployed (essos.local) as a real enrollment/auth service, alongside real Kerberos/NTLM</td></tr>
+
+<tr><th scope="row">D2.8 Network-device management services</th>
+  <td>Absent</td>
+  <td>no network devices</td></tr>
+
+<tr><th scope="row">D2.9 Enterprise deployment and supply-chain services</th>
+  <td>Absent</td>
+  <td>no SCCM/CI-CD in base lab (separate SCCM lab variant)</td></tr>
+
+<tr><th scope="row">D2.10 Legitimate RMM and dual-use web services</th>
+  <td>Absent</td>
+  <td>no RMM tools or dual-use web services documented</td></tr>
+
+<tr><th scope="row">D2.11 Revocation-aware service state</th>
+  <td>Partial</td>
+  <td>real AD/Windows would react to revocation as a byproduct, not deliberately modeled</td></tr>
+
+<tr><th scope="row">D2.12 Operational recovery surfaces</th>
+  <td>Absent</td>
+  <td>no backup/restore/rollback workflow</td></tr>
+
+<tr><th scope="row">D2.13 Dependency-aware response effects</th>
+  <td>Absent</td>
+  <td>no defender side to react to dependencies</td></tr>
+
+<tr><th scope="row">D2.14 Believable decoy service context</th>
+  <td>Absent</td>
+  <td>no decoy services</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>OS fidelity</strong>:
+  4 full, 3 partial,
+  1 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D3.1 Persistence surface</th>
+  <td>Full</td>
+  <td>real Windows persistence mechanisms (Run keys, services, Task Scheduler, WMI) all native</td></tr>
+
+<tr><th scope="row">D3.2 Execution-flow control and scripting engines</th>
+  <td>Full</td>
+  <td>real LOLBins, PowerShell, DLL hijacking, COM abuse all native</td></tr>
+
+<tr><th scope="row">D3.3 Process, memory, and privilege-boundary primitives</th>
+  <td>Full</td>
+  <td>real process injection, token manipulation, UAC on real Windows</td></tr>
+
+<tr><th scope="row">D3.4 Configuration stores, filesystem semantics, and kernel/trust layer</th>
+  <td>Partial</td>
+  <td>real registry/NTFS/ADS; Secure Boot/TPM trust-layer uncertain in a nested VM</td></tr>
+
+<tr><th scope="row">D3.5 Credential material exposure on the endpoint</th>
+  <td>Full</td>
+  <td>real LSASS/SAM/DPAPI/cached-logon exposure, explicitly exploited in the scenario</td></tr>
+
+<tr><th scope="row">D3.6 Discovery, evasion, and anti-forensics surface</th>
+  <td>Partial</td>
+  <td>real host-inventory query behavior; no deliberate evasion-check content authored</td></tr>
+
+<tr><th scope="row">D3.7 Impact primitives and document-execution behavior</th>
+  <td>Partial</td>
+  <td>OS-native impact primitives (shadow-copy deletion, service stop) would work; no Office/document-execution surface confirmed</td></tr>
+
+<tr><th scope="row">D3.8 Restorable host objects</th>
+  <td>Absent</td>
+  <td>no backup/restore/integrity workflow for host objects; no defender side</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>Identity realism</strong>:
+  7 full, 1 partial,
+  5 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D4.1 Populated directory and local identity stores</th>
+  <td>Full</td>
+  <td>3-domain, 2-forest AD with realistic users/groups/OUs/cross-forest groups</td></tr>
+
+<tr><th scope="row">D4.2 Credential landscape with realistic material in real locations</th>
+  <td>Full</td>
+  <td>documented: passwords in LDAP descriptions, SYSVOL scripts, LAPS</td></tr>
+
+<tr><th scope="row">D4.3 Kerberos and NTLM protocol fidelity</th>
+  <td>Full</td>
+  <td>Kerberoasting, ASREP-roasting, real Kerberos/NTLM native to AD</td></tr>
+
+<tr><th scope="row">D4.4 Federation, SSO, and web session material</th>
+  <td>Absent</td>
+  <td>no SAML/OAuth/OIDC/federation; pure on-prem</td></tr>
+
+<tr><th scope="row">D4.5 MFA as a design space and auth-process modification surface</th>
+  <td>Absent</td>
+  <td>no MFA modeled in base lab</td></tr>
+
+<tr><th scope="row">D4.6 Account lifecycle and tiered administration</th>
+  <td>Partial</td>
+  <td>LAPS present (unique per-machine local admin passwords); no formal Tier 0/1/2 separation documented</td></tr>
+
+<tr><th scope="row">D4.7 Session reality and valid-account usage</th>
+  <td>Full</td>
+  <td>real logon sessions, LSASS caching, runas, all native and exploited</td></tr>
+
+<tr><th scope="row">D4.8 Certificate and PKI identity</th>
+  <td>Full</td>
+  <td>confirmed: ADCS deployed with seeded ESC1/ESC2/ESC3/ESC4/ESC6/ESC8 template misconfigurations, a near-exact match to this element</td></tr>
+
+<tr><th scope="row">D4.9 Enumeration and identity-relationship surface</th>
+  <td>Full</td>
+  <td>BloodHound-style enumeration explicitly confirmed working against GOAD</td></tr>
+
+<tr><th scope="row">D4.10 Human-layer impersonation and external-to-internal bridges</th>
+  <td>Absent</td>
+  <td>no email/phishing/vendor-account infrastructure</td></tr>
+
+<tr><th scope="row">D4.11 Policy-bound authorization as identity-layer state</th>
+  <td>Full</td>
+  <td>ACL abuse (GenericWrite/GenericAll/ForceChangePassword) is central to the scenario</td></tr>
+
+<tr><th scope="row">D4.12 Propagating credential control and access recovery</th>
+  <td>Absent</td>
+  <td>no defender-side credential revocation/recovery workflow</td></tr>
+
+<tr><th scope="row">D4.13 Believable deceptive identities</th>
+  <td>Absent</td>
+  <td>no decoy accounts</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>Temporal dynamics</strong>:
+  4 full, 3 partial,
+  3 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D5.1 Real wall-clock progression</th>
+  <td>Full</td>
+  <td>real VM lab running continuously in real wall-clock time, not turn-based</td></tr>
+
+<tr><th scope="row">D5.2 Scheduled execution and reboot semantics</th>
+  <td>Full</td>
+  <td>Task Scheduler and reboot semantics are native to real Windows Server</td></tr>
+
+<tr><th scope="row">D5.3 Session, token, and credential lifetimes</th>
+  <td>Full</td>
+  <td>real Kerberos TTL/renewal and password-age counters, since real AD</td></tr>
+
+<tr><th scope="row">D5.4 Human activity rhythms</th>
+  <td>Absent</td>
+  <td>no simulated users; no business-hours baseline</td></tr>
+
+<tr><th scope="row">D5.5 Long-horizon engagement support</th>
+  <td>Partial</td>
+  <td>infrastructure can persist for weeks structurally, but no dwell/drift scenario content, and nothing to accumulate given no logging</td></tr>
+
+<tr><th scope="row">D5.6 Event-correlation windows and rate-limiting</th>
+  <td>Partial</td>
+  <td>confirmed: deliberate account-lockout policy configured (threshold 5, 5-min window/duration) for password-spray practice; no SIEM correlation-window infrastructure</td></tr>
+
+<tr><th scope="row">D5.7 Delay-based evasion and staged operations</th>
+  <td>Full</td>
+  <td>real Windows Sleep/NtDelayExecution and staged-operation timing, since real infrastructure</td></tr>
+
+<tr><th scope="row">D5.8 State decay and temporal detection signals</th>
+  <td>Partial</td>
+  <td>real TTL/cache-expiry mechanics exist; no detection layer to surface them as anomalies</td></tr>
+
+<tr><th scope="row">D5.9 Non-instant defender effects with observable before/after</th>
+  <td>Absent</td>
+  <td>no defender/response actions modeled at all</td></tr>
+
+<tr><th scope="row">D5.10 Retained containment and recovery history</th>
+  <td>Absent</td>
+  <td>no response actions, so no containment history</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>Defensive realism</strong>:
+  0 full, 2 partial,
+  8 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D6.1 Perimeter, egress, and traffic inspection</th>
+  <td>Absent</td>
+  <td>no firewall/WAF/proxy/CASB</td></tr>
+
+<tr><th scope="row">D6.2 Email security stack</th>
+  <td>Absent</td>
+  <td>no email at all</td></tr>
+
+<tr><th scope="row">D6.3 Endpoint protection, EDR, and exploit mitigations</th>
+  <td>Partial</td>
+  <td>Windows Defender enabled by default on 4 of 5 hosts, deliberately disabled on castelblack; basic AV/AMSI present but no deeper EDR/kernel telemetry/hardening</td></tr>
+
+<tr><th scope="row">D6.4 Application-execution controls</th>
+  <td>Absent</td>
+  <td>no AppLocker/WDAC/Constrained Language Mode configured</td></tr>
+
+<tr><th scope="row">D6.5 Authentication hardening</th>
+  <td>Partial</td>
+  <td>the deliberately weak but real lockout policy is itself an authentication-hardening control, even though tuned to be attacker-friendly</td></tr>
+
+<tr><th scope="row">D6.6 Patching and configuration hardening</th>
+  <td>Absent</td>
+  <td>no CIS-baseline/patch-hardening; deliberately unpatched configs</td></tr>
+
+<tr><th scope="row">D6.7 Segmentation enforcement</th>
+  <td>Absent</td>
+  <td>flat network; no active segmentation enforcement</td></tr>
+
+<tr><th scope="row">D6.8 Detection rule library and cloud-plane controls</th>
+  <td>Absent</td>
+  <td>no SIEM/Sysmon/EDR rule library in base lab (ELK/Wazuh are opt-in extensions)</td></tr>
+
+<tr><th scope="row">D6.9 Data-loss prevention controls</th>
+  <td>Absent</td>
+  <td>no DLP</td></tr>
+
+<tr><th scope="row">D6.10 Response, deception, and control-configuration action space</th>
+  <td>Absent</td>
+  <td>no defender agent; no response/deception action space</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>Benign activity realism</strong>:
+  0 full, 2 partial,
+  8 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D7.1 Simulated users with role and behavioral diversity</th>
+  <td>Absent</td>
+  <td>no simulated users, sessions, browsing, email, or admin/service baseline; static lab</td></tr>
+
+<tr><th scope="row">D7.2 User interactive input and active sessions</th>
+  <td>Absent</td>
+  <td>no simulated users, sessions, browsing, email, or admin/service baseline; static lab</td></tr>
+
+<tr><th scope="row">D7.3 Browsing, document authorship, and accumulated web state</th>
+  <td>Absent</td>
+  <td>no simulated users, sessions, browsing, email, or admin/service baseline; static lab</td></tr>
+
+<tr><th scope="row">D7.4 Email activity</th>
+  <td>Absent</td>
+  <td>no simulated users, sessions, browsing, email, or admin/service baseline; static lab</td></tr>
+
+<tr><th scope="row">D7.5 Credential-use traffic and lived-in accumulation</th>
+  <td>Partial</td>
+  <td>confirmed: eddard.stark/robb.stark scheduled bots generate real, scripted NTLM/LLMNR credential-use traffic every 3-5 minutes</td></tr>
+
+<tr><th scope="row">D7.6 Administrative and service baseline</th>
+  <td>Absent</td>
+  <td>no simulated users, sessions, browsing, email, or admin/service baseline; static lab</td></tr>
+
+<tr><th scope="row">D7.7 Network and data-volume baselines</th>
+  <td>Partial</td>
+  <td>same bot traffic gives a narrow but real recurring network-traffic baseline</td></tr>
+
+<tr><th scope="row">D7.8 Share, repository, and peripheral activity</th>
+  <td>Absent</td>
+  <td>no simulated users, sessions, browsing, email, or admin/service baseline; static lab</td></tr>
+
+<tr><th scope="row">D7.9 Temporal structure, prompt response, and signal quality</th>
+  <td>Absent</td>
+  <td>no simulated users, sessions, browsing, email, or admin/service baseline; static lab</td></tr>
+
+<tr><th scope="row">D7.10 Business-context lure plausibility</th>
+  <td>Absent</td>
+  <td>no simulated users, sessions, browsing, email, or admin/service baseline; static lab</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>Telemetry fidelity</strong>:
+  0 full, 2 partial,
+  9 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D8.1 Process and script execution telemetry</th>
+  <td>Absent</td>
+  <td>confirmed: Sysmon/Winlogbeat live only in the optional ELK extension, not the default provisioning path</td></tr>
+
+<tr><th scope="row">D8.2 Authentication telemetry</th>
+  <td>Partial</td>
+  <td>default Windows Security auditing likely generates logon/Kerberos events on the DCs; no collection or forwarding</td></tr>
+
+<tr><th scope="row">D8.3 Object access: file, registry, and IPC</th>
+  <td>Absent</td>
+  <td>object-access auditing is off by default and not documented as configured</td></tr>
+
+<tr><th scope="row">D8.4 Network telemetry</th>
+  <td>Absent</td>
+  <td>no firewall/NGFW/Zeek/NetFlow infrastructure</td></tr>
+
+<tr><th scope="row">D8.5 Endpoint/EDR streams</th>
+  <td>Absent</td>
+  <td>no EDR sensor deployed in base lab</td></tr>
+
+<tr><th scope="row">D8.6 Identity-provider, cloud-plane, and application logs</th>
+  <td>Absent</td>
+  <td>no cloud/IdP layer; pure on-prem</td></tr>
+
+<tr><th scope="row">D8.7 Schema fidelity, volume, and noise floor</th>
+  <td>Partial</td>
+  <td>whatever native logs exist have real EVTX schema, but volume is minimal and not fleet-scale</td></tr>
+
+<tr><th scope="row">D8.8 Coverage gaps, timing, and retention tiers</th>
+  <td>Absent</td>
+  <td>no telemetry pipeline to have coverage gaps or retention tiers within</td></tr>
+
+<tr><th scope="row">D8.9 Integrity, enrichment, and cross-system correlation</th>
+  <td>Absent</td>
+  <td>no SIEM, enrichment, or cross-system correlation</td></tr>
+
+<tr><th scope="row">D8.10 Response outcome telemetry with explainable decisions</th>
+  <td>Absent</td>
+  <td>no response actions</td></tr>
+
+<tr><th scope="row">D8.11 Recovery and deception telemetry</th>
+  <td>Absent</td>
+  <td>no recovery or deception telemetry</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>Action realism</strong>:
+  6 full, 2 partial,
+  2 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D9.1 Command fidelity</th>
+  <td>Full</td>
+  <td>real PowerShell/cmd against the real OS</td></tr>
+
+<tr><th scope="row">D9.2 API fidelity</th>
+  <td>Full</td>
+  <td>real Win32/NT APIs and real error codes</td></tr>
+
+<tr><th scope="row">D9.3 Parameter space</th>
+  <td>Full</td>
+  <td>real tools (Mimikatz/Rubeus/BloodHound-class) take real typed parameters</td></tr>
+
+<tr><th scope="row">D9.4 Failure realism</th>
+  <td>Full</td>
+  <td>real deterministic failure since real AD/Windows</td></tr>
+
+<tr><th scope="row">D9.5 Composition, tool transfer, and interactive sessions</th>
+  <td>Full</td>
+  <td>real multi-step composition, real tool transfer, real interactive sessions</td></tr>
+
+<tr><th scope="row">D9.6 State effects, scheduling, and cost budgets</th>
+  <td>Partial</td>
+  <td>real persistent state effects; no meaningful telemetry-cost budget given sparse telemetry</td></tr>
+
+<tr><th scope="row">D9.7 Observability, C2 semantics, and defender action</th>
+  <td>Partial</td>
+  <td>real (non-privileged) output visibility for the attacker side; no defender-action-parity since there is no defender</td></tr>
+
+<tr><th scope="row">D9.8 Privilege-scoped action surface and realistic tool-use idiom</th>
+  <td>Full</td>
+  <td>real privilege-scoped behavior; BloodHound/Mimikatz/Rubeus confirmed working natively</td></tr>
+
+<tr><th scope="row">D9.9 Distinct defender action families</th>
+  <td>Absent</td>
+  <td>no defender action space at all</td></tr>
+
+<tr><th scope="row">D9.10 Multi-step defender operations require ordered sequencing</th>
+  <td>Absent</td>
+  <td>no defender operations</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>Observation realism</strong>:
+  3 full, 4 partial,
+  3 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D10.1 Position- and privilege-dependent observability</th>
+  <td>Full</td>
+  <td>real AD privilege- and position-dependent query results</td></tr>
+
+<tr><th scope="row">D10.2 Partial, incremental, scale-appropriate results</th>
+  <td>Partial</td>
+  <td>real incremental enumeration behavior, but only 5 hosts, not enterprise scale</td></tr>
+
+<tr><th scope="row">D10.3 Noise, uncertainty, and time-variance</th>
+  <td>Partial</td>
+  <td>real infrastructure has natural noise/timing quirks; nothing deliberately engineered</td></tr>
+
+<tr><th scope="row">D10.4 Protocol, banner, and metadata fidelity on reception</th>
+  <td>Full</td>
+  <td>real SMB/Kerberos/LDAP protocol responses and error codes</td></tr>
+
+<tr><th scope="row">D10.5 Defender-side observation surface</th>
+  <td>Absent</td>
+  <td>no SIEM/EDR console/SOAR queue; no defender side</td></tr>
+
+<tr><th scope="row">D10.6 Blind spots and observation cost</th>
+  <td>Partial</td>
+  <td>real ACL-enforced blind spots for the attacker; telemetry-cost half is weak given sparse telemetry</td></tr>
+
+<tr><th scope="row">D10.7 Feedback loops and multi-source correlation</th>
+  <td>Partial</td>
+  <td>real probe-and-adapt loop against real infrastructure; no multi-source correlation context</td></tr>
+
+<tr><th scope="row">D10.8 Oracle-free property</th>
+  <td>Full</td>
+  <td>no ground-truth handed to the agent; everything derived from real AD/Windows observation</td></tr>
+
+<tr><th scope="row">D10.9 Before/after response observation</th>
+  <td>Absent</td>
+  <td>no response actions to observe before/after</td></tr>
+
+<tr><th scope="row">D10.10 High-context deception observation</th>
+  <td>Absent</td>
+  <td>no decoys</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>External information ecosystem</strong>:
+  0 full, 0 partial,
+  9 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D11.1 Authoritative DNS, WHOIS, and certificate transparency</th>
+  <td>Absent</td>
+  <td>isolated internal lab; no external DNS/OSINT/threat-intel/attacker-infra/email/supply-chain modeling</td></tr>
+
+<tr><th scope="row">D11.2 OSINT surface: public web, social, repos, paste</th>
+  <td>Absent</td>
+  <td>isolated internal lab; no external DNS/OSINT/threat-intel/attacker-infra/email/supply-chain modeling</td></tr>
+
+<tr><th scope="row">D11.3 Threat intel, reputation, and external scanner observability</th>
+  <td>Absent</td>
+  <td>isolated internal lab; no external DNS/OSINT/threat-intel/attacker-infra/email/supply-chain modeling</td></tr>
+
+<tr><th scope="row">D11.4 Attacker-controlled domains, hosting, and C2 servers</th>
+  <td>Absent</td>
+  <td>isolated internal lab; no external DNS/OSINT/threat-intel/attacker-infra/email/supply-chain modeling</td></tr>
+
+<tr><th scope="row">D11.5 Legitimate-service abuse for C2 blending</th>
+  <td>Absent</td>
+  <td>isolated internal lab; no external DNS/OSINT/threat-intel/attacker-infra/email/supply-chain modeling</td></tr>
+
+<tr><th scope="row">D11.6 Attacker email and weaponized content hosting</th>
+  <td>Absent</td>
+  <td>isolated internal lab; no external DNS/OSINT/threat-intel/attacker-infra/email/supply-chain modeling</td></tr>
+
+<tr><th scope="row">D11.7 Compromised third parties and supply chain</th>
+  <td>Absent</td>
+  <td>isolated internal lab; no external DNS/OSINT/threat-intel/attacker-infra/email/supply-chain modeling</td></tr>
+
+<tr><th scope="row">D11.8 External identity and federation surface</th>
+  <td>Absent</td>
+  <td>isolated internal lab; no external DNS/OSINT/threat-intel/attacker-infra/email/supply-chain modeling</td></tr>
+
+<tr><th scope="row">D11.9 Full DNS resolution path, infrastructure lifecycle, and cost/attribution</th>
+  <td>Absent</td>
+  <td>isolated internal lab; no external DNS/OSINT/threat-intel/attacker-infra/email/supply-chain modeling</td></tr>
+
+</tbody>
+</table>
+</details>
+
 
 
 

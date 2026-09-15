@@ -1,5 +1,6 @@
 {
   "threshold": 0.75,
+  "granularity": "dimension",
   "pairs": {
     "cyberbattlesim": {
       "UC-A1": {

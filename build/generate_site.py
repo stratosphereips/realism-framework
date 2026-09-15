@@ -23,6 +23,9 @@ def _validate(root):
             + V.validate_use_cases(os.path.join(d, "use_cases.json"),
                                    os.path.join(d, "dimension_elements.json"))
             + V.validate_environments(os.path.join(d, "environments.json"))
+            + V.validate_environment_elements(os.path.join(d, "environment_element_scores.json"),
+                                              os.path.join(d, "dimension_elements.json"),
+                                              os.path.join(d, "environments.json"))
             + V.validate_dimensions_meta(os.path.join(d, "dimensions.json")))
     if errs:
         raise SystemExit("DATA VALIDATION FAILED:\n  " + "\n  ".join(errs))
@@ -35,6 +38,26 @@ def _element_summary(requirements):
     for key, lvl in requirements.items():
         summ[key.split(".")[0]][lvl] += 1
     return summ
+
+
+def _element_coverage(rec, elements):
+    """Per-dimension element coverage for one environment, with per-element evidence.
+
+    Returns one entry per dimension: the counts by code, plus each element's label,
+    code, and the note recording why it was graded that way.
+    """
+    scores, notes = rec["scores"], rec.get("notes", {})
+    out = []
+    for d in elements["dimensions"]:
+        rows, counts = [], {c: 0 for c in ("F", "P", "A", "U")}
+        for el in d["elements"]:
+            key = f'{d["id"]}.{el["n"]}'
+            code = scores[key]
+            counts[code] += 1
+            rows.append({"key": key, "label": el["label"], "code": code,
+                         "word": CODE_WORD[code], "note": notes.get(key, "")})
+        out.append({"id": d["id"], "name": d["name"], "counts": counts, "rows": rows})
+    return out
 
 
 def _reason(rec, dim_names):
@@ -70,6 +93,7 @@ def build(root):
     elements = load("dimension_elements")
     ucs = load("use_cases")["use_cases"]
     envs = load("environments")["environments"]
+    env_elements = load("environment_element_scores")["environments"]
     dims_meta = load("dimensions")
     site = load("site")
     verdicts = V.load_json(os.path.join(root, "verdicts.json"))["pairs"]
@@ -120,8 +144,11 @@ def build(root):
                  "reason": _reason(verdicts[slug][uc_id], dim_names)}
                 for uc_id, uc in ucs.items()]
         best = [f["name"] for f in fits if f["verdict"] in ("suitable", "partial")]
+        rec = env_elements.get(slug)
         write(f"environments/{slug}.html", "environment.html.j2", "../",
-              slug=slug, env=e, objective_fits=fits, best_suited=best)
+              slug=slug, env=e, objective_fits=fits, best_suited=best,
+              element_coverage=_element_coverage(rec, elements) if rec else None,
+              element_source=rec.get("source") if rec else None)
 
 
 # Unrendered Jinja tags always contain "{{"; matching that (not bare "}}") avoids
