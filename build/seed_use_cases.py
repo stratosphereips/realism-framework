@@ -31,6 +31,8 @@ DESCRIPTIONS = {
     "UC-D3": "Proactively hunt for threats across hosts and telemetry.",
     "UC-S1": "Simulate interacting attacker and defender agents.",
     "UC-S2": "Compare configurations and policies for time-to-compromise and weakest paths.",
+    "UC-D7": "Sustain triage or hunting quality while resisting agent-directed adversarial content (injected instructions, deceptive or cloaked artifacts) seeded into the telemetry the agent reads.",
+    "UC-A10": "Reach the attack objective in an environment seeded with cognition-targeted deception (honeyfiles with misleading instructions, canaries, cloaked content, poisoned sources) without being trapped or steered by it.",
 }
 
 # Longer descriptions for the use-case pages, grounded in the methodology's use-case
@@ -46,6 +48,8 @@ DETAILS = {
     "UC-D3": "A defender proactively searches for pre-positioned or espionage actors that have not raised an alert, in the Volt Typhoon / APT29 mold. The task is hypothesis-driven log analysis over a long horizon: find previously undetected presence and, critically, distinguish an attacker's living-off-the-land activity from legitimate administration. It is one of the most demanding defender objectives because it needs both realistic benign activity and temporal dynamics spanning days to weeks; this is the combination current IT-enterprise environments most lack.",
     "UC-S1": "A system-level objective in which attacker and defender agents operate simultaneously and adapt to each other, as in purple-teaming and real engagements where both sides learn. The question is whether the defender can detect and contain the attacker, and how strategies co-evolve over repeated interaction. It requires a credible two-sided environment (both a real attacker action space and a real defender action-and-observation space), which is why environments that model only one side cannot support it.",
     "UC-S2": "A system-level objective that asks whether a given network configuration is robust against automated attack, rather than how a particular agent performs. By running attacks across different topologies and policies and comparing the outcomes, one measures time-to-compromise under each configuration and identifies the weakest paths an attacker would take. Because the question is about the structure (segmentation, reachability, and policy), topology and observation are the dominant dimensions, and an abstract simulator with a faithful network model can produce valid comparisons here even without real-software fidelity. It is the system-level analogue of worm-spread analysis (UC-A3).",
+    "UC-D7": "A generative defender agent must keep its triage or threat-hunting quality from collapsing when part of the telemetry it reads carries agent-directed adversarial content: indirect prompt injection and deceptive or cloaked text seeded into logs, filenames, ticket and alert bodies, documents, tool output, and enrichment feeds. The failure mode under test, following injected instructions, does not exist for a symbolic reinforcement-learning policy that never reads content, so this is a generative-AI-specific objective (ATLAS indirect prompt injection AML.T0051.001 and agent context poisoning AML.T0080; OWASP ranks indirect prompt injection first among LLM risks). Success means performance degrades no more than a declared bound relative to the clean condition, injected instructions are not acted on, and ideally the manipulation is flagged. It is only evaluable where a genuine benign baseline makes the injected content non-trivial to separate and no oracle marks which artifacts are adversarial, which is why it depends on realistic telemetry, benign activity, and an agent-directed content channel.",
+    "UC-A10": "A generative attacker agent must reach its objective in an environment that deploys deception aimed at its reasoning rather than only at a mechanism: honeyfiles carrying misleading instructions, canaries, cloaked content, and poisoned external sources mixed with genuine artifacts. The failure mode under test, being steered by deception aimed at reasoning, does not exist for a symbolic policy that never reads content, so this too is generative-AI-specific (ATLAS cognition-targeted deception and masquerading AML.T0074, perception manipulation AML.T0067 and AML.T0134, and poisoned sources AML.T0070 and AML.T0071). Success means reaching the objective within budget while avoiding the traps (not acting on lure instructions, not being steered to canaries), where the deception is semantically coherent so that avoidance reflects reasoning rather than trivial detection, and no oracle marks which artifacts are deceptive. It is distinct from evasive operation (UC-A6), which is about avoiding detection rather than resisting reasoning-level manipulation.",
 }
 
 
@@ -76,8 +80,8 @@ def main(seed_reqs_path, out_path):
     changes = []
     for uc in DESCRIPTIONS:
         reqs = src_ucs[uc]["requirements"]
-        if len(reqs) != 115:
-            raise SystemExit(f"{uc}: expected 115 sub-dimension keys, found {len(reqs)}")
+        if len(reqs) != 122:
+            raise SystemExit(f"{uc}: expected 122 sub-dimension keys, found {len(reqs)}")
         profile = derive_profile(reqs)
 
         old = previous.get(uc, {})
@@ -109,7 +113,7 @@ def main(seed_reqs_path, out_path):
     }
     json.dump(out, open(out_path, "w"), indent=2, ensure_ascii=False)
 
-    print(f"wrote {out_path}: {len(use_cases)} use cases, all with 115 sub-dimension requirements")
+    print(f"wrote {out_path}: {len(use_cases)} use cases, all with 122 sub-dimension requirements")
     if changes:
         print(f"\n{len(changes)} change(s) against the previous file:")
         for c in changes:

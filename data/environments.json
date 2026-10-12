@@ -183,33 +183,6 @@
       ],
       "family": "Real-software emulator"
     },
-    "caldera": {
-      "name": "CALDERA",
-      "category": "C",
-      "scores": {
-        "D1": "P",
-        "D2": "P",
-        "D3": "F",
-        "D4": "F",
-        "D5": "A",
-        "D6": "P",
-        "D7": "A",
-        "D8": "P",
-        "D9": "F",
-        "D10": "A",
-        "D11": "A"
-      },
-      "summary": "MITRE CALDERA, an adversary-emulation platform executing real ATT&CK techniques on real hosts; strong real-software fidelity with partial context.",
-      "justification": {},
-      "sources": [
-        {
-          "label": "GitHub",
-          "url": "https://github.com/mitre/caldera"
-        }
-      ],
-      "family": "Real-software emulator",
-      "note": "CALDERA's Observation dimension is scored Absent not because it lacks observation, but because it provides a single, complete report of all facts and outcomes (oracle-like visibility) rather than the partial, noisy, privilege-dependent perception this framework calls observation realism. That is why a tool with the catalogue's highest action realism still meets no objective's observation requirement."
-    },
     "goad": {
       "name": "GOAD",
       "category": "C",

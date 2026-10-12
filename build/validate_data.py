@@ -25,8 +25,8 @@ def validate_elements(path):
     if ids != DIMS:
         errs.append(f"dimensions must be {DIMS}, got {ids}")
     total = sum(len(d.get("elements", [])) for d in data.get("dimensions", []))
-    if total != 115:
-        errs.append(f"expected 115 sub-dimensions, got {total}")
+    if total != 122:
+        errs.append(f"expected 122 sub-dimensions, got {total}")
     for d in data.get("dimensions", []):
         for e in d.get("elements", []):
             for key in ("n", "label", "desc"):

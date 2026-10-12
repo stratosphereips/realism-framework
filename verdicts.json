@@ -114,6 +114,27 @@
         "completeness": 1,
         "hardGaps": [],
         "unresolved": []
+      },
+      "UC-D7": {
+        "verdict": "not_suitable",
+        "fit": 0.21428571428571427,
+        "completeness": 1,
+        "hardGaps": [
+          "D5",
+          "D7",
+          "D8"
+        ],
+        "unresolved": []
+      },
+      "UC-A10": {
+        "verdict": "not_suitable",
+        "fit": 0.21428571428571427,
+        "completeness": 1,
+        "hardGaps": [
+          "D7",
+          "D9"
+        ],
+        "unresolved": []
       }
     },
     "nasim": {
@@ -233,6 +254,27 @@
         "completeness": 1,
         "hardGaps": [],
         "unresolved": []
+      },
+      "UC-D7": {
+        "verdict": "not_suitable",
+        "fit": 0.17857142857142858,
+        "completeness": 1,
+        "hardGaps": [
+          "D5",
+          "D7",
+          "D8"
+        ],
+        "unresolved": []
+      },
+      "UC-A10": {
+        "verdict": "not_suitable",
+        "fit": 0.17857142857142858,
+        "completeness": 1,
+        "hardGaps": [
+          "D7",
+          "D9"
+        ],
+        "unresolved": []
       }
     },
     "cage-2": {
@@ -328,6 +370,22 @@
       "UC-S2": {
         "verdict": "partial",
         "fit": 0.35,
+        "completeness": 1,
+        "hardGaps": [],
+        "unresolved": []
+      },
+      "UC-D7": {
+        "verdict": "not_suitable",
+        "fit": 0.35714285714285715,
+        "completeness": 1,
+        "hardGaps": [
+          "D5"
+        ],
+        "unresolved": []
+      },
+      "UC-A10": {
+        "verdict": "partial",
+        "fit": 0.35714285714285715,
         "completeness": 1,
         "hardGaps": [],
         "unresolved": []
@@ -450,6 +508,27 @@
         "completeness": 1,
         "hardGaps": [],
         "unresolved": []
+      },
+      "UC-D7": {
+        "verdict": "not_suitable",
+        "fit": 0.17857142857142858,
+        "completeness": 1,
+        "hardGaps": [
+          "D5",
+          "D7",
+          "D8"
+        ],
+        "unresolved": []
+      },
+      "UC-A10": {
+        "verdict": "not_suitable",
+        "fit": 0.17857142857142858,
+        "completeness": 1,
+        "hardGaps": [
+          "D7",
+          "D9"
+        ],
+        "unresolved": []
       }
     },
     "nasimemu": {
@@ -558,6 +637,26 @@
         "completeness": 1,
         "hardGaps": [],
         "unresolved": []
+      },
+      "UC-D7": {
+        "verdict": "not_suitable",
+        "fit": 0.21428571428571427,
+        "completeness": 1,
+        "hardGaps": [
+          "D5",
+          "D7",
+          "D8"
+        ],
+        "unresolved": []
+      },
+      "UC-A10": {
+        "verdict": "not_suitable",
+        "fit": 0.32142857142857145,
+        "completeness": 1,
+        "hardGaps": [
+          "D7"
+        ],
+        "unresolved": []
       }
     },
     "cyberwheel": {
@@ -648,6 +747,22 @@
       "UC-S2": {
         "verdict": "partial",
         "fit": 0.4,
+        "completeness": 1,
+        "hardGaps": [],
+        "unresolved": []
+      },
+      "UC-D7": {
+        "verdict": "not_suitable",
+        "fit": 0.39285714285714285,
+        "completeness": 1,
+        "hardGaps": [
+          "D5"
+        ],
+        "unresolved": []
+      },
+      "UC-A10": {
+        "verdict": "partial",
+        "fit": 0.39285714285714285,
         "completeness": 1,
         "hardGaps": [],
         "unresolved": []
@@ -744,109 +859,24 @@
         "completeness": 1,
         "hardGaps": [],
         "unresolved": []
-      }
-    },
-    "caldera": {
-      "UC-A1": {
+      },
+      "UC-D7": {
         "verdict": "not_suitable",
-        "fit": 0.3888888888888889,
+        "fit": 0.42857142857142855,
         "completeness": 1,
         "hardGaps": [
-          "D5",
-          "D7",
-          "D11"
+          "D6",
+          "D7"
         ],
         "unresolved": []
       },
-      "UC-A2": {
+      "UC-A10": {
         "verdict": "not_suitable",
-        "fit": 0.5,
+        "fit": 0.5357142857142857,
         "completeness": 1,
         "hardGaps": [
-          "D5"
-        ],
-        "unresolved": []
-      },
-      "UC-A3": {
-        "verdict": "not_suitable",
-        "fit": 0.45454545454545453,
-        "completeness": 1,
-        "hardGaps": [
-          "D5",
-          "D10"
-        ],
-        "unresolved": []
-      },
-      "UC-A5": {
-        "verdict": "not_suitable",
-        "fit": 0.625,
-        "completeness": 1,
-        "hardGaps": [
-          "D10"
-        ],
-        "unresolved": []
-      },
-      "UC-A6": {
-        "verdict": "not_suitable",
-        "fit": 0.47619047619047616,
-        "completeness": 1,
-        "hardGaps": [
-          "D5",
-          "D7",
-          "D10"
-        ],
-        "unresolved": []
-      },
-      "UC-D1": {
-        "verdict": "not_suitable",
-        "fit": 0.2916666666666667,
-        "completeness": 1,
-        "hardGaps": [
-          "D5",
-          "D7",
-          "D10"
-        ],
-        "unresolved": []
-      },
-      "UC-D2": {
-        "verdict": "not_suitable",
-        "fit": 0.4722222222222222,
-        "completeness": 1,
-        "hardGaps": [
-          "D5",
-          "D7",
-          "D10"
-        ],
-        "unresolved": []
-      },
-      "UC-D3": {
-        "verdict": "not_suitable",
-        "fit": 0.375,
-        "completeness": 1,
-        "hardGaps": [
-          "D5",
-          "D7",
-          "D10"
-        ],
-        "unresolved": []
-      },
-      "UC-S1": {
-        "verdict": "not_suitable",
-        "fit": 0.4411764705882353,
-        "completeness": 1,
-        "hardGaps": [
-          "D5",
-          "D7",
-          "D10"
-        ],
-        "unresolved": []
-      },
-      "UC-S2": {
-        "verdict": "not_suitable",
-        "fit": 0.5,
-        "completeness": 1,
-        "hardGaps": [
-          "D10"
+          "D6",
+          "D7"
         ],
         "unresolved": []
       }
@@ -957,6 +987,28 @@
         "fit": 0.7,
         "completeness": 1,
         "hardGaps": [],
+        "unresolved": []
+      },
+      "UC-D7": {
+        "verdict": "not_suitable",
+        "fit": 0.32142857142857145,
+        "completeness": 1,
+        "hardGaps": [
+          "D5",
+          "D6",
+          "D7",
+          "D8"
+        ],
+        "unresolved": []
+      },
+      "UC-A10": {
+        "verdict": "not_suitable",
+        "fit": 0.5357142857142857,
+        "completeness": 1,
+        "hardGaps": [
+          "D6",
+          "D7"
+        ],
         "unresolved": []
       }
     },
@@ -1075,6 +1127,28 @@
           "D1"
         ],
         "unresolved": []
+      },
+      "UC-D7": {
+        "verdict": "not_suitable",
+        "fit": 0.25,
+        "completeness": 1,
+        "hardGaps": [
+          "D5",
+          "D6",
+          "D7",
+          "D8"
+        ],
+        "unresolved": []
+      },
+      "UC-A10": {
+        "verdict": "not_suitable",
+        "fit": 0.4642857142857143,
+        "completeness": 1,
+        "hardGaps": [
+          "D6",
+          "D7"
+        ],
+        "unresolved": []
       }
     },
     "cage-4": {
@@ -1160,6 +1234,20 @@
       "UC-S2": {
         "verdict": "partial",
         "fit": 0.4,
+        "completeness": 1,
+        "hardGaps": [],
+        "unresolved": []
+      },
+      "UC-D7": {
+        "verdict": "partial",
+        "fit": 0.42857142857142855,
+        "completeness": 1,
+        "hardGaps": [],
+        "unresolved": []
+      },
+      "UC-A10": {
+        "verdict": "partial",
+        "fit": 0.39285714285714285,
         "completeness": 1,
         "hardGaps": [],
         "unresolved": []
@@ -1278,6 +1366,26 @@
         "completeness": 1,
         "hardGaps": [],
         "unresolved": []
+      },
+      "UC-D7": {
+        "verdict": "not_suitable",
+        "fit": 0.21428571428571427,
+        "completeness": 1,
+        "hardGaps": [
+          "D5",
+          "D7",
+          "D8"
+        ],
+        "unresolved": []
+      },
+      "UC-A10": {
+        "verdict": "not_suitable",
+        "fit": 0.25,
+        "completeness": 1,
+        "hardGaps": [
+          "D7"
+        ],
+        "unresolved": []
       }
     },
     "primaite": {
@@ -1349,6 +1457,20 @@
       "UC-S2": {
         "verdict": "partial",
         "fit": 0.5,
+        "completeness": 1,
+        "hardGaps": [],
+        "unresolved": []
+      },
+      "UC-D7": {
+        "verdict": "partial",
+        "fit": 0.4642857142857143,
+        "completeness": 1,
+        "hardGaps": [],
+        "unresolved": []
+      },
+      "UC-A10": {
+        "verdict": "partial",
+        "fit": 0.4642857142857143,
         "completeness": 1,
         "hardGaps": [],
         "unresolved": []
