@@ -6,20 +6,23 @@ from validate_data import validate_use_cases, load_json, element_ids
 UC = ROOT / "data" / "use_cases.json"
 EL = ROOT / "data" / "dimension_elements.json"
 EXPECTED = {"UC-A1", "UC-A2", "UC-A3", "UC-A5", "UC-A6",
-            "UC-D1", "UC-D2", "UC-D3", "UC-S1", "UC-S2"}  # 10 IT-enterprise use cases
+            "UC-D1", "UC-D2", "UC-D3", "UC-S1", "UC-S2",
+            "UC-D7", "UC-A10"}  # 10 IT-enterprise use cases + 2 generative-AI (agent-targeted) cases
 # (UC-A7/A8/D6 are out of scope for the IT-enterprise comparison; UC-A4/A9/D4/D5/S3
-#  have no dimension profile in the methodology mapping.)
+#  have no dimension profile in the methodology mapping. UC-D7 and UC-A10 are the ATLAS-seeded
+#  generative-AI use cases: cognitive resilience under adversarial content, and operating
+#  against agent-targeted deception.)
 
 
 def test_real_use_cases_valid():
     assert validate_use_cases(UC, EL) == []
 
 
-def test_has_the_10_enterprise_use_cases():
+def test_has_the_12_use_cases():
     assert set(load_json(UC)["use_cases"]) == EXPECTED
 
 
-def test_uc_a1_requirements_cover_all_115_elements():
+def test_uc_a1_requirements_cover_all_122_elements():
     reqs = load_json(UC)["use_cases"]["UC-A1"]["requirements"]
     assert set(reqs) == element_ids(load_json(EL))
 

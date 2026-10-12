@@ -23,16 +23,17 @@ def test_real_file_valid():
 
 
 def test_partial_coverage_is_allowed():
-    """Only assessed environments appear; the rest are absent, not empty."""
+    """The validator permits partial coverage: assessed environments are a subset of the
+    known environments (all twelve are now assessed, so the subset is the full set)."""
     scored = set(load_json(ELEM_SCORES)["environments"])
     known = set(load_json(ENVS)["environments"])
     assert scored, "expected at least one environment assessed at element level"
-    assert scored < known, "assessed environments must be a subset of known environments"
+    assert scored <= known, "assessed environments must be a subset of known environments"
 
 
 def test_goad_covers_every_element_with_a_reason():
     rec = load_json(ELEM_SCORES)["environments"]["goad"]
-    assert len(rec["scores"]) == 115
+    assert len(rec["scores"]) == 122
     assert set(rec["notes"]) == set(rec["scores"]), "every grade needs a recorded reason"
     assert rec["source"]
 

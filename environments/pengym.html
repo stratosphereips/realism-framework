@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PenGym · Realism Framework</title>
+<title>PenGym · Metrion</title>
 <link rel="stylesheet" href="../assets/style.css">
 <script>(function(){try{var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);window.toggleTheme=function(){var c=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',c);localStorage.setItem('theme',c);};}catch(e){}})();</script>
 </head>
@@ -125,8 +125,647 @@ environment abstracts.</p>
   <td>covers the required dimensions, but below the fit threshold</td>
 </tr>
 
+<tr>
+  <th scope="row"><a href="../use-cases/UC-D7.html">Cognitive resilience under adversarial content</a></th>
+  <td class="v-not_suitable">Not suitable</td>
+  <td>does not provide Defensive realism, Benign activity realism, dimensions this objective treats as critical</td>
+</tr>
+
+<tr>
+  <th scope="row"><a href="../use-cases/UC-A10.html">Operating against agent-targeted deception</a></th>
+  <td class="v-not_suitable">Not suitable</td>
+  <td>does not provide Defensive realism, Benign activity realism, dimensions this objective treats as critical</td>
+</tr>
+
 </tbody>
 </table>
+<h2>Sub-dimension coverage (all 122 sub-dimensions)</h2>
+<p>This environment has been assessed at the sub-dimension level, with a recorded
+reason for every grade. The fit table above is computed at the dimension level,
+because most environments have not yet been assessed this finely and the two
+levels are not directly comparable.</p>
+<p class="note">Evidence: notes/src/environments.md PenGym section; element-level grades from the 2026-10-12 Claude + Codex dual extraction, reconciled under the structural-property and strict agent-exposure rules</p>
+
+<details>
+<summary><strong>Topological realism</strong>:
+  0 full, 3 partial,
+  7 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D1.1 Multi-segment graph with enforced path behavior</th>
+  <td>Partial</td>
+  <td>The multi-site KVM range has multiple subnets and real firewall-enforced, service-specific reachability, but the topology is small and statically configured.</td></tr>
+
+<tr><th scope="row">D1.2 Perimeter and egress asymmetry</th>
+  <td>Absent</td>
+  <td>not part of the agent&#39;s observations or action set in this environment</td></tr>
+
+<tr><th scope="row">D1.3 Network devices as manageable entities</th>
+  <td>Absent</td>
+  <td>Routers, switches, and firewalls are not agent-visible manageable targets; infrastructure rules are controlled behind the Gym interface.</td></tr>
+
+<tr><th scope="row">D1.4 Layer 2/3 protocol fidelity</th>
+  <td>Absent</td>
+  <td>not part of the agent&#39;s observations or action set in this environment</td></tr>
+
+<tr><th scope="row">D1.5 Position-dependent traffic visibility</th>
+  <td>Absent</td>
+  <td>not part of the agent&#39;s observations or action set in this environment</td></tr>
+
+<tr><th scope="row">D1.6 Lateral reachability and file transfer</th>
+  <td>Partial</td>
+  <td>Real exploit sessions can enable topology-constrained lateral reachability, but no agent action exposes realistic SMB, SCP, RDP, or similar file transfer.</td></tr>
+
+<tr><th scope="row">D1.7 Discoverable (not given) topology</th>
+  <td>Partial</td>
+  <td>SubnetScan incrementally discovers reachable hosts from the current position, although results are small, normalized, and cached rather than noisy.</td></tr>
+
+<tr><th scope="row">D1.8 Staging and exfil-path asymmetry</th>
+  <td>Absent</td>
+  <td>The attacker agent has no data staging or exfiltration action through hosts with differentiated external connectivity.</td></tr>
+
+<tr><th scope="row">D1.9 Remote-access and cross-organizational boundaries</th>
+  <td>Absent</td>
+  <td>not part of the agent&#39;s observations or action set in this environment</td></tr>
+
+<tr><th scope="row">D1.10 Believable decoy placement</th>
+  <td>Absent</td>
+  <td>No decoy hosts or topology-aware deception placement is exposed to the attacker agent.</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>Service fidelity</strong>:
+  1 full, 1 partial,
+  12 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D2.1 Real, versioned, fingerprintable daemons</th>
+  <td>Partial</td>
+  <td>Real SSH, FTP, HTTP, Samba, and SMTP daemons answer Nmap and Metasploit, but agent observations reduce them to scenario service flags rather than full banners and policy behavior.</td></tr>
+
+<tr><th scope="row">D2.2 Exploitable vulnerable builds with heterogeneous patch state</th>
+  <td>Full</td>
+  <td>real version-specific vulnerable software is deployed and exploited</td></tr>
+
+<tr><th scope="row">D2.3 Web applications with real code paths and session stack</th>
+  <td>Absent</td>
+  <td>not part of the agent&#39;s observations or action set in this environment</td></tr>
+
+<tr><th scope="row">D2.4 Email infrastructure</th>
+  <td>Absent</td>
+  <td>not part of the agent&#39;s observations or action set in this environment</td></tr>
+
+<tr><th scope="row">D2.5 DNS infrastructure</th>
+  <td>Absent</td>
+  <td>PenGym disables DNS resolution in its scans and exposes no authoritative DNS service or DNS-analysis action.</td></tr>
+
+<tr><th scope="row">D2.6 File shares and enterprise repositories</th>
+  <td>Absent</td>
+  <td>Although a Samba daemon is exploitable, the agent cannot browse realistic shares, repository content, or resource-level ACLs.</td></tr>
+
+<tr><th scope="row">D2.7 Authentication-service and PKI surfaces</th>
+  <td>Absent</td>
+  <td>not part of the agent&#39;s observations or action set in this environment</td></tr>
+
+<tr><th scope="row">D2.8 Network-device management services</th>
+  <td>Absent</td>
+  <td>No SNMP, network-device CLI, or configuration-backup service is exposed to the attacker agent.</td></tr>
+
+<tr><th scope="row">D2.9 Enterprise deployment and supply-chain services</th>
+  <td>Absent</td>
+  <td>No deployment system, package registry, CI/CD pipeline, or signed-update trust relationship is exposed.</td></tr>
+
+<tr><th scope="row">D2.10 Legitimate RMM and dual-use web services</th>
+  <td>Absent</td>
+  <td>No legitimate RMM product or external dual-use web service is available through the agent action space.</td></tr>
+
+<tr><th scope="row">D2.11 Revocation-aware service state</th>
+  <td>Absent</td>
+  <td>The agent cannot revoke credentials or observe service-specific session and cache reactions to revocation.</td></tr>
+
+<tr><th scope="row">D2.12 Operational recovery surfaces</th>
+  <td>Absent</td>
+  <td>Backup, rollback, restore, and operational recovery surfaces are not available to the attacker agent.</td></tr>
+
+<tr><th scope="row">D2.13 Dependency-aware response effects</th>
+  <td>Absent</td>
+  <td>No agent action changes service dependencies or reveals dependency-driven effects from hardening, isolation, eviction, or restoration.</td></tr>
+
+<tr><th scope="row">D2.14 Believable decoy service context</th>
+  <td>Absent</td>
+  <td>PenGym provides no decoy services or believable decoy business workflows.</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>OS fidelity</strong>:
+  0 full, 4 partial,
+  4 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D3.1 Persistence surface</th>
+  <td>Partial</td>
+  <td>The pe_cron action invokes a real Metasploit cron-persistence module, but persistence choices, reboot survival, inspection, and telemetry are not generally exposed.</td></tr>
+
+<tr><th scope="row">D3.2 Execution-flow control and scripting engines</th>
+  <td>Partial</td>
+  <td>Real payloads and pkexec-based exploitation execute on Ubuntu hosts, but the agent has no general scripting engine, loader-hijack, allowlisting, syscall-filter, or local-firewall interface.</td></tr>
+
+<tr><th scope="row">D3.3 Process, memory, and privilege-boundary primitives</th>
+  <td>Partial</td>
+  <td>ProcessScan uses real ps output and privilege-escalation actions cross a real Linux user/root boundary, but memory injection, IPC, token, and process-control primitives are unavailable.</td></tr>
+
+<tr><th scope="row">D3.4 Configuration stores, filesystem semantics, and kernel/trust layer</th>
+  <td>Absent</td>
+  <td>The real VM contains a filesystem and Linux configuration, but the Gym agent has no action or observation for configuration stores, filesystem semantics, kernel state, or platform trust.</td></tr>
+
+<tr><th scope="row">D3.5 Credential material exposure on the endpoint</th>
+  <td>Absent</td>
+  <td>The agent cannot harvest /etc/shadow, keyrings, SSH keys, browser stores, or other endpoint credential material.</td></tr>
+
+<tr><th scope="row">D3.6 Discovery, evasion, and anti-forensics surface</th>
+  <td>Partial</td>
+  <td>OSScan and ProcessScan expose limited real host discovery, but results are filtered to scenario labels and no evasion or anti-forensics actions exist.</td></tr>
+
+<tr><th scope="row">D3.7 Impact primitives and document-execution behavior</th>
+  <td>Absent</td>
+  <td>No file encryption, disk wipe, service-stop, reboot, macro, PDF, LNK, or other impact/document-execution action is exposed.</td></tr>
+
+<tr><th scope="row">D3.8 Restorable host objects</th>
+  <td>Absent</td>
+  <td>The attacker agent cannot compare or restore files, packages, disks, configuration, or host state from known-good sources.</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>Identity realism</strong>:
+  0 full, 2 partial,
+  11 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D4.1 Populated directory and local identity stores</th>
+  <td>Partial</td>
+  <td>A real local Linux test account is exercised by the SSH dictionary attack, but there is no populated directory or rich, enumerable local identity population.</td></tr>
+
+<tr><th scope="row">D4.2 Credential landscape with realistic material in real locations</th>
+  <td>Absent</td>
+  <td>PenGym documents a uniform test/test1234 credential rather than an agent-discoverable landscape of reused, varied, and naturally accumulated secrets.</td></tr>
+
+<tr><th scope="row">D4.3 Kerberos and NTLM protocol fidelity</th>
+  <td>Absent</td>
+  <td>Kerberos, NTLM, relay, roasting, and legacy name-resolution authentication protocols are not present.</td></tr>
+
+<tr><th scope="row">D4.4 Federation, SSO, and web session material</th>
+  <td>Absent</td>
+  <td>No SAML, OAuth, OIDC, JWT, SSO, web-session token, or cross-tenant federation surface is exposed.</td></tr>
+
+<tr><th scope="row">D4.5 MFA as a design space and auth-process modification surface</th>
+  <td>Absent</td>
+  <td>MFA factors, users responding to prompts, conditional access, and authentication-process modification are absent.</td></tr>
+
+<tr><th scope="row">D4.6 Account lifecycle and tiered administration</th>
+  <td>Absent</td>
+  <td>The agent cannot observe or perform account lifecycle, group-management, tiered-administration, LAPS, or managed-service-account operations.</td></tr>
+
+<tr><th scope="row">D4.7 Session reality and valid-account usage</th>
+  <td>Partial</td>
+  <td>Successful SSH and service exploits create real shell sessions whose user/root level gates later actions, but logon types, cached tickets, sudo, runas, and session hijacking are not modeled.</td></tr>
+
+<tr><th scope="row">D4.8 Certificate and PKI identity</th>
+  <td>Absent</td>
+  <td>No certificate authority, certificate template, client-certificate authentication, or certificate lifecycle is exposed.</td></tr>
+
+<tr><th scope="row">D4.9 Enumeration and identity-relationship surface</th>
+  <td>Absent</td>
+  <td>There is no LDAP, directory, user, group, trust, ACL, SPN, or BloodHound-style identity enumeration action.</td></tr>
+
+<tr><th scope="row">D4.10 Human-layer impersonation and external-to-internal bridges</th>
+  <td>Absent</td>
+  <td>Email impersonation, lookalike domains, vendor identities, guests, and external service principals are absent.</td></tr>
+
+<tr><th scope="row">D4.11 Policy-bound authorization as identity-layer state</th>
+  <td>Absent</td>
+  <td>Authorization is reduced to coarse host access levels rather than agent-visible groups, claims, roles, or conditional-access policy.</td></tr>
+
+<tr><th scope="row">D4.12 Propagating credential control and access recovery</th>
+  <td>Absent</td>
+  <td>Credential revocation, invalidation, reissue, unlock, group restoration, and access-recovery workflows are unavailable.</td></tr>
+
+<tr><th scope="row">D4.13 Believable deceptive identities</th>
+  <td>Absent</td>
+  <td>No deceptive accounts, credentials, tokens, or personas are exposed.</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>Temporal dynamics</strong>:
+  0 full, 0 partial,
+  11 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D5.1 Real wall-clock progression</th>
+  <td>Absent</td>
+  <td>not part of the agent&#39;s observations or action set in this environment</td></tr>
+
+<tr><th scope="row">D5.2 Scheduled execution and reboot semantics</th>
+  <td>Absent</td>
+  <td>not part of the agent&#39;s observations or action set in this environment</td></tr>
+
+<tr><th scope="row">D5.3 Session, token, and credential lifetimes</th>
+  <td>Absent</td>
+  <td>No agent-visible sessions, tokens, certificates, password ages, or lockout counters expire according to modeled lifetimes.</td></tr>
+
+<tr><th scope="row">D5.4 Human activity rhythms</th>
+  <td>Absent</td>
+  <td>There are no simulated people, business hours, shifts, weekends, or holiday rhythms.</td></tr>
+
+<tr><th scope="row">D5.5 Long-horizon engagement support</th>
+  <td>Absent</td>
+  <td>Episodes do not model weeks or months of dwell, accumulating logs, patch drift, or persistent long-horizon engagement state.</td></tr>
+
+<tr><th scope="row">D5.6 Event-correlation windows and rate-limiting</th>
+  <td>Absent</td>
+  <td>No SIEM windows, IDS timing rules, account lockout, API rate limit, or connection-rate defense is documented or agent-observable.</td></tr>
+
+<tr><th scope="row">D5.7 Delay-based evasion and staged operations</th>
+  <td>Absent</td>
+  <td>not part of the agent&#39;s observations or action set in this environment</td></tr>
+
+<tr><th scope="row">D5.8 State decay and temporal detection signals</th>
+  <td>Absent</td>
+  <td>The agent cannot observe cache TTLs, log rotation, credential aging, certificate expiry, or timing-derived anomaly signals.</td></tr>
+
+<tr><th scope="row">D5.9 Non-instant defender effects with observable before/after</th>
+  <td>Absent</td>
+  <td>No defender revocation, containment, eviction, or recovery action unfolds through observable intermediate states.</td></tr>
+
+<tr><th scope="row">D5.10 Retained containment and recovery history</th>
+  <td>Absent</td>
+  <td>There is no attacker-visible retained timeline of prior containment or recovery actions.</td></tr>
+
+<tr><th scope="row">D5.11 Triggered and delayed activation of injected content</th>
+  <td>Absent</td>
+  <td>PenGym plants no event- or time-triggered instructions in content consumed through the agent observation channel.</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>Defensive realism</strong>:
+  0 full, 0 partial,
+  12 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D6.1 Perimeter, egress, and traffic inspection</th>
+  <td>Absent</td>
+  <td>not part of the agent&#39;s observations or action set in this environment</td></tr>
+
+<tr><th scope="row">D6.2 Email security stack</th>
+  <td>Absent</td>
+  <td>No mail gateway, attachment sandbox, URL detonation, mailbox audit, or anomalous-sending detector is present.</td></tr>
+
+<tr><th scope="row">D6.3 Endpoint protection, EDR, and exploit mitigations</th>
+  <td>Absent</td>
+  <td>No antivirus, EDR, tamper protection, Credential Guard, or agent-observable exploit-mitigation configuration is documented.</td></tr>
+
+<tr><th scope="row">D6.4 Application-execution controls</th>
+  <td>Absent</td>
+  <td>The Linux-only attacker interface exposes no application allowlisting, script policy, macro control, or user-facing execution prompt.</td></tr>
+
+<tr><th scope="row">D6.5 Authentication hardening</th>
+  <td>Absent</td>
+  <td>Beyond ordinary SSH password checking, no lockout, MFA, protocol restriction, signing, channel binding, or federation hardening is exposed.</td></tr>
+
+<tr><th scope="row">D6.6 Patching and configuration hardening</th>
+  <td>Absent</td>
+  <td>Hosts are deliberately provisioned with static vulnerable packages; the agent cannot observe or change an ongoing heterogeneous patch and baseline-hardening process.</td></tr>
+
+<tr><th scope="row">D6.7 Segmentation enforcement</th>
+  <td>Absent</td>
+  <td>not part of the agent&#39;s observations or action set in this environment</td></tr>
+
+<tr><th scope="row">D6.8 Detection rule library and cloud-plane controls</th>
+  <td>Absent</td>
+  <td>There is no SIEM, EDR rule library, UEBA baseline, cloud IAM plane, or posture-management control.</td></tr>
+
+<tr><th scope="row">D6.9 Data-loss prevention controls</th>
+  <td>Absent</td>
+  <td>No endpoint, email, web, or cloud data-loss-prevention control is present.</td></tr>
+
+<tr><th scope="row">D6.10 Response, deception, and control-configuration action space</th>
+  <td>Absent</td>
+  <td>PenGym has no defender action space for configuring controls, deception, response, rollout, or verification.</td></tr>
+
+<tr><th scope="row">D6.11 ML-based defenses, modeled and evadable</th>
+  <td>Absent</td>
+  <td>No machine-learning defensive detector is present or available for attacker evasion.</td></tr>
+
+<tr><th scope="row">D6.12 Cognition-targeted deception</th>
+  <td>Absent</td>
+  <td>No cognition-targeted lure, canary instruction, or reasoning-oriented deceptive artifact reaches the attacker agent.</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>Benign activity realism</strong>:
+  0 full, 0 partial,
+  10 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D7.1 Simulated users with role and behavioral diversity</th>
+  <td>Absent</td>
+  <td>No simulated users or role-diverse personas generate activity.</td></tr>
+
+<tr><th scope="row">D7.2 User interactive input and active sessions</th>
+  <td>Absent</td>
+  <td>No keyboard, mouse, clipboard, desktop, console, RDP, or human-created SSH session is modeled.</td></tr>
+
+<tr><th scope="row">D7.3 Browsing, document authorship, and accumulated web state</th>
+  <td>Absent</td>
+  <td>There is no user browsing, document authorship, browser state, or lived-in web content.</td></tr>
+
+<tr><th scope="row">D7.4 Email activity</th>
+  <td>Absent</td>
+  <td>The SMTP target has no simulated mailbox traffic, calendar use, correspondence, or accumulated mail content.</td></tr>
+
+<tr><th scope="row">D7.5 Credential-use traffic and lived-in accumulation</th>
+  <td>Absent</td>
+  <td>Credentials are provisioned for the scenario rather than accumulated through repeated modeled user authentication.</td></tr>
+
+<tr><th scope="row">D7.6 Administrative and service baseline</th>
+  <td>Absent</td>
+  <td>No legitimate administrator, service, maintenance, backup, update, or management-tool baseline runs for agent evaluation.</td></tr>
+
+<tr><th scope="row">D7.7 Network and data-volume baselines</th>
+  <td>Absent</td>
+  <td>The range generates no realistic benign east-west, web, SaaS, update, telemetry, DNS, or upload-volume baseline.</td></tr>
+
+<tr><th scope="row">D7.8 Share, repository, and peripheral activity</th>
+  <td>Absent</td>
+  <td>No benign share, collaboration, repository, USB, printer, or Bluetooth activity is modeled.</td></tr>
+
+<tr><th scope="row">D7.9 Temporal structure, prompt response, and signal quality</th>
+  <td>Absent</td>
+  <td>No temporally structured user activity, phishing response, MFA behavior, or measurable behavioral diversity exists.</td></tr>
+
+<tr><th scope="row">D7.10 Business-context lure plausibility</th>
+  <td>Absent</td>
+  <td>There is no surrounding business activity or content in which deceptive lures could plausibly blend.</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>Telemetry fidelity</strong>:
+  0 full, 0 partial,
+  11 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D8.1 Process and script execution telemetry</th>
+  <td>Absent</td>
+  <td>Process execution may occur on real VMs, but the attacker agent cannot observe auditd, command-line, parent-process, hash, or script-engine telemetry.</td></tr>
+
+<tr><th scope="row">D8.2 Authentication telemetry</th>
+  <td>Absent</td>
+  <td>SSH authentication occurs, but PAM, sshd, sudo, wtmp, btmp, or correlated authentication logs are not exposed to the agent.</td></tr>
+
+<tr><th scope="row">D8.3 Object access: file, registry, and IPC</th>
+  <td>Absent</td>
+  <td>No file, registry, IPC, raw-disk, or integrity-monitoring events are available through attacker observations.</td></tr>
+
+<tr><th scope="row">D8.4 Network telemetry</th>
+  <td>Absent</td>
+  <td>The agent receives scan results rather than firewall, Zeek, Suricata, DNS, NetFlow, or other network telemetry records.</td></tr>
+
+<tr><th scope="row">D8.5 Endpoint/EDR streams</th>
+  <td>Absent</td>
+  <td>No EDR or equivalent endpoint behavioral stream is deployed or observable.</td></tr>
+
+<tr><th scope="row">D8.6 Identity-provider, cloud-plane, and application logs</th>
+  <td>Absent</td>
+  <td>No identity-provider, cloud-plane, Kubernetes, email, proxy, application, or database audit logs are exposed.</td></tr>
+
+<tr><th scope="row">D8.7 Schema fidelity, volume, and noise floor</th>
+  <td>Absent</td>
+  <td>Gym state flags are compact ground-state features, not realistic security-event schemas, volumes, or activity-derived noise.</td></tr>
+
+<tr><th scope="row">D8.8 Coverage gaps, timing, and retention tiers</th>
+  <td>Absent</td>
+  <td>No sensor gaps, shipping lag, generation-versus-ingestion timestamps, or retention tiers are modeled.</td></tr>
+
+<tr><th scope="row">D8.9 Integrity, enrichment, and cross-system correlation</th>
+  <td>Absent</td>
+  <td>There is no SIEM, out-of-band collection, sensor heartbeat, enrichment, stable entity resolution, or cross-source correlation surface.</td></tr>
+
+<tr><th scope="row">D8.10 Response outcome telemetry with explainable decisions</th>
+  <td>Absent</td>
+  <td>No defender response decisions or allow/deny provenance are recorded in an agent-visible telemetry system.</td></tr>
+
+<tr><th scope="row">D8.11 Recovery and deception telemetry</th>
+  <td>Absent</td>
+  <td>No recovery or deception operations exist to emit investigation-grade telemetry.</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>Action realism</strong>:
+  2 full, 5 partial,
+  4 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D9.1 Command fidelity</th>
+  <td>Full</td>
+  <td>the agent drives real nmap and Metasploit execution against the real OS</td></tr>
+
+<tr><th scope="row">D9.2 API fidelity</th>
+  <td>Partial</td>
+  <td>High-level actions invoke real Nmap and Metasploit RPC interfaces with real effects, but OS, cloud, and application APIs are not directly available to the agent.</td></tr>
+
+<tr><th scope="row">D9.3 Parameter space</th>
+  <td>Partial</td>
+  <td>Actions accept typed targets, services, and processes, but exploit and scanner parameters are fixed internally rather than forming a realistic large parameter space.</td></tr>
+
+<tr><th scope="row">D9.4 Failure realism</th>
+  <td>Full</td>
+  <td>exploits fail deterministically from real target mismatch</td></tr>
+
+<tr><th scope="row">D9.5 Composition, tool transfer, and interactive sessions</th>
+  <td>Partial</td>
+  <td>the agent composes scan, exploit, and escalate over real tools</td></tr>
+
+<tr><th scope="row">D9.6 State effects, scheduling, and cost budgets</th>
+  <td>Partial</td>
+  <td>Successful exploits persist as sessions and access levels while actions consume scenario cost and real time, but scheduling, telemetry cost, and destructive state are largely absent.</td></tr>
+
+<tr><th scope="row">D9.7 Observability, C2 semantics, and defender action</th>
+  <td>Absent</td>
+  <td>The agent receives reduced Gym observations rather than progressive human-tool output, and there is no realistic C2 or defender tooling channel.</td></tr>
+
+<tr><th scope="row">D9.8 Privilege-scoped action surface and realistic tool-use idiom</th>
+  <td>Partial</td>
+  <td>User/root access gates ProcessScan and privilege escalation, but the agent operates a handcrafted action menu rather than a full privilege-sensitive shell and toolset.</td></tr>
+
+<tr><th scope="row">D9.9 Distinct defender action families</th>
+  <td>Absent</td>
+  <td>No defender hardening, credential, eviction, isolation, mediation, or restoration action families exist.</td></tr>
+
+<tr><th scope="row">D9.10 Multi-step defender operations require ordered sequencing</th>
+  <td>Absent</td>
+  <td>No defender recovery or restoration workflow exposes ordered intermediate actions and states.</td></tr>
+
+<tr><th scope="row">D9.11 Tool and action channel as an attack surface</th>
+  <td>Absent</td>
+  <td>The Gym tool surface and its responses cannot be poisoned or used as an agent-targeted invocation, exfiltration, or destruction channel.</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>Observation realism</strong>:
+  1 full, 6 partial,
+  5 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D10.1 Position- and privilege-dependent observability</th>
+  <td>Partial</td>
+  <td>Firewall position, compromised pivots, and user/root access affect scans and later actions, but traffic interception and rich privilege-dependent query behavior are absent.</td></tr>
+
+<tr><th scope="row">D10.2 Partial, incremental, scale-appropriate results</th>
+  <td>Partial</td>
+  <td>Hosts, services, OS, and processes are learned incrementally through separate scans, but the range is small and results do not paginate, throttle, or reach enterprise scale.</td></tr>
+
+<tr><th scope="row">D10.3 Noise, uncertainty, and time-variance</th>
+  <td>Partial</td>
+  <td>Real Nmap interactions can distinguish unreachable or blocked targets and inherit real execution variability, but observations are static, normalized, and aggressively cached.</td></tr>
+
+<tr><th scope="row">D10.4 Protocol, banner, and metadata fidelity on reception</th>
+  <td>Full</td>
+  <td>the agent receives real tool output: real nmap XML and Metasploit session data with real banners and errors</td></tr>
+
+<tr><th scope="row">D10.5 Defender-side observation surface</th>
+  <td>Absent</td>
+  <td>There is no defender SIEM, EDR, SOAR, alert, or raw-event observation interface.</td></tr>
+
+<tr><th scope="row">D10.6 Blind spots and observation cost</th>
+  <td>Partial</td>
+  <td>Firewalls and privilege create attacker blind spots, and every scan consumes real time and scenario cost, but defender blind spots and telemetry-generation costs are not modeled.</td></tr>
+
+<tr><th scope="row">D10.7 Feedback loops and multi-source correlation</th>
+  <td>Partial</td>
+  <td>Scan results guide exploits, sessions enable process scans, and process findings guide escalation, but there are no disagreeing multi-source observations to reconcile.</td></tr>
+
+<tr><th scope="row">D10.8 Oracle-free property</th>
+  <td>Partial</td>
+  <td>Default partial observations are derived from explicit scans and successful actions, but fully observable mode and compact state and reward structures prevent a strong oracle-free guarantee.</td></tr>
+
+<tr><th scope="row">D10.9 Before/after response observation</th>
+  <td>Absent</td>
+  <td>No defender response exists for before-and-after containment or restoration comparison.</td></tr>
+
+<tr><th scope="row">D10.10 High-context deception observation</th>
+  <td>Absent</td>
+  <td>No decoy interaction or correlated deception-investigation view is present.</td></tr>
+
+<tr><th scope="row">D10.11 Agent-directed content injection</th>
+  <td>Absent</td>
+  <td>The environment exposes numeric and categorical action results, not attacker-controlled instructions embedded in agent-ingested artifacts.</td></tr>
+
+<tr><th scope="row">D10.12 Agent-targeted perception and trust manipulation</th>
+  <td>Absent</td>
+  <td>No content can manipulate agent-specific rendering, citations, trust signals, links, or multimodal perception.</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>External information ecosystem</strong>:
+  0 full, 0 partial,
+  10 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D11.1 Authoritative DNS, WHOIS, and certificate transparency</th>
+  <td>Absent</td>
+  <td>The scenario&#39;s abstract Internet node provides no external DNS, WHOIS, RDAP, passive-DNS, certificate-transparency, OCSP, or CRL surface.</td></tr>
+
+<tr><th scope="row">D11.2 OSINT surface: public web, social, repos, paste</th>
+  <td>Absent</td>
+  <td>No public website, social footprint, breach corpus, public repository, paste site, search engine, Shodan, or Censys reconnaissance is available.</td></tr>
+
+<tr><th scope="row">D11.3 Threat intel, reputation, and external scanner observability</th>
+  <td>Absent</td>
+  <td>No threat-intelligence or reputation service exists, and external scanners do not index the range.</td></tr>
+
+<tr><th scope="row">D11.4 Attacker-controlled domains, hosting, and C2 servers</th>
+  <td>Absent</td>
+  <td>The attacker cannot register domains, provision hosting, operate redirectors, or deploy realistic external C2 servers.</td></tr>
+
+<tr><th scope="row">D11.5 Legitimate-service abuse for C2 blending</th>
+  <td>Absent</td>
+  <td>No CDN, SaaS, messaging, cloud-storage, Tor, or residential-proxy channel is available for C2 blending.</td></tr>
+
+<tr><th scope="row">D11.6 Attacker email and weaponized content hosting</th>
+  <td>Absent</td>
+  <td>The attacker has no mail-sending domain, phishing site, fake login portal, exploit-kit host, staged malware hosting, or watering-hole path.</td></tr>
+
+<tr><th scope="row">D11.7 Compromised third parties and supply chain</th>
+  <td>Absent</td>
+  <td>Third parties, SaaS vendors, update servers, package registries, maintainers, and CI/CD systems are outside the environment.</td></tr>
+
+<tr><th scope="row">D11.8 External identity and federation surface</th>
+  <td>Absent</td>
+  <td>No external identity provider, OAuth consent, SAML or OIDC federation, tenant, or cloud trust boundary is modeled.</td></tr>
+
+<tr><th scope="row">D11.9 Full DNS resolution path, infrastructure lifecycle, and cost/attribution</th>
+  <td>Absent</td>
+  <td>The full DNS hierarchy, attacker-infrastructure lifecycle, reputation propagation, monetary cost, and attribution trails are absent.</td></tr>
+
+<tr><th scope="row">D11.10 Poisoned information sources and feeds</th>
+  <td>Absent</td>
+  <td>The agent cannot consult or poison external retrieval stores, threat feeds, repositories, web sources, or package-name feeds.</td></tr>
+
+</tbody>
+</table>
+</details>
+
 
 
 
@@ -137,7 +776,7 @@ environment abstracts.</p>
 
 </main>
 <footer>
-  Companion artifacts to &ldquo;Realistic Enough for What?&rdquo; ·
+  Metrion · companion artifacts to &ldquo;Realistic Enough for What?&rdquo; ·
   Stratosphere Laboratory, CTU Prague · code MIT / data CC BY 4.0
 </footer>
 </body>

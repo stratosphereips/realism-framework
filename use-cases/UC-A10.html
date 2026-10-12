@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UC-A10 Operating against agent-targeted deception · Metrion</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){try{var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);window.toggleTheme=function(){var c=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',c);localStorage.setItem('theme',c);};}catch(e){}})();</script>
+</head>
+<body>
+<nav>
+  <button type="button" class="theme-btn" onclick="toggleTheme()" title="Toggle light/dark" aria-label="Toggle light/dark theme">&#9680;</button>
+  <a href="../index.html">Home</a> ·
+  <a href="../use-cases/index.html">Use cases</a> ·
+  <a href="../environments/index.html">Environments</a> ·
+  <a href="../scorecard.html">Scorecard</a>
+</nav>
+<div class="wip-banner" role="note"><strong>Work in progress.</strong> Preliminary artifacts under review; the environment evaluation and the requirement profiles are a work in progress and may change.</div>
+<main>
+
+<h1>UC-A10 · Operating against agent-targeted deception</h1>
+<p>A generative attacker agent must reach its objective in an environment that deploys deception aimed at its reasoning rather than only at a mechanism: honeyfiles carrying misleading instructions, canaries, cloaked content, and poisoned external sources mixed with genuine artifacts. The failure mode under test, being steered by deception aimed at reasoning, does not exist for a symbolic policy that never reads content, so this too is generative-AI-specific (ATLAS cognition-targeted deception and masquerading AML.T0074, perception manipulation AML.T0067 and AML.T0134, and poisoned sources AML.T0070 and AML.T0071). Success means reaching the objective within budget while avoiding the traps (not acting on lure instructions, not being steered to canaries), where the deception is semantically coherent so that avoidance reflects reasoning rather than trivial detection, and no oracle marks which artifacts are deceptive. It is distinct from evasive operation (UC-A6), which is about avoiding detection rather than resisting reasoning-level manipulation.</p>
+<img class="radar" src="../figures/uc_uc-a10.png" alt="Operating against agent-targeted deception requirement radar">
+
+<h2>Dimension requirement profile</h2>
+<table class="profile">
+<thead><tr><th scope="col">Dimension</th><th scope="col">Requirement</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">Topological realism</th><td>Useful</td></tr>
+
+<tr><th scope="row">Service fidelity</th><td>Useful</td></tr>
+
+<tr><th scope="row">OS fidelity</th><td>Useful</td></tr>
+
+<tr><th scope="row">Identity realism</th><td>Useful</td></tr>
+
+<tr><th scope="row">Temporal dynamics</th><td>Useful</td></tr>
+
+<tr><th scope="row">Defensive realism</th><td>Critical</td></tr>
+
+<tr><th scope="row">Benign activity realism</th><td>Critical</td></tr>
+
+<tr><th scope="row">Telemetry fidelity</th><td>Not needed</td></tr>
+
+<tr><th scope="row">Action realism</th><td>Critical</td></tr>
+
+<tr><th scope="row">Observation realism</th><td>Critical</td></tr>
+
+<tr><th scope="row">External information ecosystem</th><td>Useful</td></tr>
+
+</tbody>
+</table>
+
+
+<h2>Sub-dimension requirements (all 122 sub-dimensions)</h2>
+<p>This use case is specified at the sub-dimension level. Counts per dimension
+(critical / useful / not needed); explore the full checklist in the
+<a href="../scorecard.html#uc=UC-A10">scorecard</a>.</p>
+<table class="profile">
+<thead><tr><th scope="col">Dimension</th><th scope="col">Critical</th><th scope="col">Useful</th><th scope="col">Not needed</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">Topological realism</th>
+  <td>0</td>
+  <td>10</td>
+  <td>0</td></tr>
+
+<tr><th scope="row">Service fidelity</th>
+  <td>0</td>
+  <td>14</td>
+  <td>0</td></tr>
+
+<tr><th scope="row">OS fidelity</th>
+  <td>0</td>
+  <td>8</td>
+  <td>0</td></tr>
+
+<tr><th scope="row">Identity realism</th>
+  <td>0</td>
+  <td>13</td>
+  <td>0</td></tr>
+
+<tr><th scope="row">Temporal dynamics</th>
+  <td>0</td>
+  <td>11</td>
+  <td>0</td></tr>
+
+<tr><th scope="row">Defensive realism</th>
+  <td>1</td>
+  <td>2</td>
+  <td>9</td></tr>
+
+<tr><th scope="row">Benign activity realism</th>
+  <td>1</td>
+  <td>9</td>
+  <td>0</td></tr>
+
+<tr><th scope="row">Telemetry fidelity</th>
+  <td>0</td>
+  <td>0</td>
+  <td>11</td></tr>
+
+<tr><th scope="row">Action realism</th>
+  <td>2</td>
+  <td>9</td>
+  <td>0</td></tr>
+
+<tr><th scope="row">Observation realism</th>
+  <td>3</td>
+  <td>9</td>
+  <td>0</td></tr>
+
+<tr><th scope="row">External information ecosystem</th>
+  <td>0</td>
+  <td>4</td>
+  <td>6</td></tr>
+
+</tbody>
+</table>
+
+
+</main>
+<footer>
+  Metrion · companion artifacts to &ldquo;Realistic Enough for What?&rdquo; ·
+  Stratosphere Laboratory, CTU Prague · code MIT / data CC BY 4.0
+</footer>
+</body>
+</html>

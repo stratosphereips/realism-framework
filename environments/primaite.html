@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PrimAITE · Realism Framework</title>
+<title>PrimAITE · Metrion</title>
 <link rel="stylesheet" href="../assets/style.css">
 <script>(function(){try{var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);window.toggleTheme=function(){var c=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',c);localStorage.setItem('theme',c);};}catch(e){}})();</script>
 </head>
@@ -23,7 +23,7 @@
 <img class="radar" src="../figures/env_primaite.png" alt="PrimAITE coverage radar">
 <p>The higher-fidelity DSTL/ARCD successor to Yawning-Titan: it models topology with routing and ACLs, protocol-aware services, a simulated filesystem and user accounts, green pattern-of-life, and packet-capture telemetry. The broadest-coverage environment here, yet full on no dimension because every subsystem is simulated rather than real software.</p>
 <p><strong>Best suited for:</strong>
-Ransomware deployment, Worm / self-propagation, Credential-based privilege escalation, Evasive red-team operation, Alert triage, Incident response, Threat hunting, Attacker-defender simulation, Network architecture attack-path analysis.</p>
+Ransomware deployment, Worm / self-propagation, Credential-based privilege escalation, Evasive red-team operation, Alert triage, Incident response, Threat hunting, Attacker-defender simulation, Network architecture attack-path analysis, Cognitive resilience under adversarial content, Operating against agent-targeted deception.</p>
 
 <p class="note">PrimAITE reaches partial on ten of the eleven dimensions but full on none: it models each subsystem in interface rather than as real software, illustrating breadth of coverage without the depth a real-software layer provides.</p>
 
@@ -125,8 +125,647 @@ environment abstracts.</p>
   <td>covers the required dimensions, but below the fit threshold</td>
 </tr>
 
+<tr>
+  <th scope="row"><a href="../use-cases/UC-D7.html">Cognitive resilience under adversarial content</a></th>
+  <td class="v-partial">Partial fit</td>
+  <td>covers the required dimensions, but below the fit threshold</td>
+</tr>
+
+<tr>
+  <th scope="row"><a href="../use-cases/UC-A10.html">Operating against agent-targeted deception</a></th>
+  <td class="v-partial">Partial fit</td>
+  <td>covers the required dimensions, but below the fit threshold</td>
+</tr>
+
 </tbody>
 </table>
+<h2>Sub-dimension coverage (all 122 sub-dimensions)</h2>
+<p>This environment has been assessed at the sub-dimension level, with a recorded
+reason for every grade. The fit table above is computed at the dimension level,
+because most environments have not yet been assessed this finely and the two
+levels are not directly comparable.</p>
+<p class="note">Evidence: notes/src/environments.md PrimAITE section; element-level grades from the 2026-10-12 Claude + Codex dual extraction, reconciled under the structural-property and strict agent-exposure rules (blue defender as the agent under evaluation)</p>
+
+<details>
+<summary><strong>Topological realism</strong>:
+  0 full, 5 partial,
+  5 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D1.1 Multi-segment graph with enforced path behavior</th>
+  <td>Partial</td>
+  <td>routers, switches, and firewalls with route tables and dynamic ACLs; the agent edits ACLs, changing reachability</td></tr>
+
+<tr><th scope="row">D1.2 Perimeter and egress asymmetry</th>
+  <td>Partial</td>
+  <td>multi-LAN laydowns include an internet boundary, an internal-versus-external asymmetry</td></tr>
+
+<tr><th scope="row">D1.3 Network devices as manageable entities</th>
+  <td>Partial</td>
+  <td>network devices (routers, firewalls) are manageable entities whose ACLs the agent configures</td></tr>
+
+<tr><th scope="row">D1.4 Layer 2/3 protocol fidelity</th>
+  <td>Partial</td>
+  <td>simulated ARP and route tables and a layered TCP/UDP/ICMP stack the agent observes; no L2/3 attack weaknesses</td></tr>
+
+<tr><th scope="row">D1.5 Position-dependent traffic visibility</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D1.6 Lateral reachability and file transfer</th>
+  <td>Partial</td>
+  <td>simulated SSH and FTP file transfers obey routing, ports, and ACLs and generate observable traffic</td></tr>
+
+<tr><th scope="row">D1.7 Discoverable (not given) topology</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D1.8 Staging and exfil-path asymmetry</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D1.9 Remote-access and cross-organizational boundaries</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D1.10 Believable decoy placement</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>Service fidelity</strong>:
+  0 full, 5 partial,
+  9 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D2.1 Real, versioned, fingerprintable daemons</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D2.2 Exploitable vulnerable builds with heterogeneous patch state</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D2.3 Web applications with real code paths and session stack</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D2.4 Email infrastructure</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D2.5 DNS infrastructure</th>
+  <td>Partial</td>
+  <td>a simulated DNS service participates in traffic and can be observed and managed</td></tr>
+
+<tr><th scope="row">D2.6 File shares and enterprise repositories</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D2.7 Authentication-service and PKI surfaces</th>
+  <td>Partial</td>
+  <td>a simulated authentication service validates passwords; the agent can disable or change accounts</td></tr>
+
+<tr><th scope="row">D2.8 Network-device management services</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D2.9 Enterprise deployment and supply-chain services</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D2.10 Legitimate RMM and dual-use web services</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D2.11 Revocation-aware service state</th>
+  <td>Partial</td>
+  <td>disabling an account or changing a password takes effect on subsequent simulated authentication</td></tr>
+
+<tr><th scope="row">D2.12 Operational recovery surfaces</th>
+  <td>Partial</td>
+  <td>the agent restores and repairs files and restarts services, a real operational recovery surface</td></tr>
+
+<tr><th scope="row">D2.13 Dependency-aware response effects</th>
+  <td>Partial</td>
+  <td>stopping or restarting a service affects dependent green information-exchange requests the agent is rewarded to preserve</td></tr>
+
+<tr><th scope="row">D2.14 Believable decoy service context</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>OS fidelity</strong>:
+  0 full, 6 partial,
+  2 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D3.1 Persistence surface</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D3.2 Execution-flow control and scripting engines</th>
+  <td>Partial</td>
+  <td>a terminal and application lifecycle let the agent execute, stop, start, and inspect simulated software</td></tr>
+
+<tr><th scope="row">D3.3 Process, memory, and privilege-boundary primitives</th>
+  <td>Partial</td>
+  <td>an abstract process and admin/non-admin privilege model the agent acts on (stop/start applications); no real process primitives</td></tr>
+
+<tr><th scope="row">D3.4 Configuration stores, filesystem semantics, and kernel/trust layer</th>
+  <td>Partial</td>
+  <td>a simulated filesystem with folders, files, health, and scan state the agent observes and modifies</td></tr>
+
+<tr><th scope="row">D3.5 Credential material exposure on the endpoint</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D3.6 Discovery, evasion, and anti-forensics surface</th>
+  <td>Partial</td>
+  <td>the agent scans the simulated filesystem for host state (health, scan state)</td></tr>
+
+<tr><th scope="row">D3.7 Impact primitives and document-execution behavior</th>
+  <td>Partial</td>
+  <td>ransomware-style file corruption, service stop, and reboot are simulated and the agent observes and repairs them</td></tr>
+
+<tr><th scope="row">D3.8 Restorable host objects</th>
+  <td>Partial</td>
+  <td>files exist as objects with health that the agent can restore and repair toward a known-good state</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>Identity realism</strong>:
+  0 full, 5 partial,
+  8 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D4.1 Populated directory and local identity stores</th>
+  <td>Partial</td>
+  <td>local user accounts (username, password, admin flag) exist as an identity store; no directory</td></tr>
+
+<tr><th scope="row">D4.2 Credential landscape with realistic material in real locations</th>
+  <td>Partial</td>
+  <td>local accounts carry passwords the agent can change or disable; no reuse/defaults/secrets-in-files landscape</td></tr>
+
+<tr><th scope="row">D4.3 Kerberos and NTLM protocol fidelity</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D4.4 Federation, SSO, and web session material</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D4.5 MFA as a design space and auth-process modification surface</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D4.6 Account lifecycle and tiered administration</th>
+  <td>Partial</td>
+  <td>account lifecycle operations (add, disable, change-password, authenticate); the agent can disable users</td></tr>
+
+<tr><th scope="row">D4.7 Session reality and valid-account usage</th>
+  <td>Partial</td>
+  <td>local and SSH sessions are modeled</td></tr>
+
+<tr><th scope="row">D4.8 Certificate and PKI identity</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D4.9 Enumeration and identity-relationship surface</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D4.10 Human-layer impersonation and external-to-internal bridges</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D4.11 Policy-bound authorization as identity-layer state</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D4.12 Propagating credential control and access recovery</th>
+  <td>Partial</td>
+  <td>disabling an account propagates to subsequent authentication, an abstract credential-control effect</td></tr>
+
+<tr><th scope="row">D4.13 Believable deceptive identities</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>Temporal dynamics</strong>:
+  0 full, 2 partial,
+  9 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D5.1 Real wall-clock progression</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D5.2 Scheduled execution and reboot semantics</th>
+  <td>Partial</td>
+  <td>node reboot and green pattern-of-life run on schedules, and reboot clears non-persistent state</td></tr>
+
+<tr><th scope="row">D5.3 Session, token, and credential lifetimes</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D5.4 Human activity rhythms</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D5.5 Long-horizon engagement support</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D5.6 Event-correlation windows and rate-limiting</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D5.7 Delay-based evasion and staged operations</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D5.8 State decay and temporal detection signals</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D5.9 Non-instant defender effects with observable before/after</th>
+  <td>Partial</td>
+  <td>a node reboot resolves over multiple steps, so the agent observes the effect over time</td></tr>
+
+<tr><th scope="row">D5.10 Retained containment and recovery history</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D5.11 Triggered and delayed activation of injected content</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>Defensive realism</strong>:
+  0 full, 4 partial,
+  8 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D6.1 Perimeter, egress, and traffic inspection</th>
+  <td>Partial</td>
+  <td>the agent inspects and edits simulated router and firewall ACLs that enforce traffic patterns</td></tr>
+
+<tr><th scope="row">D6.2 Email security stack</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D6.3 Endpoint protection, EDR, and exploit mitigations</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D6.4 Application-execution controls</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D6.5 Authentication hardening</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D6.6 Patching and configuration hardening</th>
+  <td>Partial</td>
+  <td>the agent scans and fixes simulated OS, software, and service state, an abstract configuration-hardening control</td></tr>
+
+<tr><th scope="row">D6.7 Segmentation enforcement</th>
+  <td>Partial</td>
+  <td>the agent edits ACLs, an active segmentation control</td></tr>
+
+<tr><th scope="row">D6.8 Detection rule library and cloud-plane controls</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D6.9 Data-loss prevention controls</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D6.10 Response, deception, and control-configuration action space</th>
+  <td>Partial</td>
+  <td>a rich response action set (ACL edits, restart, restore/repair, disable user, stop/start apps); no deception primitive</td></tr>
+
+<tr><th scope="row">D6.11 ML-based defenses, modeled and evadable</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D6.12 Cognition-targeted deception</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>Benign activity realism</strong>:
+  0 full, 2 partial,
+  8 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D7.1 Simulated users with role and behavioral diversity</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D7.2 User interactive input and active sessions</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D7.3 Browsing, document authorship, and accumulated web state</th>
+  <td>Absent</td>
+  <td>green drives a web browser generating traffic, but there is no accumulated web state (cookies, history); the benign web traffic is counted under D7.7</td></tr>
+
+<tr><th scope="row">D7.4 Email activity</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D7.5 Credential-use traffic and lived-in accumulation</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D7.6 Administrative and service baseline</th>
+  <td>Absent</td>
+  <td>no distinct administrative or maintenance baseline is modeled; green service traffic is counted under D7.7</td></tr>
+
+<tr><th scope="row">D7.7 Network and data-volume baselines</th>
+  <td>Partial</td>
+  <td>green agents generate background traffic (periodic web/database requests), a benign baseline</td></tr>
+
+<tr><th scope="row">D7.8 Share, repository, and peripheral activity</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D7.9 Temporal structure, prompt response, and signal quality</th>
+  <td>Partial</td>
+  <td>green pattern-of-life runs on schedules, giving benign activity temporal structure</td></tr>
+
+<tr><th scope="row">D7.10 Business-context lure plausibility</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>Telemetry fidelity</strong>:
+  0 full, 4 partial,
+  7 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D8.1 Process and script execution telemetry</th>
+  <td>Absent</td>
+  <td>the observation exposes service/application health state, not process-execution telemetry (no command lines or exec events reach the agent)</td></tr>
+
+<tr><th scope="row">D8.2 Authentication telemetry</th>
+  <td>Absent</td>
+  <td>the observation exposes user-session state (local_login, remote_sessions), not authentication-event telemetry</td></tr>
+
+<tr><th scope="row">D8.3 Object access: file, registry, and IPC</th>
+  <td>Partial</td>
+  <td>the agent scans files and folders and checks hashes and health, an object-access telemetry surface</td></tr>
+
+<tr><th scope="row">D8.4 Network telemetry</th>
+  <td>Partial</td>
+  <td>packet-capture logs give abstract network telemetry</td></tr>
+
+<tr><th scope="row">D8.5 Endpoint/EDR streams</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D8.6 Identity-provider, cloud-plane, and application logs</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D8.7 Schema fidelity, volume, and noise floor</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D8.8 Coverage gaps, timing, and retention tiers</th>
+  <td>Partial</td>
+  <td>configurable malicious-event counts and partial observability mean some activity is missed, a coverage gap</td></tr>
+
+<tr><th scope="row">D8.9 Integrity, enrichment, and cross-system correlation</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D8.10 Response outcome telemetry with explainable decisions</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D8.11 Recovery and deception telemetry</th>
+  <td>Partial</td>
+  <td>file recovery can be followed by scanning and hash checks to inspect the outcome; no deception telemetry</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>Action realism</strong>:
+  0 full, 4 partial,
+  7 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D9.1 Command fidelity</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D9.2 API fidelity</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D9.3 Parameter space</th>
+  <td>Partial</td>
+  <td>the action manager maps choices to structured, parameterized simulation requests</td></tr>
+
+<tr><th scope="row">D9.4 Failure realism</th>
+  <td>Absent</td>
+  <td>typed request outcomes exist internally but are not surfaced in the agent&#39;s observation, so the agent cannot read a failure reason (it infers from state change)</td></tr>
+
+<tr><th scope="row">D9.5 Composition, tool transfer, and interactive sessions</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D9.6 State effects, scheduling, and cost budgets</th>
+  <td>Partial</td>
+  <td>actions make persistent state changes the agent observes later</td></tr>
+
+<tr><th scope="row">D9.7 Observability, C2 semantics, and defender action</th>
+  <td>Partial</td>
+  <td>the agent acts through distinct operational request types (ACL, account, application, service, file, node), not one abstract respond</td></tr>
+
+<tr><th scope="row">D9.8 Privilege-scoped action surface and realistic tool-use idiom</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D9.9 Distinct defender action families</th>
+  <td>Partial</td>
+  <td>distinct defender families: isolation (ACL), restoration (restore/repair/restart), eviction (stop process, disable user)</td></tr>
+
+<tr><th scope="row">D9.10 Multi-step defender operations require ordered sequencing</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D9.11 Tool and action channel as an attack surface</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>Observation realism</strong>:
+  0 full, 7 partial,
+  5 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D10.1 Position- and privilege-dependent observability</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D10.2 Partial, incremental, scale-appropriate results</th>
+  <td>Partial</td>
+  <td>per-agent partial observations composed from host, ACL, firewall, router, filesystem, and software components</td></tr>
+
+<tr><th scope="row">D10.3 Noise, uncertainty, and time-variance</th>
+  <td>Partial</td>
+  <td>partial observability with filesystem health hidden until scanned; continuous quantities bucketed</td></tr>
+
+<tr><th scope="row">D10.4 Protocol, banner, and metadata fidelity on reception</th>
+  <td>Partial</td>
+  <td>protocol-aware simulated services return internally consistent structured responses on reception</td></tr>
+
+<tr><th scope="row">D10.5 Defender-side observation surface</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D10.6 Blind spots and observation cost</th>
+  <td>Partial</td>
+  <td>filesystem health requires an explicit scan to reveal, an observation cost and blind spot</td></tr>
+
+<tr><th scope="row">D10.7 Feedback loops and multi-source correlation</th>
+  <td>Partial</td>
+  <td>observations feed the next action in a monitor-and-respond loop</td></tr>
+
+<tr><th scope="row">D10.8 Oracle-free property</th>
+  <td>Partial</td>
+  <td>can run oracle-free (health requires a scan rather than being handed as ground truth)</td></tr>
+
+<tr><th scope="row">D10.9 Before/after response observation</th>
+  <td>Partial</td>
+  <td>after restore or repair the filesystem-health change is observable, a before/after on the response</td></tr>
+
+<tr><th scope="row">D10.10 High-context deception observation</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D10.11 Agent-directed content injection</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D10.12 Agent-targeted perception and trust manipulation</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>External information ecosystem</strong>:
+  0 full, 0 partial,
+  10 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D11.1 Authoritative DNS, WHOIS, and certificate transparency</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D11.2 OSINT surface: public web, social, repos, paste</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D11.3 Threat intel, reputation, and external scanner observability</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D11.4 Attacker-controlled domains, hosting, and C2 servers</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D11.5 Legitimate-service abuse for C2 blending</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D11.6 Attacker email and weaponized content hosting</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D11.7 Compromised third parties and supply chain</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D11.8 External identity and federation surface</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D11.9 Full DNS resolution path, infrastructure lifecycle, and cost/attribution</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+<tr><th scope="row">D11.10 Poisoned information sources and feeds</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in PrimAITE</td></tr>
+
+</tbody>
+</table>
+</details>
+
 
 
 
@@ -137,7 +776,7 @@ environment abstracts.</p>
 
 </main>
 <footer>
-  Companion artifacts to &ldquo;Realistic Enough for What?&rdquo; ·
+  Metrion · companion artifacts to &ldquo;Realistic Enough for What?&rdquo; ·
   Stratosphere Laboratory, CTU Prague · code MIT / data CC BY 4.0
 </footer>
 </body>

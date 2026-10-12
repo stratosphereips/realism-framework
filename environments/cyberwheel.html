@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cyberwheel · Realism Framework</title>
+<title>Cyberwheel · Metrion</title>
 <link rel="stylesheet" href="../assets/style.css">
 <script>(function(){try{var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);window.toggleTheme=function(){var c=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',c);localStorage.setItem('theme',c);};}catch(e){}})();</script>
 </head>
@@ -23,7 +23,7 @@
 <img class="radar" src="../figures/env_cyberwheel.png" alt="Cyberwheel coverage radar">
 <p>A defender-training simulation with decoys and deception and a modelled benign/telemetry layer; broad partial coverage.</p>
 <p><strong>Best suited for:</strong>
-Network architecture attack-path analysis.</p>
+Network architecture attack-path analysis, Operating against agent-targeted deception.</p>
 
 
 
@@ -125,8 +125,647 @@ environment abstracts.</p>
   <td>covers the required dimensions, but below the fit threshold</td>
 </tr>
 
+<tr>
+  <th scope="row"><a href="../use-cases/UC-D7.html">Cognitive resilience under adversarial content</a></th>
+  <td class="v-not_suitable">Not suitable</td>
+  <td>does not provide Temporal dynamics, a dimension this objective treats as critical</td>
+</tr>
+
+<tr>
+  <th scope="row"><a href="../use-cases/UC-A10.html">Operating against agent-targeted deception</a></th>
+  <td class="v-partial">Partial fit</td>
+  <td>covers the required dimensions, but below the fit threshold</td>
+</tr>
+
 </tbody>
 </table>
+<h2>Sub-dimension coverage (all 122 sub-dimensions)</h2>
+<p>This environment has been assessed at the sub-dimension level, with a recorded
+reason for every grade. The fit table above is computed at the dimension level,
+because most environments have not yet been assessed this finely and the two
+levels are not directly comparable.</p>
+<p class="note">Evidence: notes/src/environments.md Cyberwheel section; Claude + Codex dual extraction, 2026-10-12, reconciled under the structural-property and strict agent-exposure rules (blue defender as the agent under evaluation)</p>
+
+<details>
+<summary><strong>Topological realism</strong>:
+  0 full, 2 partial,
+  8 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D1.1 Multi-segment graph with enforced path behavior</th>
+  <td>Partial</td>
+  <td>YAML-configured subnets and hosts the agent observes; it places decoys within the network structure</td></tr>
+
+<tr><th scope="row">D1.2 Perimeter and egress asymmetry</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D1.3 Network devices as manageable entities</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D1.4 Layer 2/3 protocol fidelity</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D1.5 Position-dependent traffic visibility</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D1.6 Lateral reachability and file transfer</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D1.7 Discoverable (not given) topology</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D1.8 Staging and exfil-path asymmetry</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D1.9 Remote-access and cross-organizational boundaries</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D1.10 Believable decoy placement</th>
+  <td>Partial</td>
+  <td>deploying decoys in plausible network locations is the agent&#39;s central mechanic</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>Service fidelity</strong>:
+  0 full, 1 partial,
+  13 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D2.1 Real, versioned, fingerprintable daemons</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D2.2 Exploitable vulnerable builds with heterogeneous patch state</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D2.3 Web applications with real code paths and session stack</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D2.4 Email infrastructure</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D2.5 DNS infrastructure</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D2.6 File shares and enterprise repositories</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D2.7 Authentication-service and PKI surfaces</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D2.8 Network-device management services</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D2.9 Enterprise deployment and supply-chain services</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D2.10 Legitimate RMM and dual-use web services</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D2.11 Revocation-aware service state</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D2.12 Operational recovery surfaces</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D2.13 Dependency-aware response effects</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D2.14 Believable decoy service context</th>
+  <td>Partial</td>
+  <td>the decoys are decoy services/honeypots the agent deploys, abstractly plausible</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>OS fidelity</strong>:
+  0 full, 0 partial,
+  8 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D3.1 Persistence surface</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D3.2 Execution-flow control and scripting engines</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D3.3 Process, memory, and privilege-boundary primitives</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D3.4 Configuration stores, filesystem semantics, and kernel/trust layer</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D3.5 Credential material exposure on the endpoint</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D3.6 Discovery, evasion, and anti-forensics surface</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D3.7 Impact primitives and document-execution behavior</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D3.8 Restorable host objects</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>Identity realism</strong>:
+  0 full, 0 partial,
+  13 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D4.1 Populated directory and local identity stores</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D4.2 Credential landscape with realistic material in real locations</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D4.3 Kerberos and NTLM protocol fidelity</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D4.4 Federation, SSO, and web session material</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D4.5 MFA as a design space and auth-process modification surface</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D4.6 Account lifecycle and tiered administration</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D4.7 Session reality and valid-account usage</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D4.8 Certificate and PKI identity</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D4.9 Enumeration and identity-relationship surface</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D4.10 Human-layer impersonation and external-to-internal bridges</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D4.11 Policy-bound authorization as identity-layer state</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D4.12 Propagating credential control and access recovery</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D4.13 Believable deceptive identities</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>Temporal dynamics</strong>:
+  0 full, 0 partial,
+  11 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D5.1 Real wall-clock progression</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D5.2 Scheduled execution and reboot semantics</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D5.3 Session, token, and credential lifetimes</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D5.4 Human activity rhythms</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D5.5 Long-horizon engagement support</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D5.6 Event-correlation windows and rate-limiting</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D5.7 Delay-based evasion and staged operations</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D5.8 State decay and temporal detection signals</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D5.9 Non-instant defender effects with observable before/after</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D5.10 Retained containment and recovery history</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D5.11 Triggered and delayed activation of injected content</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>Defensive realism</strong>:
+  0 full, 1 partial,
+  11 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D6.1 Perimeter, egress, and traffic inspection</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D6.2 Email security stack</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D6.3 Endpoint protection, EDR, and exploit mitigations</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D6.4 Application-execution controls</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D6.5 Authentication hardening</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D6.6 Patching and configuration hardening</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D6.7 Segmentation enforcement</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D6.8 Detection rule library and cloud-plane controls</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D6.9 Data-loss prevention controls</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D6.10 Response, deception, and control-configuration action space</th>
+  <td>Partial</td>
+  <td>a real deception-centric response action set (deploy and manage decoys), imperfect and configurable</td></tr>
+
+<tr><th scope="row">D6.11 ML-based defenses, modeled and evadable</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D6.12 Cognition-targeted deception</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>Benign activity realism</strong>:
+  0 full, 1 partial,
+  9 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D7.1 Simulated users with role and behavioral diversity</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D7.2 User interactive input and active sessions</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D7.3 Browsing, document authorship, and accumulated web state</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D7.4 Email activity</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D7.5 Credential-use traffic and lived-in accumulation</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D7.6 Administrative and service baseline</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D7.7 Network and data-volume baselines</th>
+  <td>Partial</td>
+  <td>a green agent generates benign activity, a baseline the blue agent must separate from red (notable among simulators)</td></tr>
+
+<tr><th scope="row">D7.8 Share, repository, and peripheral activity</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D7.9 Temporal structure, prompt response, and signal quality</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D7.10 Business-context lure plausibility</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>Telemetry fidelity</strong>:
+  0 full, 2 partial,
+  9 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D8.1 Process and script execution telemetry</th>
+  <td>Absent</td>
+  <td>the observation is decoy/detector-alert centric and exposes no process-level telemetry</td></tr>
+
+<tr><th scope="row">D8.2 Authentication telemetry</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D8.3 Object access: file, registry, and IPC</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D8.4 Network telemetry</th>
+  <td>Absent</td>
+  <td>the observation is decoy/detector-alert centric and exposes no network-flow telemetry</td></tr>
+
+<tr><th scope="row">D8.5 Endpoint/EDR streams</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D8.6 Identity-provider, cloud-plane, and application logs</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D8.7 Schema fidelity, volume, and noise floor</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D8.8 Coverage gaps, timing, and retention tiers</th>
+  <td>Partial</td>
+  <td>probabilistic detection misses some red activity, an abstract telemetry coverage gap</td></tr>
+
+<tr><th scope="row">D8.9 Integrity, enrichment, and cross-system correlation</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D8.10 Response outcome telemetry with explainable decisions</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D8.11 Recovery and deception telemetry</th>
+  <td>Partial</td>
+  <td>decoy interactions raise alerts, the core deception-telemetry signal the agent reads</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>Action realism</strong>:
+  0 full, 2 partial,
+  9 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D9.1 Command fidelity</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D9.2 API fidelity</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D9.3 Parameter space</th>
+  <td>Partial</td>
+  <td>actions take parameters (which decoy type to deploy on which host)</td></tr>
+
+<tr><th scope="row">D9.4 Failure realism</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D9.5 Composition, tool transfer, and interactive sessions</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D9.6 State effects, scheduling, and cost budgets</th>
+  <td>Partial</td>
+  <td>deploying a decoy makes a persistent state change the agent observes through later alerts</td></tr>
+
+<tr><th scope="row">D9.7 Observability, C2 semantics, and defender action</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D9.8 Privilege-scoped action surface and realistic tool-use idiom</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D9.9 Distinct defender action families</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D9.10 Multi-step defender operations require ordered sequencing</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D9.11 Tool and action channel as an attack surface</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>Observation realism</strong>:
+  0 full, 6 partial,
+  6 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D10.1 Position- and privilege-dependent observability</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D10.2 Partial, incremental, scale-appropriate results</th>
+  <td>Partial</td>
+  <td>observations are partial abstract SIEM feature vectors, not a full state dump</td></tr>
+
+<tr><th scope="row">D10.3 Noise, uncertainty, and time-variance</th>
+  <td>Partial</td>
+  <td>green activity and probabilistic detection give the observation genuine noise and uncertainty</td></tr>
+
+<tr><th scope="row">D10.4 Protocol, banner, and metadata fidelity on reception</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D10.5 Defender-side observation surface</th>
+  <td>Partial</td>
+  <td>the agent works through a SIEM-style defender observation surface</td></tr>
+
+<tr><th scope="row">D10.6 Blind spots and observation cost</th>
+  <td>Partial</td>
+  <td>the agent sees only alerts, so undetected red activity is a blind spot</td></tr>
+
+<tr><th scope="row">D10.7 Feedback loops and multi-source correlation</th>
+  <td>Partial</td>
+  <td>observations feed the next action in a detect-and-respond loop</td></tr>
+
+<tr><th scope="row">D10.8 Oracle-free property</th>
+  <td>Partial</td>
+  <td>compromise is inferred from decoy and SIEM alerts rather than read from ground truth</td></tr>
+
+<tr><th scope="row">D10.9 Before/after response observation</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D10.10 High-context deception observation</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D10.11 Agent-directed content injection</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D10.12 Agent-targeted perception and trust manipulation</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>External information ecosystem</strong>:
+  0 full, 0 partial,
+  10 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D11.1 Authoritative DNS, WHOIS, and certificate transparency</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D11.2 OSINT surface: public web, social, repos, paste</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D11.3 Threat intel, reputation, and external scanner observability</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D11.4 Attacker-controlled domains, hosting, and C2 servers</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D11.5 Legitimate-service abuse for C2 blending</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D11.6 Attacker email and weaponized content hosting</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D11.7 Compromised third parties and supply chain</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D11.8 External identity and federation surface</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D11.9 Full DNS resolution path, infrastructure lifecycle, and cost/attribution</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+<tr><th scope="row">D11.10 Poisoned information sources and feeds</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in Cyberwheel</td></tr>
+
+</tbody>
+</table>
+</details>
+
 
 
 
@@ -137,7 +776,7 @@ environment abstracts.</p>
 
 </main>
 <footer>
-  Companion artifacts to &ldquo;Realistic Enough for What?&rdquo; ·
+  Metrion · companion artifacts to &ldquo;Realistic Enough for What?&rdquo; ·
   Stratosphere Laboratory, CTU Prague · code MIT / data CC BY 4.0
 </footer>
 </body>

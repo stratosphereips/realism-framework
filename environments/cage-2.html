@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CAGE-2 · Realism Framework</title>
+<title>CAGE-2 · Metrion</title>
 <link rel="stylesheet" href="../assets/style.css">
 <script>(function(){try{var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);window.toggleTheme=function(){var c=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',c);localStorage.setItem('theme',c);};}catch(e){}})();</script>
 </head>
@@ -23,7 +23,7 @@
 <img class="radar" src="../figures/env_cage-2.png" alt="CAGE-2 coverage radar">
 <p>The CAGE-2 autonomous-defence scenario (built on CybORG); an abstract host/service model with a single discovery-only &#39;green&#39; agent providing minimal benign activity.</p>
 <p><strong>Best suited for:</strong>
-Network architecture attack-path analysis.</p>
+Network architecture attack-path analysis, Operating against agent-targeted deception.</p>
 
 
 
@@ -125,8 +125,647 @@ environment abstracts.</p>
   <td>covers the required dimensions, but below the fit threshold</td>
 </tr>
 
+<tr>
+  <th scope="row"><a href="../use-cases/UC-D7.html">Cognitive resilience under adversarial content</a></th>
+  <td class="v-not_suitable">Not suitable</td>
+  <td>does not provide Temporal dynamics, a dimension this objective treats as critical</td>
+</tr>
+
+<tr>
+  <th scope="row"><a href="../use-cases/UC-A10.html">Operating against agent-targeted deception</a></th>
+  <td class="v-partial">Partial fit</td>
+  <td>covers the required dimensions, but below the fit threshold</td>
+</tr>
+
 </tbody>
 </table>
+<h2>Sub-dimension coverage (all 122 sub-dimensions)</h2>
+<p>This environment has been assessed at the sub-dimension level, with a recorded
+reason for every grade. The fit table above is computed at the dimension level,
+because most environments have not yet been assessed this finely and the two
+levels are not directly comparable.</p>
+<p class="note">Evidence: notes/src/environments.md CAGE-2 section; element-level grades from the 2026-10-12 Claude + Codex dual extraction, reconciled under the structural-property and strict agent-exposure rules (blue defender as the agent under evaluation)</p>
+
+<details>
+<summary><strong>Topological realism</strong>:
+  0 full, 2 partial,
+  8 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D1.1 Multi-segment graph with enforced path behavior</th>
+  <td>Partial</td>
+  <td>Three subnets constrain red movement, and Blue can observe resulting host-level alerts and connections, but routing, ACLs, and policy changes are abstract and not Blue-configurable.</td></tr>
+
+<tr><th scope="row">D1.2 Perimeter and egress asymmetry</th>
+  <td>Absent</td>
+  <td>Blue cannot observe or manipulate differentiated inbound, outbound, proxy, DNS-filtering, or egress paths; the initial foothold is simply pre-seeded.</td></tr>
+
+<tr><th scope="row">D1.3 Network devices as manageable entities</th>
+  <td>Absent</td>
+  <td>No router, switch, or firewall is exposed to Blue as an observable or manageable entity.</td></tr>
+
+<tr><th scope="row">D1.4 Layer 2/3 protocol fidelity</th>
+  <td>Absent</td>
+  <td>Blue has no access to ARP, DHCP, LLMNR, 802.1X, SMB-signing, or other packet-level L2/L3 behavior.</td></tr>
+
+<tr><th scope="row">D1.5 Position-dependent traffic visibility</th>
+  <td>Absent</td>
+  <td>Blue receives monitoring from all modeled hosts independent of sensor position and cannot sniff, mirror, or reposition sensors.</td></tr>
+
+<tr><th scope="row">D1.6 Lateral reachability and file transfer</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in CAGE-2</td></tr>
+
+<tr><th scope="row">D1.7 Discoverable (not given) topology</th>
+  <td>Absent</td>
+  <td>Blue receives a fixed host-indexed interface rather than discovering topology; Meander discovers hosts as Red, while B_line is given prior layout knowledge.</td></tr>
+
+<tr><th scope="row">D1.8 Staging and exfil-path asymmetry</th>
+  <td>Absent</td>
+  <td>No staging or exfiltration action or differentiated external connectivity is exposed to Blue.</td></tr>
+
+<tr><th scope="row">D1.9 Remote-access and cross-organizational boundaries</th>
+  <td>Absent</td>
+  <td>The environment exposes no VPN, jump-host, vendor, MSP, federation, or other cross-organizational boundary mechanism.</td></tr>
+
+<tr><th scope="row">D1.10 Believable decoy placement</th>
+  <td>Partial</td>
+  <td>Blue can deliberately place service decoys on ordinary hosts in the three subnets, although placement plausibility is not evaluated at production fidelity.</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>Service fidelity</strong>:
+  0 full, 2 partial,
+  12 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D2.1 Real, versioned, fingerprintable daemons</th>
+  <td>Absent</td>
+  <td>Named services are symbolic process and port models rather than real, versioned, protocol-conformant daemons that Blue can inspect.</td></tr>
+
+<tr><th scope="row">D2.2 Exploitable vulnerable builds with heterogeneous patch state</th>
+  <td>Absent</td>
+  <td>Red uses named abstract exploit classes, but Blue cannot observe real builds, CVEs, exploit parameters, or heterogeneous patch levels.</td></tr>
+
+<tr><th scope="row">D2.3 Web applications with real code paths and session stack</th>
+  <td>Absent</td>
+  <td>No real web application, code path, cookie, session stack, or federated web flow is exposed.</td></tr>
+
+<tr><th scope="row">D2.4 Email infrastructure</th>
+  <td>Absent</td>
+  <td>A named SMTP process or decoy is not an end-to-end mail system, and Blue cannot access mailboxes, mail rules, or mail policy.</td></tr>
+
+<tr><th scope="row">D2.5 DNS infrastructure</th>
+  <td>Absent</td>
+  <td>A nominal DNS-related host does not expose authoritative records, resolution behavior, TTLs, NXDOMAIN responses, or DNS logs to Blue.</td></tr>
+
+<tr><th scope="row">D2.6 File shares and enterprise repositories</th>
+  <td>Absent</td>
+  <td>Blue cannot observe or act on file shares, repositories, ACL-governed content, wikis, or document libraries.</td></tr>
+
+<tr><th scope="row">D2.7 Authentication-service and PKI surfaces</th>
+  <td>Absent</td>
+  <td>No authentication service, lockout policy, MFA service, password-hash surface, or certificate authority is exposed to Blue.</td></tr>
+
+<tr><th scope="row">D2.8 Network-device management services</th>
+  <td>Absent</td>
+  <td>No SNMP, device CLI, or network-device configuration service is observable or actionable.</td></tr>
+
+<tr><th scope="row">D2.9 Enterprise deployment and supply-chain services</th>
+  <td>Absent</td>
+  <td>No deployment platform, package registry, CI/CD pipeline, update service, or supply-chain trust relationship is modeled for Blue.</td></tr>
+
+<tr><th scope="row">D2.10 Legitimate RMM and dual-use web services</th>
+  <td>Absent</td>
+  <td>Blue cannot install, observe, or control RMM tools, cloud storage, messaging APIs, or dual-use web services.</td></tr>
+
+<tr><th scope="row">D2.11 Revocation-aware service state</th>
+  <td>Absent</td>
+  <td>There are no exposed credentials, tokens, sessions, or service caches whose behavior changes after revocation.</td></tr>
+
+<tr><th scope="row">D2.12 Operational recovery surfaces</th>
+  <td>Partial</td>
+  <td>Blue can deliberately restore a host from a modeled known-good image at an availability cost, but recovery is a single abstract action without dependencies or workflow.</td></tr>
+
+<tr><th scope="row">D2.13 Dependency-aware response effects</th>
+  <td>Absent</td>
+  <td>Blue cannot observe service dependency graphs or dependency-specific effects of restoration, removal, or isolation.</td></tr>
+
+<tr><th scope="row">D2.14 Believable decoy service context</th>
+  <td>Partial</td>
+  <td>Blue can deploy named Apache, SSH, SMTP, Tomcat, and other service decoys, but they have no real protocol content, data, or business workflow.</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>OS fidelity</strong>:
+  0 full, 1 partial,
+  7 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D3.1 Persistence surface</th>
+  <td>Absent</td>
+  <td>Persistence is only an abstract consequence of privileged red access; Blue cannot inspect or modify any actual persistence mechanism.</td></tr>
+
+<tr><th scope="row">D3.2 Execution-flow control and scripting engines</th>
+  <td>Absent</td>
+  <td>No shell, scripting engine, loader behavior, allowlisting system, syscall control, or host firewall is exposed to Blue.</td></tr>
+
+<tr><th scope="row">D3.3 Process, memory, and privilege-boundary primitives</th>
+  <td>Partial</td>
+  <td>Remove clears only user-level red; privileged red survives and requires Restore, an abstract privilege-boundary effect the agent must handle; no real process or memory primitives</td></tr>
+
+<tr><th scope="row">D3.4 Configuration stores, filesystem semantics, and kernel/trust layer</th>
+  <td>Absent</td>
+  <td>Blue cannot inspect or manipulate real registry, filesystem, kernel, driver, code-signing, Secure Boot, or TPM state.</td></tr>
+
+<tr><th scope="row">D3.5 Credential material exposure on the endpoint</th>
+  <td>Absent</td>
+  <td>No endpoint credential stores or harvestable LSASS, SAM, shadow, keyring, browser, SSH-key, or cloud-CLI artifacts are exposed to Blue.</td></tr>
+
+<tr><th scope="row">D3.6 Discovery, evasion, and anti-forensics surface</th>
+  <td>Absent</td>
+  <td>Blue has no realistic host inventory, anti-analysis, hidden-object, log-clearing, history-clearing, or anti-forensics surface.</td></tr>
+
+<tr><th scope="row">D3.7 Impact primitives and document-execution behavior</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in CAGE-2</td></tr>
+
+<tr><th scope="row">D3.8 Restorable host objects</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in CAGE-2</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>Identity realism</strong>:
+  0 full, 0 partial,
+  13 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D4.1 Populated directory and local identity stores</th>
+  <td>Absent</td>
+  <td>Any internal user labels are not exposed to Blue as an enumerable directory or local identity store.</td></tr>
+
+<tr><th scope="row">D4.2 Credential landscape with realistic material in real locations</th>
+  <td>Absent</td>
+  <td>Blue cannot observe passwords, reused or default credentials, service-account secrets, or credentials accumulated in realistic locations.</td></tr>
+
+<tr><th scope="row">D4.3 Kerberos and NTLM protocol fidelity</th>
+  <td>Absent</td>
+  <td>Kerberos, NTLM, relay, roasting, and poisonable name-resolution protocols are not exposed.</td></tr>
+
+<tr><th scope="row">D4.4 Federation, SSO, and web session material</th>
+  <td>Absent</td>
+  <td>No SAML, OAuth, OIDC, JWT, web-cookie, API-token, or cross-tenant session material exists at Blue&#39;s interface.</td></tr>
+
+<tr><th scope="row">D4.5 MFA as a design space and auth-process modification surface</th>
+  <td>Absent</td>
+  <td>Blue cannot observe or configure MFA factors, conditional access, user prompt behavior, or authentication-package modification.</td></tr>
+
+<tr><th scope="row">D4.6 Account lifecycle and tiered administration</th>
+  <td>Absent</td>
+  <td>No account creation, disabling, reset, group change, administrative tier, LAPS, MSA, or gMSA operation is available.</td></tr>
+
+<tr><th scope="row">D4.7 Session reality and valid-account usage</th>
+  <td>Absent</td>
+  <td>Blue cannot observe interactive, network, RDP, sudo, runas, or S4U sessions or their credential artifacts.</td></tr>
+
+<tr><th scope="row">D4.8 Certificate and PKI identity</th>
+  <td>Absent</td>
+  <td>No certificate authority, certificate template, client-certificate authentication, issuance, renewal, or revocation surface is exposed.</td></tr>
+
+<tr><th scope="row">D4.9 Enumeration and identity-relationship surface</th>
+  <td>Absent</td>
+  <td>Blue has no LDAP, directory-command, or BloodHound-like identity enumeration interface.</td></tr>
+
+<tr><th scope="row">D4.10 Human-layer impersonation and external-to-internal bridges</th>
+  <td>Absent</td>
+  <td>The phishing foothold is pre-seeded; Blue cannot observe or interact with email impersonation, external identities, guests, vendors, or service principals.</td></tr>
+
+<tr><th scope="row">D4.11 Policy-bound authorization as identity-layer state</th>
+  <td>Absent</td>
+  <td>No group-, claim-, role-, or conditional-policy-derived authorization state is visible or configurable.</td></tr>
+
+<tr><th scope="row">D4.12 Propagating credential control and access recovery</th>
+  <td>Absent</td>
+  <td>Blue has no credential revocation, unlock, reissue, group restoration, or access-validation workflow.</td></tr>
+
+<tr><th scope="row">D4.13 Believable deceptive identities</th>
+  <td>Absent</td>
+  <td>Blue can deploy service decoys but not believable decoy accounts, credentials, tokens, or personas.</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>Temporal dynamics</strong>:
+  0 full, 0 partial,
+  11 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D5.1 Real wall-clock progression</th>
+  <td>Absent</td>
+  <td>Time advances in discrete turns, with no real wall clock, NTP behavior, uptime history, or fine-grained event timestamps exposed.</td></tr>
+
+<tr><th scope="row">D5.2 Scheduled execution and reboot semantics</th>
+  <td>Absent</td>
+  <td>No scheduled tasks, timers, jitter, reboot execution, or persistence behavior across real reboot boundaries is available.</td></tr>
+
+<tr><th scope="row">D5.3 Session, token, and credential lifetimes</th>
+  <td>Absent</td>
+  <td>No sessions, tickets, tokens, certificates, password ages, or lockout counters expire according to elapsed time.</td></tr>
+
+<tr><th scope="row">D5.4 Human activity rhythms</th>
+  <td>Absent</td>
+  <td>The discovery-only Green agent has no business hours, weekends, holidays, shifts, or human response timing.</td></tr>
+
+<tr><th scope="row">D5.5 Long-horizon engagement support</th>
+  <td>Absent</td>
+  <td>Episodes last a fixed 30, 50, or 100 turns rather than weeks or months, with no patch drift or long-term log accumulation.</td></tr>
+
+<tr><th scope="row">D5.6 Event-correlation windows and rate-limiting</th>
+  <td>Absent</td>
+  <td>No real-time correlation window, retention window, account lockout, API rate limit, or connection-rate cap is exposed.</td></tr>
+
+<tr><th scope="row">D5.7 Delay-based evasion and staged operations</th>
+  <td>Absent</td>
+  <td>Blue cannot schedule delays, observe sleeping execution, or conduct staged operations governed by real inter-stage time.</td></tr>
+
+<tr><th scope="row">D5.8 State decay and temporal detection signals</th>
+  <td>Absent</td>
+  <td>No cache TTLs, log rotation, shadow-copy aging, certificate expiry, or clock-based anomaly signals are modeled for Blue.</td></tr>
+
+<tr><th scope="row">D5.9 Non-instant defender effects with observable before/after</th>
+  <td>Absent</td>
+  <td>Blue actions resolve within a turn rather than rolling out over time with observable intermediate states.</td></tr>
+
+<tr><th scope="row">D5.10 Retained containment and recovery history</th>
+  <td>Absent</td>
+  <td>The interface may retain coarse prior-attack indicators, but it exposes no durable timeline of isolation, restore, rollback, or account-recovery changes.</td></tr>
+
+<tr><th scope="row">D5.11 Triggered and delayed activation of injected content</th>
+  <td>Absent</td>
+  <td>No agent-ingested content or injected instruction can remain dormant pending a timer or in-environment trigger.</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>Defensive realism</strong>:
+  0 full, 1 partial,
+  11 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D6.1 Perimeter, egress, and traffic inspection</th>
+  <td>Absent</td>
+  <td>Static simulated reachability is not exposed as a Blue-operated firewall, WAF, IPS, proxy, DNS filter, CASB, or rate limiter.</td></tr>
+
+<tr><th scope="row">D6.2 Email security stack</th>
+  <td>Absent</td>
+  <td>No mail gateway, attachment sandbox, URL detonation, mailbox audit, or anomalous-sending detector exists.</td></tr>
+
+<tr><th scope="row">D6.3 Endpoint protection, EDR, and exploit mitigations</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in CAGE-2</td></tr>
+
+<tr><th scope="row">D6.4 Application-execution controls</th>
+  <td>Absent</td>
+  <td>No application allowlisting, script restriction, macro policy, SmartScreen, Gatekeeper, or comparable execution control is available.</td></tr>
+
+<tr><th scope="row">D6.5 Authentication hardening</th>
+  <td>Absent</td>
+  <td>Blue cannot configure lockout, MFA, NTLM restriction, SMB signing, LDAP binding, Kerberos-only enforcement, or federation hardening.</td></tr>
+
+<tr><th scope="row">D6.6 Patching and configuration hardening</th>
+  <td>Absent</td>
+  <td>Original CAGE-2 exposes no Blue patch or configuration-hardening action and no observable heterogeneous patch lifecycle.</td></tr>
+
+<tr><th scope="row">D6.7 Segmentation enforcement</th>
+  <td>Absent</td>
+  <td>Blue cannot inspect, tighten, log, or otherwise operate segmentation controls; isolation actions belong to later CAGE scenarios, not CAGE-2.</td></tr>
+
+<tr><th scope="row">D6.8 Detection rule library and cloud-plane controls</th>
+  <td>Absent</td>
+  <td>Alerts are simulator outputs rather than a tunable detection-rule library, and no cloud IAM or posture-control plane exists.</td></tr>
+
+<tr><th scope="row">D6.9 Data-loss prevention controls</th>
+  <td>Absent</td>
+  <td>No endpoint, email, web, or cloud DLP inspection or response is exposed.</td></tr>
+
+<tr><th scope="row">D6.10 Response, deception, and control-configuration action space</th>
+  <td>Partial</td>
+  <td>Blue has distinct Analyse, Remove, Restore, and service-decoy actions with imperfect removal and explicit restore cost, but no tunable controls or rollout process.</td></tr>
+
+<tr><th scope="row">D6.11 ML-based defenses, modeled and evadable</th>
+  <td>Absent</td>
+  <td>No ML-based malware, anomaly, or content detector is exposed as an evadable defensive component.</td></tr>
+
+<tr><th scope="row">D6.12 Cognition-targeted deception</th>
+  <td>Absent</td>
+  <td>Service decoys target Red&#39;s exploit selection, not a reading agent&#39;s reasoning or interpretation of content.</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>Benign activity realism</strong>:
+  0 full, 1 partial,
+  9 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D7.1 Simulated users with role and behavioral diversity</th>
+  <td>Absent</td>
+  <td>The Green agent only performs discovery and exposes no role, persona, workforce, application-profile, or behavioral diversity to Blue.</td></tr>
+
+<tr><th scope="row">D7.2 User interactive input and active sessions</th>
+  <td>Absent</td>
+  <td>No keyboard, mouse, clipboard, screen, active-window, console, RDP, or SSH user session is generated.</td></tr>
+
+<tr><th scope="row">D7.3 Browsing, document authorship, and accumulated web state</th>
+  <td>Absent</td>
+  <td>No browsing, authenticated web use, browser state, document authorship, or accumulated user content is exposed.</td></tr>
+
+<tr><th scope="row">D7.4 Email activity</th>
+  <td>Absent</td>
+  <td>No mailbox, calendar, distribution-list, correspondent, or readable email activity is generated.</td></tr>
+
+<tr><th scope="row">D7.5 Credential-use traffic and lived-in accumulation</th>
+  <td>Absent</td>
+  <td>Green discovery produces no real authentication traffic, typed passwords, tickets, hashes, or lived-in credential artifacts.</td></tr>
+
+<tr><th scope="row">D7.6 Administrative and service baseline</th>
+  <td>Absent</td>
+  <td>No legitimate administrator tooling, maintenance, backup, patching, updater, MDM, SCCM, or service-operations baseline is exposed.</td></tr>
+
+<tr><th scope="row">D7.7 Network and data-volume baselines</th>
+  <td>Partial</td>
+  <td>Green generates benign discovery traffic that Blue can confuse with Red reconnaissance, but there is no realistic traffic mix, DNS distribution, or data-volume baseline.</td></tr>
+
+<tr><th scope="row">D7.8 Share, repository, and peripheral activity</th>
+  <td>Absent</td>
+  <td>No share, collaboration site, repository, USB, printer, Bluetooth, or coherent business-content activity occurs.</td></tr>
+
+<tr><th scope="row">D7.9 Temporal structure, prompt response, and signal quality</th>
+  <td>Absent</td>
+  <td>Green activity has no business-hour structure, cross-user variance, phishing decisions, MFA responses, or prompt behavior.</td></tr>
+
+<tr><th scope="row">D7.10 Business-context lure plausibility</th>
+  <td>Absent</td>
+  <td>Decoy services have no surrounding business content, and Green never uses them, so Blue cannot assess lure plausibility within a genuine baseline.</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>Telemetry fidelity</strong>:
+  0 full, 4 partial,
+  7 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D8.1 Process and script execution telemetry</th>
+  <td>Partial</td>
+  <td>Monitor exposes abstract suspicious processes associated with connections, but lacks command lines, parents, hashes, integrity levels, script logs, and real event schemas.</td></tr>
+
+<tr><th scope="row">D8.2 Authentication telemetry</th>
+  <td>Absent</td>
+  <td>No Kerberos, NTLM, logon, account-management, PAM, sshd, sudo, wtmp, or correlated authentication records are exposed.</td></tr>
+
+<tr><th scope="row">D8.3 Object access: file, registry, and IPC</th>
+  <td>Absent</td>
+  <td>Analyse can return coarse attributes of files associated with alerts, but no file, registry, IPC, or raw-disk access events are recorded.</td></tr>
+
+<tr><th scope="row">D8.4 Network telemetry</th>
+  <td>Partial</td>
+  <td>Monitor exposes abstract flagged network connections and associated processes, but no realistic five-tuples, bytes, durations, DNS, HTTP, TLS, Zeek, Suricata, or flow schema.</td></tr>
+
+<tr><th scope="row">D8.5 Endpoint/EDR streams</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in CAGE-2</td></tr>
+
+<tr><th scope="row">D8.6 Identity-provider, cloud-plane, and application logs</th>
+  <td>Absent</td>
+  <td>No identity-provider, cloud-plane, Kubernetes, email, proxy, CASB, application, or database audit source is available.</td></tr>
+
+<tr><th scope="row">D8.7 Schema fidelity, volume, and noise floor</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in CAGE-2</td></tr>
+
+<tr><th scope="row">D8.8 Coverage gaps, timing, and retention tiers</th>
+  <td>Partial</td>
+  <td>probabilistic detection misses some red activity, an abstract telemetry coverage gap; no retention tiers or ingestion-lag modeling</td></tr>
+
+<tr><th scope="row">D8.9 Integrity, enrichment, and cross-system correlation</th>
+  <td>Absent</td>
+  <td>No SIEM copy, sensor heartbeat, tamper evidence, external enrichment, stable cross-source identifiers, or detection backtesting is exposed.</td></tr>
+
+<tr><th scope="row">D8.10 Response outcome telemetry with explainable decisions</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in CAGE-2</td></tr>
+
+<tr><th scope="row">D8.11 Recovery and deception telemetry</th>
+  <td>Partial</td>
+  <td>a decoy raises an alert when red interacts with it, an abstract deception-telemetry signal; recovery (Restore) telemetry is coarse</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>Action realism</strong>:
+  0 full, 3 partial,
+  8 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D9.1 Command fidelity</th>
+  <td>Absent</td>
+  <td>Blue has no shell or REPL and receives neither real stdout, stderr, exit codes, pipes, redirects, nor command semantics.</td></tr>
+
+<tr><th scope="row">D9.2 API fidelity</th>
+  <td>Absent</td>
+  <td>No Win32, NT, POSIX, cloud, Kubernetes, or other real programmatic API is available to Blue.</td></tr>
+
+<tr><th scope="row">D9.3 Parameter space</th>
+  <td>Partial</td>
+  <td>Blue actions take typed choices such as action family, hostname, and decoy type, but the parameter space is a small handcrafted menu.</td></tr>
+
+<tr><th scope="row">D9.4 Failure realism</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in CAGE-2</td></tr>
+
+<tr><th scope="row">D9.5 Composition, tool transfer, and interactive sessions</th>
+  <td>Absent</td>
+  <td>Operations are atomic high-level actions; Blue cannot compose primitives, transfer tools, or maintain an interactive session.</td></tr>
+
+<tr><th scope="row">D9.6 State effects, scheduling, and cost budgets</th>
+  <td>Partial</td>
+  <td>Decoys and remediation change persistent simulated state and Restore carries a reward cost, but there is no real scheduling, execution time, or artifact telemetry.</td></tr>
+
+<tr><th scope="row">D9.7 Observability, C2 semantics, and defender action</th>
+  <td>Absent</td>
+  <td>Blue acts through abstract Gym actions and feature vectors rather than human-equivalent SIEM, EDR, firewall, or asynchronous C2 interfaces.</td></tr>
+
+<tr><th scope="row">D9.8 Privilege-scoped action surface and realistic tool-use idiom</th>
+  <td>Absent</td>
+  <td>Blue has no privilege-bearing shell or API, and cannot use real tools such as Metasploit, Impacket, BloodHound, or sqlmap.</td></tr>
+
+<tr><th scope="row">D9.9 Distinct defender action families</th>
+  <td>Partial</td>
+  <td>The Blue menu preserves analysis, process removal, whole-host restoration, and several deception families instead of one generic respond action.</td></tr>
+
+<tr><th scope="row">D9.10 Multi-step defender operations require ordered sequencing</th>
+  <td>Absent</td>
+  <td>Remove, Restore, and decoy deployment are single-step super-actions with no required review, selection, verification, or validation sequence.</td></tr>
+
+<tr><th scope="row">D9.11 Tool and action channel as an attack surface</th>
+  <td>Absent</td>
+  <td>The fixed action API cannot be poisoned or manipulated through adversarial tool definitions, runtime text, or agent-driven exfiltration.</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>Observation realism</strong>:
+  0 full, 7 partial,
+  5 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D10.1 Position- and privilege-dependent observability</th>
+  <td>Absent</td>
+  <td>Blue&#39;s monitoring is effectively network-wide and not conditioned on its network position or privilege; Red&#39;s visibility is more position-dependent but is not the evaluated interface.</td></tr>
+
+<tr><th scope="row">D10.2 Partial, incremental, scale-appropriate results</th>
+  <td>Partial</td>
+  <td>Blue receives incremental per-turn detections under partial observability, but only for 13 fixed hosts with no enterprise-scale result sets, pagination, or throttling.</td></tr>
+
+<tr><th scope="row">D10.3 Noise, uncertainty, and time-variance</th>
+  <td>Partial</td>
+  <td>Benign Green scans create source ambiguity, exploit detection can be missed, and indicators change across turns, but uncertainty is highly simplified.</td></tr>
+
+<tr><th scope="row">D10.4 Protocol, banner, and metadata fidelity on reception</th>
+  <td>Absent</td>
+  <td>Blue receives vectors or simulator dictionaries rather than protocol packets, banners, headers, error codes, timing, or consistent multi-path metadata.</td></tr>
+
+<tr><th scope="row">D10.5 Defender-side observation surface</th>
+  <td>Partial</td>
+  <td>Blue has an abstract alert feed plus host Analyse action, but no realistic SIEM, EDR, or SOAR syntax, pagination, latency, severity, or raw-event pivot.</td></tr>
+
+<tr><th scope="row">D10.6 Blind spots and observation cost</th>
+  <td>Partial</td>
+  <td>Missed detections create blind spots and Analyse consumes a turn, but Blue has global host monitoring and observations generate no realistic investigative telemetry.</td></tr>
+
+<tr><th scope="row">D10.7 Feedback loops and multi-source correlation</th>
+  <td>Partial</td>
+  <td>Per-turn alerts can guide Analyse, Remove, Restore, and decoy choices, but there are no independent sources whose evidence must be correlated or reconciled.</td></tr>
+
+<tr><th scope="row">D10.8 Oracle-free property</th>
+  <td>Partial</td>
+  <td>compromise is inferred from indicators rather than read from ground truth, so the agent gets no oracle</td></tr>
+
+<tr><th scope="row">D10.9 Before/after response observation</th>
+  <td>Partial</td>
+  <td>Blue can compare later alerts and rewards after Remove or Restore, but receives no explicit reachability, integrity, policy, or service-health before-and-after view.</td></tr>
+
+<tr><th scope="row">D10.10 High-context deception observation</th>
+  <td>Absent</td>
+  <td>not in the blue agent&#39;s observations or action set in CAGE-2</td></tr>
+
+<tr><th scope="row">D10.11 Agent-directed content injection</th>
+  <td>Absent</td>
+  <td>No attacker-controlled text, document, email, filename, ticket, alert body, or tool output reaches Blue&#39;s normal observation channel.</td></tr>
+
+<tr><th scope="row">D10.12 Agent-targeted perception and trust manipulation</th>
+  <td>Absent</td>
+  <td>The vector interface exposes no renderable content, citations, links, trust signals, or obfuscated payloads that can manipulate agent perception.</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>External information ecosystem</strong>:
+  0 full, 0 partial,
+  10 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D11.1 Authoritative DNS, WHOIS, and certificate transparency</th>
+  <td>Absent</td>
+  <td>Blue cannot query external DNS, reverse DNS, WHOIS, RDAP, passive DNS, certificate transparency, OCSP, or CRLs.</td></tr>
+
+<tr><th scope="row">D11.2 OSINT surface: public web, social, repos, paste</th>
+  <td>Absent</td>
+  <td>No public website, employee social footprint, breach corpus, public repository, paste site, search engine, Shodan, or Censys surface exists.</td></tr>
+
+<tr><th scope="row">D11.3 Threat intel, reputation, and external scanner observability</th>
+  <td>Absent</td>
+  <td>No threat-intelligence, domain, IP, or hash reputation feed or external-scanner observation is available.</td></tr>
+
+<tr><th scope="row">D11.4 Attacker-controlled domains, hosting, and C2 servers</th>
+  <td>Absent</td>
+  <td>No attacker domain registration, hosting, redirector, TLS, takedown, or HTTP, DNS, or custom C2 infrastructure is modeled.</td></tr>
+
+<tr><th scope="row">D11.5 Legitimate-service abuse for C2 blending</th>
+  <td>Absent</td>
+  <td>No CDN, SaaS, code-hosting, messaging, Tor, or residential-proxy service can be abused for command and control.</td></tr>
+
+<tr><th scope="row">D11.6 Attacker email and weaponized content hosting</th>
+  <td>Absent</td>
+  <td>The pre-seeded phishing foothold provides no observable attacker mail system, domain policy, phishing page, exploit kit, or malware hosting.</td></tr>
+
+<tr><th scope="row">D11.7 Compromised third parties and supply chain</th>
+  <td>Absent</td>
+  <td>No third party, SaaS vendor, MSP, update server, package registry, maintainer, or CI/CD pipeline is a compromisable attack path.</td></tr>
+
+<tr><th scope="row">D11.8 External identity and federation surface</th>
+  <td>Absent</td>
+  <td>No vendor identity provider, external tenant, OAuth consent, SAML or OIDC trust, or cross-cloud identity boundary is represented.</td></tr>
+
+<tr><th scope="row">D11.9 Full DNS resolution path, infrastructure lifecycle, and cost/attribution</th>
+  <td>Absent</td>
+  <td>No traversable DNS hierarchy, infrastructure aging, reputation propagation, monetary cost, burn cycle, or attribution trail exists.</td></tr>
+
+<tr><th scope="row">D11.10 Poisoned information sources and feeds</th>
+  <td>Absent</td>
+  <td>Blue consults no retrieval store, threat feed, repository, web source, or package index that could contain poisoned information.</td></tr>
+
+</tbody>
+</table>
+</details>
+
 
 
 
@@ -137,7 +776,7 @@ environment abstracts.</p>
 
 </main>
 <footer>
-  Companion artifacts to &ldquo;Realistic Enough for What?&rdquo; ·
+  Metrion · companion artifacts to &ldquo;Realistic Enough for What?&rdquo; ·
   Stratosphere Laboratory, CTU Prague · code MIT / data CC BY 4.0
 </footer>
 </body>

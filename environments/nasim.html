@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>NASim · Realism Framework</title>
+<title>NASim · Metrion</title>
 <link rel="stylesheet" href="../assets/style.css">
 <script>(function(){try{var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);window.toggleTheme=function(){var c=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',c);localStorage.setItem('theme',c);};}catch(e){}})();</script>
 </head>
@@ -125,8 +125,647 @@ environment abstracts.</p>
   <td>covers the required dimensions, but below the fit threshold</td>
 </tr>
 
+<tr>
+  <th scope="row"><a href="../use-cases/UC-D7.html">Cognitive resilience under adversarial content</a></th>
+  <td class="v-not_suitable">Not suitable</td>
+  <td>does not provide Temporal dynamics, Benign activity realism, Telemetry fidelity, dimensions this objective treats as critical</td>
+</tr>
+
+<tr>
+  <th scope="row"><a href="../use-cases/UC-A10.html">Operating against agent-targeted deception</a></th>
+  <td class="v-not_suitable">Not suitable</td>
+  <td>does not provide Benign activity realism, Action realism, dimensions this objective treats as critical</td>
+</tr>
+
 </tbody>
 </table>
+<h2>Sub-dimension coverage (all 122 sub-dimensions)</h2>
+<p>This environment has been assessed at the sub-dimension level, with a recorded
+reason for every grade. The fit table above is computed at the dimension level,
+because most environments have not yet been assessed this finely and the two
+levels are not directly comparable.</p>
+<p class="note">Evidence: notes/src/environments.md NASim dimension-level analysis; element-level grades from the 2026-10-08 Claude + Codex dual extraction, reconciled under the structural-property vs real-artifact rule (92% draft agreement; 10 cells adjudicated)</p>
+
+<details>
+<summary><strong>Topological realism</strong>:
+  0 full, 5 partial,
+  5 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D1.1 Multi-segment graph with enforced path behavior</th>
+  <td>Partial</td>
+  <td>Subnet adjacency and service-specific firewall rules constrain attacks; routing and defender reconfiguration are abstracted. [Scenario documentation](https://networkattacksimulator.readthedocs.io/en/latest/tutorials/custom_scenarios.html).</td></tr>
+
+<tr><th scope="row">D1.2 Perimeter and egress asymmetry</th>
+  <td>Partial</td>
+  <td>Public/private subnets and directional firewall rules model exposure asymmetry, without proxies or detection-sensitive egress. [Scenario documentation](https://networkattacksimulator.readthedocs.io/en/latest/tutorials/custom_scenarios.html).</td></tr>
+
+<tr><th scope="row">D1.3 Network devices as manageable entities</th>
+  <td>Absent</td>
+  <td>Firewalls are rule mappings, without manageable router, switch, or firewall entities. [Network implementation](https://github.com/Jjschwartz/NetworkAttackSimulator/blob/master/nasim/envs/network.py).</td></tr>
+
+<tr><th scope="row">D1.4 Layer 2/3 protocol fidelity</th>
+  <td>Absent</td>
+  <td>Connectivity checks use adjacency and service labels; no packet-level ARP, DHCP, or relay protocols. [Network implementation](https://github.com/Jjschwartz/NetworkAttackSimulator/blob/master/nasim/envs/network.py).</td></tr>
+
+<tr><th scope="row">D1.5 Position-dependent traffic visibility</th>
+  <td>Absent</td>
+  <td>Position affects reachability, but traffic interception, SPAN, and sensor placement are unmodeled. [Network implementation](https://github.com/Jjschwartz/NetworkAttackSimulator/blob/master/nasim/envs/network.py).</td></tr>
+
+<tr><th scope="row">D1.6 Lateral reachability and file transfer</th>
+  <td>Partial</td>
+  <td>Compromised hosts enable topology-constrained lateral exploitation; file transfers and internal flows are unmodeled. [Network implementation](https://github.com/Jjschwartz/NetworkAttackSimulator/blob/master/nasim/envs/network.py).</td></tr>
+
+<tr><th scope="row">D1.7 Discoverable (not given) topology</th>
+  <td>Partial</td>
+  <td>Subnet scans discover hosts incrementally, but action spaces disclose addresses even under partial observability. [Sim-to-real limitations](https://networkattacksimulator.readthedocs.io/en/latest/explanations/sim_to_real.html).</td></tr>
+
+<tr><th scope="row">D1.8 Staging and exfil-path asymmetry</th>
+  <td>Absent</td>
+  <td>External connectivity differs, but data staging, transfer, and exfiltration paths are unmodeled. [Network implementation](https://github.com/Jjschwartz/NetworkAttackSimulator/blob/master/nasim/envs/network.py).</td></tr>
+
+<tr><th scope="row">D1.9 Remote-access and cross-organizational boundaries</th>
+  <td>Absent</td>
+  <td>The internet boundary lacks VPNs, authenticated jump services, vendor access, or organizational federation. [Network implementation](https://github.com/Jjschwartz/NetworkAttackSimulator/blob/master/nasim/envs/network.py).</td></tr>
+
+<tr><th scope="row">D1.10 Believable decoy placement</th>
+  <td>Partial</td>
+  <td>The small-honeypot benchmark embeds its decoy among ordinary hosts in subnet 3, using abstract connectivity. [Honeypot scenario](https://github.com/Jjschwartz/NetworkAttackSimulator/blob/master/nasim/scenarios/benchmark/small-honeypot.yaml).</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>Service fidelity</strong>:
+  0 full, 1 partial,
+  13 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D2.1 Real, versioned, fingerprintable daemons</th>
+  <td>Absent</td>
+  <td>Services are configurable labels, without running daemons, versions, banners, or protocol responses. [Scenario documentation](https://networkattacksimulator.readthedocs.io/en/latest/tutorials/custom_scenarios.html).</td></tr>
+
+<tr><th scope="row">D2.2 Exploitable vulnerable builds with heterogeneous patch state</th>
+  <td>Absent</td>
+  <td>Exploit susceptibility uses service/OS predicates and probabilities; vulnerable builds and patch states are absent. [Scenario documentation](https://networkattacksimulator.readthedocs.io/en/latest/tutorials/custom_scenarios.html).</td></tr>
+
+<tr><th scope="row">D2.3 Web applications with real code paths and session stack</th>
+  <td>Absent</td>
+  <td>HTTP labels provide attack predicates, without application code, cookies, sessions, or federation flows. [Scenario documentation](https://networkattacksimulator.readthedocs.io/en/latest/tutorials/custom_scenarios.html).</td></tr>
+
+<tr><th scope="row">D2.4 Email infrastructure</th>
+  <td>Absent</td>
+  <td>Service labels do not implement mail transport, mailboxes, mail rules, or domain authentication. [Scenario documentation](https://networkattacksimulator.readthedocs.io/en/latest/tutorials/custom_scenarios.html).</td></tr>
+
+<tr><th scope="row">D2.5 DNS infrastructure</th>
+  <td>Absent</td>
+  <td>No DNS records, resolution behavior, TTLs, or query traffic are modeled. [Scenario documentation](https://networkattacksimulator.readthedocs.io/en/latest/tutorials/custom_scenarios.html).</td></tr>
+
+<tr><th scope="row">D2.6 File shares and enterprise repositories</th>
+  <td>Absent</td>
+  <td>Hosts contain no file-share contents, enterprise repositories, documents, or resource ACLs. [Scenario documentation](https://networkattacksimulator.readthedocs.io/en/latest/tutorials/custom_scenarios.html).</td></tr>
+
+<tr><th scope="row">D2.7 Authentication-service and PKI surfaces</th>
+  <td>Absent</td>
+  <td>No credential-verifying authentication services, lockout mechanisms, MFA, hashes, or certificate enrollment. [Scenario documentation](https://networkattacksimulator.readthedocs.io/en/latest/tutorials/custom_scenarios.html).</td></tr>
+
+<tr><th scope="row">D2.8 Network-device management services</th>
+  <td>Absent</td>
+  <td>No functioning SNMP, network-device CLI, or configuration-backup services. [Scenario documentation](https://networkattacksimulator.readthedocs.io/en/latest/tutorials/custom_scenarios.html).</td></tr>
+
+<tr><th scope="row">D2.9 Enterprise deployment and supply-chain services</th>
+  <td>Absent</td>
+  <td>Deployment agents, package registries, pipelines, signed artifacts, and update trust are unmodeled. [Scenario documentation](https://networkattacksimulator.readthedocs.io/en/latest/tutorials/custom_scenarios.html).</td></tr>
+
+<tr><th scope="row">D2.10 Legitimate RMM and dual-use web services</th>
+  <td>Absent</td>
+  <td>No functional remote-management products or reachable dual-use web APIs. [Scenario documentation](https://networkattacksimulator.readthedocs.io/en/latest/tutorials/custom_scenarios.html).</td></tr>
+
+<tr><th scope="row">D2.11 Revocation-aware service state</th>
+  <td>Absent</td>
+  <td>Services have no credential revocation, token consumers, sessions, or cache semantics. [Scenario documentation](https://networkattacksimulator.readthedocs.io/en/latest/tutorials/custom_scenarios.html).</td></tr>
+
+<tr><th scope="row">D2.12 Operational recovery surfaces</th>
+  <td>Absent</td>
+  <td>No operational backup, restore, rollback, or recovery service workflows. [Scenario documentation](https://networkattacksimulator.readthedocs.io/en/latest/tutorials/custom_scenarios.html).</td></tr>
+
+<tr><th scope="row">D2.13 Dependency-aware response effects</th>
+  <td>Absent</td>
+  <td>Service presence is static; application dependency failures and defensive response effects are unmodeled. [Scenario documentation](https://networkattacksimulator.readthedocs.io/en/latest/tutorials/custom_scenarios.html).</td></tr>
+
+<tr><th scope="row">D2.14 Believable decoy service context</th>
+  <td>Partial</td>
+  <td>The honeypot shares ordinary hosts&#39; service/process labels, but lacks protocol behavior and business content. [Honeypot scenario](https://github.com/Jjschwartz/NetworkAttackSimulator/blob/master/nasim/scenarios/benchmark/small-honeypot.yaml).</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>OS fidelity</strong>:
+  0 full, 0 partial,
+  8 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D3.1 Persistence surface</th>
+  <td>Absent</td>
+  <td>Persistent compromise flags do not implement persistence mechanisms, reboots, or modification telemetry. [Host implementation](https://github.com/Jjschwartz/NetworkAttackSimulator/blob/master/nasim/envs/host_vector.py).</td></tr>
+
+<tr><th scope="row">D3.2 Execution-flow control and scripting engines</th>
+  <td>Absent</td>
+  <td>No executable loaders, scripting engines, LOLBins, syscalls, or OS-native execution controls. [Host implementation](https://github.com/Jjschwartz/NetworkAttackSimulator/blob/master/nasim/envs/host_vector.py).</td></tr>
+
+<tr><th scope="row">D3.3 Process, memory, and privilege-boundary primitives</th>
+  <td>Absent</td>
+  <td>user/root is an abstract privilege predicate; no real process, memory, injection, or token primitives</td></tr>
+
+<tr><th scope="row">D3.4 Configuration stores, filesystem semantics, and kernel/trust layer</th>
+  <td>Absent</td>
+  <td>Hosts have no filesystem, configuration stores, kernel, code-signing, or platform-trust layer. [Host implementation](https://github.com/Jjschwartz/NetworkAttackSimulator/blob/master/nasim/envs/host_vector.py).</td></tr>
+
+<tr><th scope="row">D3.5 Credential material exposure on the endpoint</th>
+  <td>Absent</td>
+  <td>The host state contains no credential material or OS credential stores. [Host implementation](https://github.com/Jjschwartz/NetworkAttackSimulator/blob/master/nasim/envs/host_vector.py).</td></tr>
+
+<tr><th scope="row">D3.6 Discovery, evasion, and anti-forensics surface</th>
+  <td>Absent</td>
+  <td>OS and service scans give abstract host-label discovery, but no evasion, guardrail, or anti-forensics surface</td></tr>
+
+<tr><th scope="row">D3.7 Impact primitives and document-execution behavior</th>
+  <td>Absent</td>
+  <td>No encryption, wiping, service termination, reboot, or document-execution primitives. [Host implementation](https://github.com/Jjschwartz/NetworkAttackSimulator/blob/master/nasim/envs/host_vector.py).</td></tr>
+
+<tr><th scope="row">D3.8 Restorable host objects</th>
+  <td>Absent</td>
+  <td>Host vectors contain no files, packages, disks, or integrity-verifiable restoration objects. [Host implementation](https://github.com/Jjschwartz/NetworkAttackSimulator/blob/master/nasim/envs/host_vector.py).</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>Identity realism</strong>:
+  0 full, 0 partial,
+  13 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D4.1 Populated directory and local identity stores</th>
+  <td>Absent</td>
+  <td>Identity stores, users, groups, directories, and memberships are absent from host state. [Host-state schema](https://networkattacksimulator.readthedocs.io/en/latest/reference/envs/host_vector.html).</td></tr>
+
+<tr><th scope="row">D4.2 Credential landscape with realistic material in real locations</th>
+  <td>Absent</td>
+  <td>No passwords, secrets, reuse relationships, service accounts, or credential locations. [Host-state schema](https://networkattacksimulator.readthedocs.io/en/latest/reference/envs/host_vector.html).</td></tr>
+
+<tr><th scope="row">D4.3 Kerberos and NTLM protocol fidelity</th>
+  <td>Absent</td>
+  <td>No Kerberos tickets, NTLM exchanges, authentication negotiation, or relay mechanisms. [Host-state schema](https://networkattacksimulator.readthedocs.io/en/latest/reference/envs/host_vector.html).</td></tr>
+
+<tr><th scope="row">D4.4 Federation, SSO, and web session material</th>
+  <td>Absent</td>
+  <td>No identity providers, federation, OAuth tokens, session cookies, or coherent login state. [Host-state schema](https://networkattacksimulator.readthedocs.io/en/latest/reference/envs/host_vector.html).</td></tr>
+
+<tr><th scope="row">D4.5 MFA as a design space and auth-process modification surface</th>
+  <td>Absent</td>
+  <td>No MFA factors, conditional access, user prompts, or authentication-package modification. [Host-state schema](https://networkattacksimulator.readthedocs.io/en/latest/reference/envs/host_vector.html).</td></tr>
+
+<tr><th scope="row">D4.6 Account lifecycle and tiered administration</th>
+  <td>Absent</td>
+  <td>User/root access levels lack accounts, lifecycle operations, administrative tiers, or managed credentials. [Host-state schema](https://networkattacksimulator.readthedocs.io/en/latest/reference/envs/host_vector.html).</td></tr>
+
+<tr><th scope="row">D4.7 Session reality and valid-account usage</th>
+  <td>Absent</td>
+  <td>Access integers do not represent logon sessions, cached credentials, or session hijacking. [Host-state schema](https://networkattacksimulator.readthedocs.io/en/latest/reference/envs/host_vector.html).</td></tr>
+
+<tr><th scope="row">D4.8 Certificate and PKI identity</th>
+  <td>Absent</td>
+  <td>No certificates, certificate authorities, issuance, renewal, or revocation state. [Host-state schema](https://networkattacksimulator.readthedocs.io/en/latest/reference/envs/host_vector.html).</td></tr>
+
+<tr><th scope="row">D4.9 Enumeration and identity-relationship surface</th>
+  <td>Absent</td>
+  <td>No enumerable identity objects, group relationships, SPNs, trusts, or directory ACLs. [Host-state schema](https://networkattacksimulator.readthedocs.io/en/latest/reference/envs/host_vector.html).</td></tr>
+
+<tr><th scope="row">D4.10 Human-layer impersonation and external-to-internal bridges</th>
+  <td>Absent</td>
+  <td>No mail identities, impersonation surfaces, guests, vendors, or delegated service principals. [Host-state schema](https://networkattacksimulator.readthedocs.io/en/latest/reference/envs/host_vector.html).</td></tr>
+
+<tr><th scope="row">D4.11 Policy-bound authorization as identity-layer state</th>
+  <td>Absent</td>
+  <td>Authorization uses access levels, without identity-layer groups, claims, roles, or policy lifecycle. [Host-state schema](https://networkattacksimulator.readthedocs.io/en/latest/reference/envs/host_vector.html).</td></tr>
+
+<tr><th scope="row">D4.12 Propagating credential control and access recovery</th>
+  <td>Absent</td>
+  <td>No account or credential state supporting revocation propagation or access-recovery workflows. [Host-state schema](https://networkattacksimulator.readthedocs.io/en/latest/reference/envs/host_vector.html).</td></tr>
+
+<tr><th scope="row">D4.13 Believable deceptive identities</th>
+  <td>Absent</td>
+  <td>No decoy accounts, credentials, tokens, or personas; the bundled deception is host-based. [Host-state schema](https://networkattacksimulator.readthedocs.io/en/latest/reference/envs/host_vector.html).</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>Temporal dynamics</strong>:
+  0 full, 0 partial,
+  11 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D5.1 Real wall-clock progression</th>
+  <td>Absent</td>
+  <td>Time is an action-step counter, without simulated wall-clock timestamps or time-source manipulation. [Environment implementation](https://github.com/Jjschwartz/NetworkAttackSimulator/blob/master/nasim/envs/environment.py).</td></tr>
+
+<tr><th scope="row">D5.2 Scheduled execution and reboot semantics</th>
+  <td>Absent</td>
+  <td>No scheduled execution or host reboot semantics; reset simply reinitializes episode state. [Environment implementation](https://github.com/Jjschwartz/NetworkAttackSimulator/blob/master/nasim/envs/environment.py).</td></tr>
+
+<tr><th scope="row">D5.3 Session, token, and credential lifetimes</th>
+  <td>Absent</td>
+  <td>No elapsed-time expiration of sessions, credentials, tokens, or certificates. [Environment implementation](https://github.com/Jjschwartz/NetworkAttackSimulator/blob/master/nasim/envs/environment.py).</td></tr>
+
+<tr><th scope="row">D5.4 Human activity rhythms</th>
+  <td>Absent</td>
+  <td>Episodes contain no calendar, business hours, user rhythms, or shift patterns. [Environment implementation](https://github.com/Jjschwartz/NetworkAttackSimulator/blob/master/nasim/envs/environment.py).</td></tr>
+
+<tr><th scope="row">D5.5 Long-horizon engagement support</th>
+  <td>Absent</td>
+  <td>Long action sequences lack weeks/months semantics, accumulating operational logs, or patch drift. [Environment implementation](https://github.com/Jjschwartz/NetworkAttackSimulator/blob/master/nasim/envs/environment.py).</td></tr>
+
+<tr><th scope="row">D5.6 Event-correlation windows and rate-limiting</th>
+  <td>Absent</td>
+  <td>Step limits do not implement timed detection windows, account lockout, or service rate limits. [Environment implementation](https://github.com/Jjschwartz/NetworkAttackSimulator/blob/master/nasim/envs/environment.py).</td></tr>
+
+<tr><th scope="row">D5.7 Delay-based evasion and staged operations</th>
+  <td>Absent</td>
+  <td>Actions resolve synchronously without sleep, delayed detonation, or timed staged operations. [Environment implementation](https://github.com/Jjschwartz/NetworkAttackSimulator/blob/master/nasim/envs/environment.py).</td></tr>
+
+<tr><th scope="row">D5.8 State decay and temporal detection signals</th>
+  <td>Absent</td>
+  <td>No cache TTLs, log rotation, expiring artifacts, or temporal anomaly signals. [Environment implementation](https://github.com/Jjschwartz/NetworkAttackSimulator/blob/master/nasim/envs/environment.py).</td></tr>
+
+<tr><th scope="row">D5.9 Non-instant defender effects with observable before/after</th>
+  <td>Absent</td>
+  <td>No defender actions or delayed containment, revocation, eviction, and recovery effects. [Environment implementation](https://github.com/Jjschwartz/NetworkAttackSimulator/blob/master/nasim/envs/environment.py).</td></tr>
+
+<tr><th scope="row">D5.10 Retained containment and recovery history</th>
+  <td>Absent</td>
+  <td>No retained operational timeline of containment, unlock, restoration, or rollback actions. [Environment implementation](https://github.com/Jjschwartz/NetworkAttackSimulator/blob/master/nasim/envs/environment.py).</td></tr>
+
+<tr><th scope="row">D5.11 Triggered and delayed activation of injected content</th>
+  <td>Absent</td>
+  <td>No injected instructions, content activation triggers, or delayed payload execution. [Environment implementation](https://github.com/Jjschwartz/NetworkAttackSimulator/blob/master/nasim/envs/environment.py).</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>Defensive realism</strong>:
+  0 full, 3 partial,
+  9 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D6.1 Perimeter, egress, and traffic inspection</th>
+  <td>Partial</td>
+  <td>Directional service allowlists provide abstract filtering; stateful inspection, proxies, WAFs, and rate limits are absent. [Network implementation](https://github.com/Jjschwartz/NetworkAttackSimulator/blob/master/nasim/envs/network.py).</td></tr>
+
+<tr><th scope="row">D6.2 Email security stack</th>
+  <td>Absent</td>
+  <td>No mail gateway, attachment sandbox, URL detonation, or mailbox detection controls. [Scenario model](https://networkattacksimulator.readthedocs.io/en/latest/tutorials/scenarios.html).</td></tr>
+
+<tr><th scope="row">D6.3 Endpoint protection, EDR, and exploit mitigations</th>
+  <td>Absent</td>
+  <td>Boolean host attributes lack antivirus, EDR, memory mitigations, or kernel protections. [Host-state schema](https://networkattacksimulator.readthedocs.io/en/latest/reference/envs/host_vector.html).</td></tr>
+
+<tr><th scope="row">D6.4 Application-execution controls</th>
+  <td>Absent</td>
+  <td>No application allowlisting, script restrictions, macro policies, or execution approval prompts. [Action implementation](https://github.com/Jjschwartz/NetworkAttackSimulator/blob/master/nasim/envs/action.py).</td></tr>
+
+<tr><th scope="row">D6.5 Authentication hardening</th>
+  <td>Absent</td>
+  <td>No authentication mechanisms to harden through lockout, MFA, signing, or federation policy. [Action implementation](https://github.com/Jjschwartz/NetworkAttackSimulator/blob/master/nasim/envs/action.py).</td></tr>
+
+<tr><th scope="row">D6.6 Patching and configuration hardening</th>
+  <td>Absent</td>
+  <td>Host configurations are static; no patch rollout, baseline hardening, or evolving patch states. [Scenario model](https://networkattacksimulator.readthedocs.io/en/latest/tutorials/scenarios.html).</td></tr>
+
+<tr><th scope="row">D6.7 Segmentation enforcement</th>
+  <td>Partial</td>
+  <td>Subnet and host firewall checks enforce segmentation, without defensive adjustment, inspection, or audit logs. [Network implementation](https://github.com/Jjschwartz/NetworkAttackSimulator/blob/master/nasim/envs/network.py).</td></tr>
+
+<tr><th scope="row">D6.8 Detection rule library and cloud-plane controls</th>
+  <td>Absent</td>
+  <td>No detection rule library, UEBA baseline, cloud IAM controls, or posture tooling. [Action implementation](https://github.com/Jjschwartz/NetworkAttackSimulator/blob/master/nasim/envs/action.py).</td></tr>
+
+<tr><th scope="row">D6.9 Data-loss prevention controls</th>
+  <td>Absent</td>
+  <td>No content-bearing data movement or DLP inspection, classification, blocking, and quarantine. [Action implementation](https://github.com/Jjschwartz/NetworkAttackSimulator/blob/master/nasim/envs/action.py).</td></tr>
+
+<tr><th scope="row">D6.10 Response, deception, and control-configuration action space</th>
+  <td>Partial</td>
+  <td>Scenario configuration supports firewalls and negative-value honeypots, but no operational defender tuning or rollout. [Scenario documentation](https://networkattacksimulator.readthedocs.io/en/latest/tutorials/custom_scenarios.html).</td></tr>
+
+<tr><th scope="row">D6.11 ML-based defenses, modeled and evadable</th>
+  <td>Absent</td>
+  <td>The modeled action surface has no ML-based defensive detector or adversarial-evasion mechanism. [Action implementation](https://github.com/Jjschwartz/NetworkAttackSimulator/blob/master/nasim/envs/action.py).</td></tr>
+
+<tr><th scope="row">D6.12 Cognition-targeted deception</th>
+  <td>Absent</td>
+  <td>The honeypot penalizes compromise; it contains no reasoning-targeted instructions or semantic lures. [Honeypot scenario](https://github.com/Jjschwartz/NetworkAttackSimulator/blob/master/nasim/scenarios/benchmark/small-honeypot.yaml).</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>Benign activity realism</strong>:
+  0 full, 0 partial,
+  10 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D7.1 Simulated users with role and behavioral diversity</th>
+  <td>Absent</td>
+  <td>Scenario hosts have configurations, without simulated user personas or behavioral diversity. [Scenario model](https://networkattacksimulator.readthedocs.io/en/latest/tutorials/scenarios.html).</td></tr>
+
+<tr><th scope="row">D7.2 User interactive input and active sessions</th>
+  <td>Absent</td>
+  <td>No keyboard, mouse, clipboard, screen activity, or user-generated interactive sessions. [Scenario model](https://networkattacksimulator.readthedocs.io/en/latest/tutorials/scenarios.html).</td></tr>
+
+<tr><th scope="row">D7.3 Browsing, document authorship, and accumulated web state</th>
+  <td>Absent</td>
+  <td>No browser activity, authored documents, cookies, autofill, or accumulated web state. [Scenario model](https://networkattacksimulator.readthedocs.io/en/latest/tutorials/scenarios.html).</td></tr>
+
+<tr><th scope="row">D7.4 Email activity</th>
+  <td>Absent</td>
+  <td>No mailbox contents, correspondence, calendars, or benign email exchanges. [Scenario model](https://networkattacksimulator.readthedocs.io/en/latest/tutorials/scenarios.html).</td></tr>
+
+<tr><th scope="row">D7.5 Credential-use traffic and lived-in accumulation</th>
+  <td>Absent</td>
+  <td>No repeated user authentication or activity-generated credential artifacts and traffic. [Scenario model](https://networkattacksimulator.readthedocs.io/en/latest/tutorials/scenarios.html).</td></tr>
+
+<tr><th scope="row">D7.6 Administrative and service baseline</th>
+  <td>Absent</td>
+  <td>Process labels generate no administrative activity, maintenance, backups, or updater baseline. [Scenario model](https://networkattacksimulator.readthedocs.io/en/latest/tutorials/scenarios.html).</td></tr>
+
+<tr><th scope="row">D7.7 Network and data-volume baselines</th>
+  <td>Absent</td>
+  <td>No benign network flows, DNS distributions, uploads, or data-volume baselines. [Scenario model](https://networkattacksimulator.readthedocs.io/en/latest/tutorials/scenarios.html).</td></tr>
+
+<tr><th scope="row">D7.8 Share, repository, and peripheral activity</th>
+  <td>Absent</td>
+  <td>No legitimate share access, repository activity, collaboration content, or peripheral events. [Scenario model](https://networkattacksimulator.readthedocs.io/en/latest/tutorials/scenarios.html).</td></tr>
+
+<tr><th scope="row">D7.9 Temporal structure, prompt response, and signal quality</th>
+  <td>Absent</td>
+  <td>No timed benign activity or modeled users responding to phishing and prompts. [Scenario model](https://networkattacksimulator.readthedocs.io/en/latest/tutorials/scenarios.html).</td></tr>
+
+<tr><th scope="row">D7.10 Business-context lure plausibility</th>
+  <td>Absent</td>
+  <td>The honeypot has host attributes but no surrounding business activity or lure content. [Honeypot scenario](https://github.com/Jjschwartz/NetworkAttackSimulator/blob/master/nasim/scenarios/benchmark/small-honeypot.yaml).</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>Telemetry fidelity</strong>:
+  0 full, 0 partial,
+  11 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D8.1 Process and script execution telemetry</th>
+  <td>Absent</td>
+  <td>Process scans return presence labels, without execution events, command lines, hashes, or script logs. [Observation schema](https://networkattacksimulator.readthedocs.io/en/latest/reference/envs/observation.html).</td></tr>
+
+<tr><th scope="row">D8.2 Authentication telemetry</th>
+  <td>Absent</td>
+  <td>Access/error flags do not produce authentication records or correlated logon events. [Observation schema](https://networkattacksimulator.readthedocs.io/en/latest/reference/envs/observation.html).</td></tr>
+
+<tr><th scope="row">D8.3 Object access: file, registry, and IPC</th>
+  <td>Absent</td>
+  <td>No file, registry, IPC, or integrity-monitoring event streams. [Observation schema](https://networkattacksimulator.readthedocs.io/en/latest/reference/envs/observation.html).</td></tr>
+
+<tr><th scope="row">D8.4 Network telemetry</th>
+  <td>Absent</td>
+  <td>Connection-error flags lack packets, flow records, DNS logs, and firewall event fields. [Observation schema](https://networkattacksimulator.readthedocs.io/en/latest/reference/envs/observation.html).</td></tr>
+
+<tr><th scope="row">D8.5 Endpoint/EDR streams</th>
+  <td>Absent</td>
+  <td>No endpoint sensors, API-hook events, memory scans, or EDR behavioral streams. [Observation schema](https://networkattacksimulator.readthedocs.io/en/latest/reference/envs/observation.html).</td></tr>
+
+<tr><th scope="row">D8.6 Identity-provider, cloud-plane, and application logs</th>
+  <td>Absent</td>
+  <td>No identity-provider, cloud, email, proxy, application, or database audit logs. [Observation schema](https://networkattacksimulator.readthedocs.io/en/latest/reference/envs/observation.html).</td></tr>
+
+<tr><th scope="row">D8.7 Schema fidelity, volume, and noise floor</th>
+  <td>Absent</td>
+  <td>Observations are numeric tensors, without production event schemas or realistic telemetry noise. [Observation schema](https://networkattacksimulator.readthedocs.io/en/latest/reference/envs/observation.html).</td></tr>
+
+<tr><th scope="row">D8.8 Coverage gaps, timing, and retention tiers</th>
+  <td>Absent</td>
+  <td>No log shipping, ingestion timestamps, sensor outages, or retention tiers. [Observation schema](https://networkattacksimulator.readthedocs.io/en/latest/reference/envs/observation.html).</td></tr>
+
+<tr><th scope="row">D8.9 Integrity, enrichment, and cross-system correlation</th>
+  <td>Absent</td>
+  <td>No independent collectors, SIEM persistence, enrichment, sensor tuning, or cross-source event correlation. [Observation schema](https://networkattacksimulator.readthedocs.io/en/latest/reference/envs/observation.html).</td></tr>
+
+<tr><th scope="row">D8.10 Response outcome telemetry with explainable decisions</th>
+  <td>Absent</td>
+  <td>No defender response records; error flags omit actors, policies, timestamps, and decision provenance. [Observation schema](https://networkattacksimulator.readthedocs.io/en/latest/reference/envs/observation.html).</td></tr>
+
+<tr><th scope="row">D8.11 Recovery and deception telemetry</th>
+  <td>Absent</td>
+  <td>Honeypot compromise yields reward feedback, without retained deception events or recovery telemetry. [Honeypot scenario](https://github.com/Jjschwartz/NetworkAttackSimulator/blob/master/nasim/scenarios/benchmark/small-honeypot.yaml).</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>Action realism</strong>:
+  0 full, 3 partial,
+  8 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D9.1 Command fidelity</th>
+  <td>Absent</td>
+  <td>Agents invoke abstract action objects or indices, without target shells or command execution. [Action reference](https://networkattacksimulator.readthedocs.io/en/latest/reference/envs/actions.html).</td></tr>
+
+<tr><th scope="row">D9.2 API fidelity</th>
+  <td>Absent</td>
+  <td>The Gymnasium interface changes simulated state; target OS, cloud, and Kubernetes APIs are absent. [Environment reference](https://networkattacksimulator.readthedocs.io/en/latest/reference/envs/environment.html).</td></tr>
+
+<tr><th scope="row">D9.3 Parameter space</th>
+  <td>Partial</td>
+  <td>MultiDiscrete actions parameterize target, OS, service, and process; unmatched exploits become NoOp rather than real tool failures. [Action reference](https://networkattacksimulator.readthedocs.io/en/latest/reference/envs/actions.html).</td></tr>
+
+<tr><th scope="row">D9.4 Failure realism</th>
+  <td>Absent</td>
+  <td>action outcomes use probability draws rather than deterministic failure from a real mismatch; auth/authz/reachability failure modes are not distinguished</td></tr>
+
+<tr><th scope="row">D9.5 Composition, tool transfer, and interactive sessions</th>
+  <td>Absent</td>
+  <td>abstract single super-actions sequenced, not composition from primitives or tool transfer</td></tr>
+
+<tr><th scope="row">D9.6 State effects, scheduling, and cost budgets</th>
+  <td>Partial</td>
+  <td>Compromise/access changes persist within episodes and actions incur scalar costs; scheduling and operational side effects are absent. [Environment implementation](https://github.com/Jjschwartz/NetworkAttackSimulator/blob/master/nasim/envs/environment.py).</td></tr>
+
+<tr><th scope="row">D9.7 Observability, C2 semantics, and defender action</th>
+  <td>Absent</td>
+  <td>Synchronous tensor results lack operational command output, C2 transport semantics, and defender tooling. [Interaction documentation](https://networkattacksimulator.readthedocs.io/en/latest/tutorials/environment.html).</td></tr>
+
+<tr><th scope="row">D9.8 Privilege-scoped action surface and realistic tool-use idiom</th>
+  <td>Partial</td>
+  <td>Required-access checks constrain local actions and pivots, but agents use a handcrafted abstract action menu. [Action reference](https://networkattacksimulator.readthedocs.io/en/latest/reference/envs/actions.html).</td></tr>
+
+<tr><th scope="row">D9.9 Distinct defender action families</th>
+  <td>Absent</td>
+  <td>No defender action families for hardening, credentials, eviction, isolation, or restoration. [Action implementation](https://github.com/Jjschwartz/NetworkAttackSimulator/blob/master/nasim/envs/action.py).</td></tr>
+
+<tr><th scope="row">D9.10 Multi-step defender operations require ordered sequencing</th>
+  <td>Absent</td>
+  <td>No defender recovery or restoration operations with ordered intermediate states. [Action implementation](https://github.com/Jjschwartz/NetworkAttackSimulator/blob/master/nasim/envs/action.py).</td></tr>
+
+<tr><th scope="row">D9.11 Tool and action channel as an attack surface</th>
+  <td>Absent</td>
+  <td>No modeled tool-definition poisoning, instruction-bearing runtime responses, or adversary-driven agent tool invocation. [Action implementation](https://github.com/Jjschwartz/NetworkAttackSimulator/blob/master/nasim/envs/action.py).</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>Observation realism</strong>:
+  0 full, 4 partial,
+  8 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D10.1 Position- and privilege-dependent observability</th>
+  <td>Partial</td>
+  <td>Network position and access gate discovery and local scans; observations remain symbolic and lack authentication trails. [Network implementation](https://github.com/Jjschwartz/NetworkAttackSimulator/blob/master/nasim/envs/network.py).</td></tr>
+
+<tr><th scope="row">D10.2 Partial, incremental, scale-appropriate results</th>
+  <td>Partial</td>
+  <td>Partial mode reveals action-specific host attributes incrementally, without pagination, throttling, or realistic enterprise query results. [Observation construction](https://github.com/Jjschwartz/NetworkAttackSimulator/blob/master/nasim/envs/state.py).</td></tr>
+
+<tr><th scope="row">D10.3 Noise, uncertainty, and time-variance</th>
+  <td>Absent</td>
+  <td>Successful scans expose exact configured attributes; stochastic action failure does not model noisy or stale observations. [Host implementation](https://github.com/Jjschwartz/NetworkAttackSimulator/blob/master/nasim/envs/host_vector.py).</td></tr>
+
+<tr><th scope="row">D10.4 Protocol, banner, and metadata fidelity on reception</th>
+  <td>Absent</td>
+  <td>Numeric host attributes and error flags lack protocol packets, banners, headers, and realistic response timing. [Observation schema](https://networkattacksimulator.readthedocs.io/en/latest/reference/envs/observation.html).</td></tr>
+
+<tr><th scope="row">D10.5 Defender-side observation surface</th>
+  <td>Absent</td>
+  <td>No defender observation interface, SIEM queries, EDR console, alerts, or raw-event pivots. [Environment reference](https://networkattacksimulator.readthedocs.io/en/latest/reference/envs/environment.html).</td></tr>
+
+<tr><th scope="row">D10.6 Blind spots and observation cost</th>
+  <td>Partial</td>
+  <td>Partial mode gates visibility behind discovery and access; scans incur scalar costs without time or telemetry exposure. [Observation construction](https://github.com/Jjschwartz/NetworkAttackSimulator/blob/master/nasim/envs/state.py).</td></tr>
+
+<tr><th scope="row">D10.7 Feedback loops and multi-source correlation</th>
+  <td>Partial</td>
+  <td>Action results inform subsequent probing and exploitation, without independent observation sources to reconcile. [Interaction documentation](https://networkattacksimulator.readthedocs.io/en/latest/tutorials/environment.html).</td></tr>
+
+<tr><th scope="row">D10.8 Oracle-free property</th>
+  <td>Absent</td>
+  <td>Action spaces disclose host addresses, rewards expose values, and observations include explicit state flags. [Sim-to-real limitations](https://networkattacksimulator.readthedocs.io/en/latest/explanations/sim_to_real.html).</td></tr>
+
+<tr><th scope="row">D10.9 Before/after response observation</th>
+  <td>Absent</td>
+  <td>No defender responses or operational views comparing containment and restoration outcomes. [Environment reference](https://networkattacksimulator.readthedocs.io/en/latest/reference/envs/environment.html).</td></tr>
+
+<tr><th scope="row">D10.10 High-context deception observation</th>
+  <td>Absent</td>
+  <td>Honeypot feedback lacks source identities, interaction histories, linked movement, and investigation dashboards. [Honeypot scenario](https://github.com/Jjschwartz/NetworkAttackSimulator/blob/master/nasim/scenarios/benchmark/small-honeypot.yaml).</td></tr>
+
+<tr><th scope="row">D10.11 Agent-directed content injection</th>
+  <td>Absent</td>
+  <td>Numeric observations carry no verbatim adversarial instructions or multimodal injected artifacts. [Observation schema](https://networkattacksimulator.readthedocs.io/en/latest/reference/envs/observation.html).</td></tr>
+
+<tr><th scope="row">D10.12 Agent-targeted perception and trust manipulation</th>
+  <td>Absent</td>
+  <td>No rendered content, citations, crafted links, or trust-manipulating observation payloads. [Observation schema](https://networkattacksimulator.readthedocs.io/en/latest/reference/envs/observation.html).</td></tr>
+
+</tbody>
+</table>
+</details>
+
+<details>
+<summary><strong>External information ecosystem</strong>:
+  0 full, 0 partial,
+  10 absent</summary>
+<table class="profile">
+<thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">D11.1 Authoritative DNS, WHOIS, and certificate transparency</th>
+  <td>Absent</td>
+  <td>The internet is a connectivity marker, without external DNS, WHOIS, transparency, or revocation infrastructure. [Network implementation](https://github.com/Jjschwartz/NetworkAttackSimulator/blob/master/nasim/envs/network.py).</td></tr>
+
+<tr><th scope="row">D11.2 OSINT surface: public web, social, repos, paste</th>
+  <td>Absent</td>
+  <td>Closed scenarios contain no public websites, social profiles, search engines, or OSINT repositories. [Scenario model](https://networkattacksimulator.readthedocs.io/en/latest/tutorials/scenarios.html).</td></tr>
+
+<tr><th scope="row">D11.3 Threat intel, reputation, and external scanner observability</th>
+  <td>Absent</td>
+  <td>No threat-intelligence feeds, reputation queries, infrastructure aging, or external scanner observations. [Environment reference](https://networkattacksimulator.readthedocs.io/en/latest/reference/envs/environment.html).</td></tr>
+
+<tr><th scope="row">D11.4 Attacker-controlled domains, hosting, and C2 servers</th>
+  <td>Absent</td>
+  <td>No domain registration, hosting lifecycle, deployable C2 servers, redirectors, or TLS infrastructure. [Action implementation](https://github.com/Jjschwartz/NetworkAttackSimulator/blob/master/nasim/envs/action.py).</td></tr>
+
+<tr><th scope="row">D11.5 Legitimate-service abuse for C2 blending</th>
+  <td>Absent</td>
+  <td>No reachable SaaS channels, CDN fronting, Tor, or residential-proxy mechanisms. [Network implementation](https://github.com/Jjschwartz/NetworkAttackSimulator/blob/master/nasim/envs/network.py).</td></tr>
+
+<tr><th scope="row">D11.6 Attacker email and weaponized content hosting</th>
+  <td>Absent</td>
+  <td>No attacker mail infrastructure, phishing pages, malware hosting, or user-accessible watering holes. [Scenario model](https://networkattacksimulator.readthedocs.io/en/latest/tutorials/scenarios.html).</td></tr>
+
+<tr><th scope="row">D11.7 Compromised third parties and supply chain</th>
+  <td>Absent</td>
+  <td>No compromisable vendors, update servers, package publication, or supply-chain trust paths. [Action implementation](https://github.com/Jjschwartz/NetworkAttackSimulator/blob/master/nasim/envs/action.py).</td></tr>
+
+<tr><th scope="row">D11.8 External identity and federation surface</th>
+  <td>Absent</td>
+  <td>No external identity providers, consent flows, federated assertions, or cross-tenant identities. [Host-state schema](https://networkattacksimulator.readthedocs.io/en/latest/reference/envs/host_vector.html).</td></tr>
+
+<tr><th scope="row">D11.9 Full DNS resolution path, infrastructure lifecycle, and cost/attribution</th>
+  <td>Absent</td>
+  <td>No DNS resolution chain, domain lifecycle, infrastructure reputation, or monetary attribution model. [Network implementation](https://github.com/Jjschwartz/NetworkAttackSimulator/blob/master/nasim/envs/network.py).</td></tr>
+
+<tr><th scope="row">D11.10 Poisoned information sources and feeds</th>
+  <td>Absent</td>
+  <td>No consulted external feeds, retrieval stores, web content, or packages supporting source poisoning. [Environment reference](https://networkattacksimulator.readthedocs.io/en/latest/reference/envs/environment.html).</td></tr>
+
+</tbody>
+</table>
+</details>
+
 
 
 
@@ -137,7 +776,7 @@ environment abstracts.</p>
 
 </main>
 <footer>
-  Companion artifacts to &ldquo;Realistic Enough for What?&rdquo; ·
+  Metrion · companion artifacts to &ldquo;Realistic Enough for What?&rdquo; ·
   Stratosphere Laboratory, CTU Prague · code MIT / data CC BY 4.0
 </footer>
 </body>

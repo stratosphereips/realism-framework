@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GOAD · Realism Framework</title>
+<title>GOAD · Metrion</title>
 <link rel="stylesheet" href="../assets/style.css">
 <script>(function(){try{var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);window.toggleTheme=function(){var c=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',c);localStorage.setItem('theme',c);};}catch(e){}})();</script>
 </head>
@@ -125,9 +125,21 @@ environment abstracts.</p>
   <td>covers the required dimensions, but below the fit threshold</td>
 </tr>
 
+<tr>
+  <th scope="row"><a href="../use-cases/UC-D7.html">Cognitive resilience under adversarial content</a></th>
+  <td class="v-not_suitable">Not suitable</td>
+  <td>does not provide Temporal dynamics, Defensive realism, Benign activity realism, Telemetry fidelity, dimensions this objective treats as critical</td>
+</tr>
+
+<tr>
+  <th scope="row"><a href="../use-cases/UC-A10.html">Operating against agent-targeted deception</a></th>
+  <td class="v-not_suitable">Not suitable</td>
+  <td>does not provide Defensive realism, Benign activity realism, dimensions this objective treats as critical</td>
+</tr>
+
 </tbody>
 </table>
-<h2>Sub-dimension coverage (all 115 sub-dimensions)</h2>
+<h2>Sub-dimension coverage (all 122 sub-dimensions)</h2>
 <p>This environment has been assessed at the sub-dimension level, with a recorded
 reason for every grade. The fit table above is computed at the dimension level,
 because most environments have not yet been assessed this finely and the two
@@ -365,7 +377,7 @@ levels are not directly comparable.</p>
 <details>
 <summary><strong>Temporal dynamics</strong>:
   4 full, 3 partial,
-  3 absent</summary>
+  4 absent</summary>
 <table class="profile">
 <thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
 <tbody>
@@ -410,6 +422,10 @@ levels are not directly comparable.</p>
   <td>Absent</td>
   <td>no response actions, so no containment history</td></tr>
 
+<tr><th scope="row">D5.11 Triggered and delayed activation of injected content</th>
+  <td>Absent</td>
+  <td>static AD lab; no injected content, so no triggered or delayed injection mechanism</td></tr>
+
 </tbody>
 </table>
 </details>
@@ -417,7 +433,7 @@ levels are not directly comparable.</p>
 <details>
 <summary><strong>Defensive realism</strong>:
   0 full, 2 partial,
-  8 absent</summary>
+  10 absent</summary>
 <table class="profile">
 <thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
 <tbody>
@@ -461,6 +477,14 @@ levels are not directly comparable.</p>
 <tr><th scope="row">D6.10 Response, deception, and control-configuration action space</th>
   <td>Absent</td>
   <td>no defender agent; no response/deception action space</td></tr>
+
+<tr><th scope="row">D6.11 ML-based defenses, modeled and evadable</th>
+  <td>Absent</td>
+  <td>AV/Defender present but signature and heuristic; no ML-based detector modeled as an evadable model</td></tr>
+
+<tr><th scope="row">D6.12 Cognition-targeted deception</th>
+  <td>Absent</td>
+  <td>no cognition-targeted deception; the lab targets human or RL operators, not a reasoning agent</td></tr>
 
 </tbody>
 </table>
@@ -577,7 +601,7 @@ levels are not directly comparable.</p>
 <details>
 <summary><strong>Action realism</strong>:
   6 full, 2 partial,
-  2 absent</summary>
+  3 absent</summary>
 <table class="profile">
 <thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
 <tbody>
@@ -622,6 +646,10 @@ levels are not directly comparable.</p>
   <td>Absent</td>
   <td>no defender operations</td></tr>
 
+<tr><th scope="row">D9.11 Tool and action channel as an attack surface</th>
+  <td>Absent</td>
+  <td>no agent tool surface; no tool definitions or runtime responses to poison</td></tr>
+
 </tbody>
 </table>
 </details>
@@ -629,7 +657,7 @@ levels are not directly comparable.</p>
 <details>
 <summary><strong>Observation realism</strong>:
   3 full, 4 partial,
-  3 absent</summary>
+  5 absent</summary>
 <table class="profile">
 <thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
 <tbody>
@@ -674,6 +702,14 @@ levels are not directly comparable.</p>
   <td>Absent</td>
   <td>no decoys</td></tr>
 
+<tr><th scope="row">D10.11 Agent-directed content injection</th>
+  <td>Absent</td>
+  <td>artifacts are not seeded with agent-directed instructions; no injection channel</td></tr>
+
+<tr><th scope="row">D10.12 Agent-targeted perception and trust manipulation</th>
+  <td>Absent</td>
+  <td>no perception or trust manipulation content; no cloaking or trust-signal manipulation</td></tr>
+
 </tbody>
 </table>
 </details>
@@ -681,7 +717,7 @@ levels are not directly comparable.</p>
 <details>
 <summary><strong>External information ecosystem</strong>:
   0 full, 0 partial,
-  9 absent</summary>
+  10 absent</summary>
 <table class="profile">
 <thead><tr><th scope="col">Sub-dimension</th><th scope="col">Coverage</th><th scope="col">Reason</th></tr></thead>
 <tbody>
@@ -722,6 +758,10 @@ levels are not directly comparable.</p>
   <td>Absent</td>
   <td>isolated internal lab; no external DNS/OSINT/threat-intel/attacker-infra/email/supply-chain modeling</td></tr>
 
+<tr><th scope="row">D11.10 Poisoned information sources and feeds</th>
+  <td>Absent</td>
+  <td>isolated internal lab; no external feeds or retrieval sources to poison</td></tr>
+
 </tbody>
 </table>
 </details>
@@ -736,7 +776,7 @@ levels are not directly comparable.</p>
 
 </main>
 <footer>
-  Companion artifacts to &ldquo;Realistic Enough for What?&rdquo; ·
+  Metrion · companion artifacts to &ldquo;Realistic Enough for What?&rdquo; ·
   Stratosphere Laboratory, CTU Prague · code MIT / data CC BY 4.0
 </footer>
 </body>

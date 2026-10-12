@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UC-D7 Cognitive resilience under adversarial content · Metrion</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){try{var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);window.toggleTheme=function(){var c=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',c);localStorage.setItem('theme',c);};}catch(e){}})();</script>
+</head>
+<body>
+<nav>
+  <button type="button" class="theme-btn" onclick="toggleTheme()" title="Toggle light/dark" aria-label="Toggle light/dark theme">&#9680;</button>
+  <a href="../index.html">Home</a> ·
+  <a href="../use-cases/index.html">Use cases</a> ·
+  <a href="../environments/index.html">Environments</a> ·
+  <a href="../scorecard.html">Scorecard</a>
+</nav>
+<div class="wip-banner" role="note"><strong>Work in progress.</strong> Preliminary artifacts under review; the environment evaluation and the requirement profiles are a work in progress and may change.</div>
+<main>
+
+<h1>UC-D7 · Cognitive resilience under adversarial content</h1>
+<p>A generative defender agent must keep its triage or threat-hunting quality from collapsing when part of the telemetry it reads carries agent-directed adversarial content: indirect prompt injection and deceptive or cloaked text seeded into logs, filenames, ticket and alert bodies, documents, tool output, and enrichment feeds. The failure mode under test, following injected instructions, does not exist for a symbolic reinforcement-learning policy that never reads content, so this is a generative-AI-specific objective (ATLAS indirect prompt injection AML.T0051.001 and agent context poisoning AML.T0080; OWASP ranks indirect prompt injection first among LLM risks). Success means performance degrades no more than a declared bound relative to the clean condition, injected instructions are not acted on, and ideally the manipulation is flagged. It is only evaluable where a genuine benign baseline makes the injected content non-trivial to separate and no oracle marks which artifacts are adversarial, which is why it depends on realistic telemetry, benign activity, and an agent-directed content channel.</p>
+<img class="radar" src="../figures/uc_uc-d7.png" alt="Cognitive resilience under adversarial content requirement radar">
+
+<h2>Dimension requirement profile</h2>
+<table class="profile">
+<thead><tr><th scope="col">Dimension</th><th scope="col">Requirement</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">Topological realism</th><td>Useful</td></tr>
+
+<tr><th scope="row">Service fidelity</th><td>Not needed</td></tr>
+
+<tr><th scope="row">OS fidelity</th><td>Not needed</td></tr>
+
+<tr><th scope="row">Identity realism</th><td>Useful</td></tr>
+
+<tr><th scope="row">Temporal dynamics</th><td>Critical</td></tr>
+
+<tr><th scope="row">Defensive realism</th><td>Critical</td></tr>
+
+<tr><th scope="row">Benign activity realism</th><td>Critical</td></tr>
+
+<tr><th scope="row">Telemetry fidelity</th><td>Critical</td></tr>
+
+<tr><th scope="row">Action realism</th><td>Useful</td></tr>
+
+<tr><th scope="row">Observation realism</th><td>Critical</td></tr>
+
+<tr><th scope="row">External information ecosystem</th><td>Useful</td></tr>
+
+</tbody>
+</table>
+
+
+<h2>Sub-dimension requirements (all 122 sub-dimensions)</h2>
+<p>This use case is specified at the sub-dimension level. Counts per dimension
+(critical / useful / not needed); explore the full checklist in the
+<a href="../scorecard.html#uc=UC-D7">scorecard</a>.</p>
+<table class="profile">
+<thead><tr><th scope="col">Dimension</th><th scope="col">Critical</th><th scope="col">Useful</th><th scope="col">Not needed</th></tr></thead>
+<tbody>
+
+<tr><th scope="row">Topological realism</th>
+  <td>0</td>
+  <td>10</td>
+  <td>0</td></tr>
+
+<tr><th scope="row">Service fidelity</th>
+  <td>0</td>
+  <td>0</td>
+  <td>14</td></tr>
+
+<tr><th scope="row">OS fidelity</th>
+  <td>0</td>
+  <td>0</td>
+  <td>8</td></tr>
+
+<tr><th scope="row">Identity realism</th>
+  <td>0</td>
+  <td>13</td>
+  <td>0</td></tr>
+
+<tr><th scope="row">Temporal dynamics</th>
+  <td>1</td>
+  <td>5</td>
+  <td>5</td></tr>
+
+<tr><th scope="row">Defensive realism</th>
+  <td>1</td>
+  <td>8</td>
+  <td>3</td></tr>
+
+<tr><th scope="row">Benign activity realism</th>
+  <td>1</td>
+  <td>9</td>
+  <td>0</td></tr>
+
+<tr><th scope="row">Telemetry fidelity</th>
+  <td>1</td>
+  <td>10</td>
+  <td>0</td></tr>
+
+<tr><th scope="row">Action realism</th>
+  <td>0</td>
+  <td>1</td>
+  <td>10</td></tr>
+
+<tr><th scope="row">Observation realism</th>
+  <td>4</td>
+  <td>8</td>
+  <td>0</td></tr>
+
+<tr><th scope="row">External information ecosystem</th>
+  <td>0</td>
+  <td>3</td>
+  <td>7</td></tr>
+
+</tbody>
+</table>
+
+
+</main>
+<footer>
+  Metrion · companion artifacts to &ldquo;Realistic Enough for What?&rdquo; ·
+  Stratosphere Laboratory, CTU Prague · code MIT / data CC BY 4.0
+</footer>
+</body>
+</html>

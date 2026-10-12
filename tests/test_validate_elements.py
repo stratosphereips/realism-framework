@@ -11,12 +11,12 @@ def test_real_catalog_is_valid():
     assert validate_elements(ELEMENTS) == []
 
 
-def test_has_11_dims_and_115_elements():
+def test_has_11_dims_and_122_elements():
     data = load_json(ELEMENTS)
     ids = [d["id"] for d in data["dimensions"]]
     assert ids == DIMS
     total = sum(len(d["elements"]) for d in data["dimensions"])
-    assert total == 115
+    assert total == 122
 
 
 def test_detects_missing_dimension(tmp_path):
