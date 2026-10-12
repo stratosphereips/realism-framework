@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Scorecard · Realism Framework</title>
+<title>Scorecard · Metrion</title>
 <link rel="stylesheet" href="assets/style.css">
 <style>
   .panel { border: 1px solid var(--border); border-radius: 6px; padding: 1rem 1.2rem; margin: 1.2rem 0; }
@@ -205,7 +205,7 @@ if (location.protocol !== "file:") {
 
   function selfContext() {
     const uc = UCS[$("#s-uc").value];
-    if (uc.requirements) {  // sub-dimension level (only UC-A1 is specified this deep)
+    if (uc.requirements) {  // sub-dimension level (every use case now carries a full sub-dimension profile)
       const groups = elements.dimensions.map((dim) => ({
         name: dim.name,
         items: dim.elements.map((e) => ({ id: dim.id + "." + e.n, label: e.label,
@@ -239,7 +239,7 @@ if (location.protocol !== "file:") {
     box.className = $("#hide-nn").checked ? "hide-nn" : "";
     const { groups, level } = selfContext();
     $("#s-note").textContent = level === "element"
-      ? "Scoring UC-A1 across all 115 sub-dimensions."
+      ? "Scoring across all 122 sub-dimensions."
       : "Scoring across the 11 dimensions (this use case is specified at the dimension level).";
     for (const grp of groups) {
       const container = grp.name ? document.createElement("fieldset") : box;

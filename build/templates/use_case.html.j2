@@ -1,5 +1,5 @@
 {% extends "base.html.j2" %}
-{% block title %}{{ uc_id }} {{ uc.name }} · Realism Framework{% endblock %}
+{% block title %}{{ uc_id }} {{ uc.name }} · Metrion{% endblock %}
 {% block content %}
 <h1>{{ uc_id }} · {{ uc.name }}</h1>
 <p>{{ uc.detail if uc.detail else uc.description }}</p>
@@ -16,7 +16,7 @@
 </table>
 
 {% if element_summary %}
-<h2>Sub-dimension requirements (all 115 sub-dimensions)</h2>
+<h2>Sub-dimension requirements (all 122 sub-dimensions)</h2>
 <p>This use case is specified at the sub-dimension level. Counts per dimension
 (critical / useful / not needed); explore the full checklist in the
 <a href="{{ rel }}scorecard.html#uc={{ uc_id }}">scorecard</a>.</p>

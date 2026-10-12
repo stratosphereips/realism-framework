@@ -1,4 +1,4 @@
-# Realism Framework Artifacts
+# Metrion — Artifacts
 
 Companion artifacts to the paper *"Realistic Enough for What? A Multidimensional
 Framework for Evaluating Cyber Environments"* (Stratosphere Laboratory, CTU Prague).
@@ -13,7 +13,7 @@ This repository publishes, as a static website:
 
 ## What maps to what
 
-- The 11 realism dimensions and their 115 sub-dimensions: `data/dimension_elements.json`.
+- The 11 realism dimensions and their 122 sub-dimensions: `data/dimension_elements.json`.
 - Dimension groups and short descriptions (home page): `data/dimensions.json`.
 - Use-case requirement profiles (dimension level, plus sub-dimension level for UC-A1):
   `data/use_cases.json`.

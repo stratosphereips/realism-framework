@@ -1,5 +1,5 @@
 {% extends "base.html.j2" %}
-{% block title %}{{ env.name }} · Realism Framework{% endblock %}
+{% block title %}{{ env.name }} · Metrion{% endblock %}
 {% block content %}
 <h1>{{ env.name }}{% if env.wip %} <span class="wip-badge">WIP</span>{% endif %}</h1>
 <p><strong>Family:</strong> {{ env.family }} &nbsp;·&nbsp; <strong>Category:</strong> {{ env.category }}</p>
@@ -38,7 +38,7 @@ environment abstracts.</p>
 </table>
 
 {%- if element_coverage %}
-<h2>Sub-dimension coverage (all 115 sub-dimensions)</h2>
+<h2>Sub-dimension coverage (all 122 sub-dimensions)</h2>
 <p>This environment has been assessed at the sub-dimension level, with a recorded
 reason for every grade. The fit table above is computed at the dimension level,
 because most environments have not yet been assessed this finely and the two
