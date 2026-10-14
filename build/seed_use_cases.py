@@ -100,6 +100,10 @@ def main(seed_reqs_path, out_path):
             "profile": profile,
             "requirements": reqs,
         }
+        # Alternative requirement groups (any_of) carry over verbatim from the source;
+        # they are an element-level construct used by the sub-dimension self-scorer.
+        if src_ucs[uc].get("alternative_groups"):
+            use_cases[uc]["alternative_groups"] = src_ucs[uc]["alternative_groups"]
 
     out = {
         "meta": {

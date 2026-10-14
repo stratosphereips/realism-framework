@@ -32,4 +32,19 @@
 </tbody>
 </table>
 {% endif %}
+
+{% if uc.alternative_groups %}
+<h2>Alternative requirement groups</h2>
+<p>This objective can be met in more than one way. Each group below is critical as a
+whole: an environment supports it when it provides any one complete option. Elements that
+every option depends on stay individually critical and are counted in the profile above.</p>
+{% for g in uc.alternative_groups %}
+<p><strong>{{ g.name }}</strong> — any one option suffices{% if g.rationale %}. {{ g.rationale }}{% endif %}</p>
+<ul>
+{% for o in g.options %}
+<li>{{ o.name }} ({{ o.all_of|join(", ") }})</li>
+{% endfor %}
+</ul>
+{% endfor %}
+{% endif %}
 {% endblock %}

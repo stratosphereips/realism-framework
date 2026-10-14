@@ -445,7 +445,30 @@
         "D11.8": "-",
         "D11.9": "-",
         "D11.10": "-"
-      }
+      },
+      "alternative_groups": [
+        {
+          "id": "UC-A3-G1",
+          "name": "Propagation mechanism",
+          "priority": "C",
+          "rule": "any_of",
+          "options": [
+            {
+              "name": "Exploit-based propagation",
+              "all_of": [
+                "D2.2"
+              ]
+            },
+            {
+              "name": "Credential-based propagation",
+              "all_of": [
+                "D4.2"
+              ]
+            }
+          ],
+          "rationale": "The worm needs at least one viable propagation path (an exploitable service or reusable credentials), not both. Reachability to spread over (D1.6) is required regardless and stays individually critical."
+        }
+      ]
     },
     "UC-A5": {
       "name": "Credential-based privilege escalation",
@@ -587,7 +610,36 @@
         "D11.8": "-",
         "D11.9": "-",
         "D11.10": "-"
-      }
+      },
+      "alternative_groups": [
+        {
+          "id": "UC-A5-G1",
+          "name": "Escalation vector",
+          "priority": "C",
+          "rule": "any_of",
+          "options": [
+            {
+              "name": "Tiered-administration / group-membership abuse",
+              "all_of": [
+                "D4.6"
+              ]
+            },
+            {
+              "name": "Session / valid-account reuse",
+              "all_of": [
+                "D4.7"
+              ]
+            },
+            {
+              "name": "Policy-bound authorization / ACL misconfiguration",
+              "all_of": [
+                "D4.11"
+              ]
+            }
+          ],
+          "rationale": "At least one escalation vector must be available. The shared identity-layer state (D4.1 directory, D4.2 credential material, D4.3 Kerberos/NTLM, D4.9 enumeration) is required regardless and stays individually critical."
+        }
+      ]
     },
     "UC-A6": {
       "name": "Evasive red-team operation",

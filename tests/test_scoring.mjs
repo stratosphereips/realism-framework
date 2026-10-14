@@ -93,3 +93,44 @@ test("ucVerdict defaults minCompleteness to 0.8 when the arg is omitted", () => 
   // criticals all F, single Useful required unscored -> completeness 2/3 < 0.8 -> incomplete
   assert.equal(S.ucVerdict(reqs, { "D1.1": "F", "D1.2": "F" }, 0.75), "incomplete");
 });
+
+// ---- alternative requirement groups (any_of) ----
+const gReqs = { "D1.1": "C", "D2.2": "U", "D4.2": "U" };
+const gGroups = [{
+  id: "G1", name: "Propagation", priority: "C", rule: "any_of",
+  options: [{ name: "exploit", all_of: ["D2.2"] }, { name: "cred", all_of: ["D4.2"] }],
+}];
+
+test("group is satisfied when one option is complete (no group gap)", () => {
+  const g = S.ucGaps(gReqs, { "D1.1": "F", "D2.2": "P", "D4.2": "A" }, gGroups);
+  assert.deepEqual(g.groupGaps, []);
+  assert.deepEqual(g.groupUnresolved, []);
+});
+
+test("group unmet when every option is blocked -> not_suitable", () => {
+  const scores = { "D1.1": "F", "D2.2": "A", "D4.2": "A" };
+  assert.deepEqual(S.ucGaps(gReqs, scores, gGroups).groupGaps, ["Propagation"]);
+  assert.equal(S.ucVerdict(gReqs, scores, 0.75, 0.8, gGroups), "not_suitable");
+});
+
+test("group unresolved when the only non-blocked option is unknown -> incomplete", () => {
+  const scores = { "D1.1": "F", "D2.2": "U", "D4.2": "A" };
+  const g = S.ucGaps(gReqs, scores, gGroups);
+  assert.deepEqual(g.groupGaps, []);
+  assert.deepEqual(g.groupUnresolved, ["Propagation"]);
+  assert.equal(S.ucVerdict(gReqs, scores, 0.75, 0.8, gGroups), "incomplete");
+});
+
+test("group counts as one critical requirement in fit, independent of option size", () => {
+  const reqs2 = { "D1.1": "C", "D2.2": "U", "D4.2": "U", "D4.7": "U" };
+  const groups2 = [{
+    id: "G1", name: "Prop", priority: "C", rule: "any_of",
+    options: [{ name: "a", all_of: ["D2.2"] }, { name: "b", all_of: ["D4.2", "D4.7"] }],
+  }];
+  const fit = S.ucFit(reqs2, { "D1.1": "F", "D2.2": "F", "D4.2": "F", "D4.7": "F" }, groups2);
+  assert.equal(fit, 1.0);
+});
+
+test("omitting the groups argument preserves original scoring", () => {
+  assert.equal(S.ucFit(reqs, { "D1.1": "F", "D1.2": "P", "D1.3": "F", "D1.4": "F" }), 4 / 5);
+});

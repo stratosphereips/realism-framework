@@ -264,9 +264,12 @@ if (location.protocol !== "file:") {
   }
 
   function runSelfVerdict() {
-    const { reqMap } = selfContext();
-    paintVerdict($("#s-verdict"), ucVerdict(reqMap, grades, threshold()));
-    const fit = ucFit(reqMap, grades), comp = requiredCompleteness(reqMap, grades);
+    const { reqMap, level } = selfContext();
+    const uc = UCS[$("#s-uc").value];
+    // Alternative requirement groups apply only at the sub-dimension (element) level.
+    const groups = (level === "element" && uc.alternative_groups) ? uc.alternative_groups : [];
+    paintVerdict($("#s-verdict"), ucVerdict(reqMap, grades, threshold(), undefined, groups));
+    const fit = ucFit(reqMap, grades, groups), comp = requiredCompleteness(reqMap, grades);
     $("#s-metrics").textContent = "Weighted fit " + (fit == null ? "n/a" : fit.toFixed(2)) +
       " · required completeness " + (comp == null ? "n/a" : comp.toFixed(2)) +
       " · graded " + Object.keys(grades).length;
